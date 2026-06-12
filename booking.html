@@ -157,6 +157,431 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .ov-body{font-size:15px;color:var(--soft);line-height:1.65;margin-bottom:28px;}
 .ov-close{background:var(--white);color:var(--black);border:none;padding:13px 30px;border-radius:980px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s;}
 .ov-close:hover{opacity:.85;}
+
+/* ══ PRICING DISPLAY ════════════════════════════════════════ */
+.price-display{
+  background:linear-gradient(135deg,rgba(224,32,32,0.1),rgba(224,32,32,0.04));
+  border:1px solid rgba(224,32,32,0.3);
+  border-radius:14px;
+  padding:18px 20px;
+  margin-bottom:4px;
+}
+.price-main{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:8px;
+}
+.price-total{
+  font-size:32px;
+  font-weight:900;
+  color:#fff;
+  letter-spacing:-.03em;
+}
+.price-per-hour{
+  font-size:13px;
+  color:rgba(255,255,255,0.5);
+}
+.price-breakdown{
+  font-size:12px;
+  color:rgba(224,32,32,0.8);
+  margin-top:6px;
+}
+.price-saving{
+  font-size:11px;
+  color:#3dbd5e;
+  margin-top:4px;
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+.price-saving::before{content:'✓';}
+
+.producer-toggle{
+  background:var(--card2);
+  border:1px solid var(--border2);
+  border-radius:12px;
+  padding:14px 16px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  cursor:pointer;
+  transition:border-color .2s,background .2s;
+  user-select:none;
+}
+.producer-toggle:hover{border-color:var(--soft);}
+.producer-toggle.active{
+  border-color:rgba(224,32,32,0.5);
+  background:rgba(224,32,32,0.07);
+}
+.producer-toggle input[type=checkbox]{
+  width:18px;height:18px;
+  accent-color:var(--red);
+  cursor:pointer;
+  flex-shrink:0;
+}
+.producer-label{
+  flex:1;
+}
+.producer-label strong{
+  display:block;
+  font-size:14px;
+  color:var(--white);
+  font-weight:600;
+  margin-bottom:2px;
+}
+.producer-label span{
+  font-size:12px;
+  color:var(--muted);
+}
+.producer-price{
+  font-size:13px;
+  color:var(--red);
+  font-weight:700;
+  flex-shrink:0;
+}
+
+.price-table{
+  background:var(--card2);
+  border:1px solid var(--border2);
+  border-radius:12px;
+  overflow:hidden;
+  font-size:12px;
+}
+.price-table-title{
+  padding:10px 14px;
+  font-size:10px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:700;
+  border-bottom:1px solid var(--border);
+}
+.price-row{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  padding:8px 14px;
+  border-bottom:1px solid var(--border);
+  transition:background .15s;
+}
+.price-row:last-child{border-bottom:none;}
+.price-row.active-row{background:rgba(224,32,32,0.08);}
+.price-row span:first-child{color:var(--body);}
+.price-row span:nth-child(2){color:var(--soft);text-align:center;}
+.price-row span:last-child{color:var(--white);font-weight:600;text-align:right;}
+
+
+/* ══ MIX & MASTERING ADD-ONS ════════════════════════════════ */
+.addon-section{
+  border:1px solid var(--border2);
+  border-radius:12px;
+  overflow:hidden;
+}
+.addon-section-title{
+  font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);padding:10px 16px;
+  border-bottom:1px solid var(--border);
+  background:var(--card2);
+}
+.addon-check{
+  display:flex;align-items:center;gap:14px;
+  padding:13px 16px;border-bottom:1px solid var(--border);
+  cursor:pointer;transition:background .15s;
+  user-select:none;
+}
+.addon-check:last-child{border-bottom:none;}
+.addon-check:hover{background:rgba(255,255,255,0.03);}
+.addon-check.selected{background:rgba(224,32,32,0.06);}
+.addon-check input[type=checkbox]{
+  width:16px;height:16px;accent-color:var(--red);cursor:pointer;flex-shrink:0;
+}
+.addon-check-info{flex:1;}
+.addon-check-name{font-size:14px;font-weight:600;color:var(--white);}
+.addon-check-desc{font-size:12px;color:var(--muted);margin-top:2px;}
+.addon-check-price{font-size:14px;font-weight:700;color:var(--red);flex-shrink:0;}
+.addon-check-price.bundle-price{color:#3dbd5e;}
+.bundle-saving{font-size:10px;color:#3dbd5e;margin-top:2px;text-align:right;}
+
+
+/* ══ REELS ADD-ON ════════════════════════════════════════════ */
+.reels-section{
+  border:1px solid rgba(224,32,32,0.2);
+  border-radius:12px;
+  overflow:hidden;
+  display:none;
+}
+.reels-section.show{display:block;}
+.reels-header{
+  background:rgba(224,32,32,0.08);
+  padding:10px 16px;
+  border-bottom:1px solid rgba(224,32,32,0.15);
+  display:flex;align-items:center;gap:8px;
+}
+.reels-header-title{
+  font-size:10px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:rgba(224,32,32,0.9);flex:1;
+}
+.reels-badge{
+  font-size:10px;background:var(--red);color:#fff;
+  padding:2px 8px;border-radius:980px;font-weight:700;
+}
+
+/* ══ MONTHLY PACKAGES ════════════════════════════════════════ */
+.packages-wrap{
+  background:var(--glass);
+  border:1px solid var(--glass-b);
+  border-radius:18px;
+  overflow:hidden;
+  margin-top:24px;
+}
+.packages-header{
+  padding:16px 20px;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.packages-title{font-size:14px;font-weight:700;color:var(--white);}
+.packages-sub{font-size:11px;color:var(--muted);margin-top:2px;}
+.package-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);}
+@media(max-width:500px){.package-grid{grid-template-columns:1fr;}}
+.package-card{
+  background:var(--card);padding:20px 18px;
+  transition:background .2s;cursor:pointer;
+}
+.package-card:hover{background:var(--card2);}
+.package-card.active{background:rgba(224,32,32,0.08);outline:1px solid rgba(224,32,32,0.3);}
+.pkg-name{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.pkg-hours{font-size:22px;font-weight:900;color:var(--white);letter-spacing:-.03em;margin-bottom:4px;}
+.pkg-price{font-size:18px;font-weight:700;color:var(--red);}
+.pkg-price span{font-size:12px;color:var(--muted);font-weight:400;}
+.pkg-saving{font-size:11px;color:#3dbd5e;margin-top:4px;}
+
+
+
+/* ══ WAITLIST ════════════════════════════════════════════════ */
+.waitlist-btn{
+  width:100%;background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.1);color:var(--body);
+  padding:12px;border-radius:10px;font-size:14px;font-weight:500;
+  cursor:pointer;font-family:inherit;transition:all .2s;margin-top:8px;
+}
+.waitlist-btn:hover{background:rgba(255,255,255,0.1);color:var(--white);}
+.waitlist-form{display:none;margin-top:10px;}
+.waitlist-form.show{display:block;}
+.waitlist-form input{
+  width:100%;background:var(--card2);border:1px solid var(--border2);
+  color:var(--white);padding:11px 14px;border-radius:10px;
+  font-size:14px;font-family:inherit;outline:none;margin-bottom:8px;
+}
+.waitlist-submit{
+  background:var(--white);color:var(--black);border:none;
+  padding:11px;border-radius:10px;font-size:14px;font-weight:700;
+  cursor:pointer;width:100%;font-family:inherit;
+}
+
+/* Section divider */
+.section-divider{
+  font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);padding:20px 0 8px;
+  border-bottom:1px solid var(--border);margin-bottom:16px;
+}
+
+
+/* ══ PREMIUM SLOT PICKER ════════════════════════════════════ */
+.slot-hint{
+  font-size:11px;color:var(--muted);
+  padding:0 4px 14px;line-height:1.6;
+  display:flex;align-items:center;gap:8px;
+}
+.slot-hint::before{
+  content:'';display:block;width:20px;height:1px;
+  background:var(--red);flex-shrink:0;
+}
+
+/* Hour grid */
+.hour-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+}
+.hour-btn{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  color:var(--soft);
+  padding:12px 6px 10px;
+  border-radius:12px;
+  cursor:pointer;
+  font-size:13px;
+  font-weight:600;
+  text-align:center;
+  transition:all .2s cubic-bezier(0.16,1,0.3,1);
+  font-family:inherit;
+  backdrop-filter:blur(8px);
+  position:relative;
+  overflow:hidden;
+}
+.hour-btn .hour-period{
+  display:block;
+  font-size:9px;
+  font-weight:500;
+  letter-spacing:.06em;
+  color:var(--muted);
+  margin-top:2px;
+}
+.hour-btn:hover:not(:disabled):not(.has-booking){
+  background:rgba(255,255,255,0.09);
+  border-color:rgba(255,255,255,0.2);
+  color:var(--white);
+  transform:translateY(-1px);
+}
+.hour-btn.selected{
+  background:var(--red);
+  border-color:var(--red);
+  color:#fff;
+  box-shadow:0 0 20px rgba(224,32,32,0.4);
+  transform:translateY(-1px);
+}
+.hour-btn.selected .hour-period{color:rgba(255,255,255,0.6);}
+.hour-btn.has-booking{
+  background:rgba(212,160,23,0.07);
+  border-color:rgba(212,160,23,0.25);
+  color:rgba(212,160,23,0.6);
+  cursor:not-allowed;
+  font-size:11px;
+}
+.hour-btn:disabled{opacity:.3;cursor:not-allowed;}
+
+/* Duration picker */
+.dur-picker{
+  margin-top:16px;
+  animation:slideDown .3s cubic-bezier(0.16,1,0.3,1);
+}
+@keyframes slideDown{from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:translateY(0);}}
+
+.dur-label{
+  font-size:10px;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--muted);
+  margin-bottom:10px;
+  display:flex;align-items:center;gap:8px;
+}
+.dur-label::before{
+  content:'';display:block;width:16px;height:1px;background:var(--red);
+}
+
+.dur-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+}
+.dur-btn{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  color:var(--soft);
+  border-radius:12px;
+  padding:14px 6px 10px;
+  cursor:pointer;
+  font-size:14px;
+  font-weight:800;
+  text-align:center;
+  font-family:inherit;
+  transition:all .2s cubic-bezier(0.16,1,0.3,1);
+  backdrop-filter:blur(8px);
+  letter-spacing:-.02em;
+}
+.dur-btn-sub{
+  display:block;
+  font-size:9px;
+  font-weight:500;
+  color:var(--muted);
+  margin-top:3px;
+  letter-spacing:.04em;
+}
+.dur-btn-price{
+  display:block;
+  font-size:10px;
+  font-weight:700;
+  color:var(--red);
+  margin-top:2px;
+}
+.dur-btn:hover:not(:disabled){
+  background:rgba(255,255,255,0.09);
+  border-color:rgba(255,255,255,0.2);
+  color:var(--white);
+  transform:translateY(-2px);
+  box-shadow:0 8px 24px rgba(0,0,0,0.3);
+}
+.dur-btn.selected{
+  background:var(--white);
+  border-color:var(--white);
+  color:var(--black);
+  transform:translateY(-2px);
+  box-shadow:0 8px 30px rgba(255,255,255,0.15);
+}
+.dur-btn.selected .dur-btn-sub{color:#555;}
+.dur-btn.selected .dur-btn-price{color:var(--red);}
+.dur-btn:disabled{
+  background:rgba(212,160,23,0.06);
+  border-color:rgba(212,160,23,0.2);
+  color:rgba(212,160,23,0.4);
+  cursor:not-allowed;
+  transform:none;
+}
+
+
+/* ══ SAVINGS BADGE ══════════════════════════════════════════ */
+.price-saved-badge{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-top:10px;
+  padding:8px 12px;
+  background:rgba(61,189,110,0.12);
+  border:1px solid rgba(61,189,110,0.25);
+  border-radius:8px;
+  font-size:12px;
+  font-weight:600;
+  color:#3dbd6e;
+}
+.saved-icon{font-size:14px;}
+
+
+/* ══ ORIGINAL PRICE STRIKETHROUGH ═══════════════════════════ */
+.price-original-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:6px;
+}
+.price-original{
+  font-size:22px;
+  font-weight:700;
+  color:var(--muted);
+  text-decoration:line-through;
+  text-decoration-color:rgba(224,32,32,0.7);
+  text-decoration-thickness:2px;
+  letter-spacing:-.02em;
+}
+.price-original-label{
+  font-size:11px;
+  color:var(--muted);
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  font-weight:600;
+}
+.price-you-pay{
+  display:block;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:rgba(61,189,110,0.9);
+  margin-top:2px;
+}
+/* Make total price bigger and more prominent when savings shown */
+.price-display.has-savings .price-total{
+  color:#fff;
+  text-shadow:0 0 30px rgba(255,255,255,0.15);
+}
+
 </style>
 </head>
 <body>
@@ -226,6 +651,98 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
       <div class="form-wrap" id="formWrap" style="display:none;">
         <div class="form-header"><div class="form-title">Anfrage stellen</div></div>
         <div class="form-body">
+          <!-- PRICE DISPLAY -->
+          <div class="price-display" id="priceDisplay" style="display:none;">
+            <div class="price-original-row" id="priceOriginalRow" style="display:none;">
+              <span class="price-original" id="priceOriginal"></span>
+              <span class="price-original-label">Einzelpreise</span>
+            </div>
+            <div class="price-main">
+              <div>
+                <span class="price-total" id="priceTotal">—</span>
+                <span class="price-you-pay" id="priceYouPay" style="display:none;">Dein Preis</span>
+              </div>
+              <span class="price-per-hour" id="pricePerH"></span>
+            </div>
+            <div class="price-breakdown" id="priceBreak"></div>
+            <div class="price-saving" id="priceSave" style="display:none;"></div>
+            <div class="price-saved-badge" id="priceSavedBadge" style="display:none;">
+              <span class="saved-icon">🏷</span>
+              <span id="priceSavedAmt"></span>
+            </div>
+          </div>
+
+          <!-- PRODUCER TOGGLE -->
+          <label class="producer-toggle" id="producerToggle">
+            <input type="checkbox" id="producerCheck" onchange="updatePriceDisplay()">
+            <div class="producer-label">
+              <strong>+ Produzent / Techniker</strong>
+              <span>Professionelle Begleitung vor Ort</span>
+            </div>
+            <span class="producer-price">+30 €/Std.</span>
+          </label>
+
+          <!-- MIX & MASTERING ADD-ONS -->
+          <div class="addon-section">
+            <div class="addon-section-title">Post-Production Add-ons (pro Song)</div>
+            <label class="addon-check" id="mixLabel">
+              <input type="checkbox" id="mixCheck" onchange="updateAddons()">
+              <div class="addon-check-info">
+                <div class="addon-check-name">Mix</div>
+                <div class="addon-check-desc">Professionelle Abmischung deiner Aufnahme</div>
+              </div>
+              <span class="addon-check-price">120 €</span>
+            </label>
+            <label class="addon-check" id="masterLabel">
+              <input type="checkbox" id="masterCheck" onchange="updateAddons()">
+              <div class="addon-check-info">
+                <div class="addon-check-name">Mastering</div>
+                <div class="addon-check-desc">Streaming- & Radio-optimierter Finalschliff</div>
+              </div>
+              <span class="addon-check-price">65 €</span>
+            </label>
+            <label class="addon-check" id="bundleLabel">
+              <input type="checkbox" id="bundleCheck" onchange="updateAddons()">
+              <div class="addon-check-info">
+                <div class="addon-check-name">Mix + Mastering Bundle</div>
+                <div class="addon-check-desc">Beides zusammen — 10% günstiger</div>
+              </div>
+              <div style="text-align:right;">
+                <span class="addon-check-price bundle-price">166,50 €</span>
+                <div class="bundle-saving">statt 185 €</div>
+              </div>
+            </label>
+          </div>
+
+          <!-- REELS — only shown when Nick (Lamor) is booked -->
+          <div class="reels-section" id="reelsSection">
+            <div class="reels-header">
+              <span class="reels-header-title">🎬 Reels / Hörproben — exkl. MwSt.</span>
+              <span class="reels-badge">Nick (Lamor) buchbar</span>
+            </div>
+            <label class="addon-check" id="reelsLabel">
+              <input type="checkbox" id="reelsCheck" onchange="updateAddons()">
+              <div class="addon-check-info">
+                <div class="addon-check-name">3 Reels During-Session</div>
+                <div class="addon-check-desc">1 Take, Color Grading & Sound pro Reel · Mindestabnahme 3 Stück<br><span style="color:var(--muted);font-size:11px;">Normalpreis: 300€ (3× 100€ exkl. MwSt.) · nur während laufender Session buchbar</span></div>
+              </div>
+              <div style="text-align:right;flex-shrink:0;">
+                <span class="addon-check-price bundle-price">185 € <span style="font-size:10px;color:var(--muted);font-weight:400;">exkl. MwSt.</span></span>
+                <div class="bundle-saving">statt 300 €</div>
+              </div>
+            </label>
+          </div>
+
+          <!-- PRICE TABLE -->
+          <div class="price-table">
+            <div class="price-table-title">Preisstaffelung (Studio ohne Produzent)</div>
+            <div class="price-row" data-hours="3"><span>3 Std.</span><span>35 €/Std.</span><span>105 €</span></div>
+            <div class="price-row" data-hours="4"><span>4 Std.</span><span>33 €/Std.</span><span>132 €</span></div>
+            <div class="price-row" data-hours="6"><span>6 Std.</span><span>30 €/Std.</span><span>180 €</span></div>
+            <div class="price-row" data-hours="8"><span>8 Std.</span><span>28 €/Std.</span><span>224 €</span></div>
+            <div class="price-row" data-hours="10"><span>10 Std. (Ganztag)</span><span>25 €/Std.</span><span>250 €</span></div>
+          </div>
+
           <div class="summary-box" id="summaryBox">
             <div><strong>Datum:</strong> <span id="sSumDate">—</span></div>
             <div><strong>Zeit:</strong> <span id="sSumSlot">—</span></div>
@@ -254,6 +771,11 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
           </div>
           <div class="field"><label>Projekt / Notizen</label><textarea id="fNotes" placeholder="Worum geht es? Besondere Anforderungen?"></textarea></div>
           <button class="submit-btn" id="submitBtn" onclick="handleSubmit()">Anfrage absenden →</button>
+          <p style="font-size:11px;color:var(--muted);text-align:center;line-height:1.6;margin-top:10px;">
+            ✓ Kostenlose Stornierung bis <strong style="color:var(--body);">48 Stunden</strong> vor dem Termin.<br>
+            Bei späterer Stornierung wird eine Bearbeitungsgebühr von <strong style="color:var(--body);">50%</strong> des Buchungsbetrags fällig.<br>
+            Bei No-Show wird der <strong style="color:var(--body);">volle Betrag</strong> berechnet.
+          </p>
         </div>
       </div>
     </div>
@@ -300,12 +822,22 @@ async function saveBookings(b) {
 }
 
 // ══ TIME SLOTS (08:00–22:00, min 3h) ══
+// 24/7 — all 24 start hours, min 3h, max 10h duration
 const ALL_SLOTS = [];
-for (let s = 8; s <= 19; s++) {
-  for (let e = s + 3; e <= 22 && e - s <= 8; e++) {
-    ALL_SLOTS.push({ id: `${s}-${e}`, start: s, end: e, label: `${pad(s)}:00 – ${pad(e)}:00`, dur: e - s });
+for (let s = 0; s < 24; s++) {
+  for (let dur = 3; dur <= 10; dur++) {
+    const e = (s + dur) % 24;
+    ALL_SLOTS.push({
+      id: `${s}-${dur}`,
+      start: s,
+      end: s + dur, // may exceed 24 — displayed as wrap
+      dur,
+      label: `${pad(s)}:00 – ${pad((s+dur)%24)}:00${s+dur>=24?' (+1)':''}`,
+      startHour: s
+    });
   }
 }
+
 function pad(n) { return String(n).padStart(2, "0"); }
 
 // ══ DATE HELPERS ══
@@ -391,34 +923,112 @@ function slotOverlaps(slot, dayBookings) {
   return dayBookings.some(b => slot.start < b.end && slot.end > b.start);
 }
 
+
+function getPriceHint(dur) {
+  const map = {3:35,4:33,5:32,6:30,7:29,8:28,9:26,10:25};
+  const ph = map[dur] || 25;
+  return ph + '€/h';
+}
 function renderSlots() {
   if (!selectedDate) return;
   const key = dateKey(selectedDate);
   const dayBookings = bookings.filter(b => b.date === key);
-  document.getElementById("slotTitle").textContent = "Zeitraum wählen";
-  document.getElementById("slotDate").textContent = formatDE(selectedDate) + " · " + DOW_LONG[(selectedDate.getDay()+6)%7];
 
-  const body = document.getElementById("slotBody");
-  const displaySlots = ALL_SLOTS.filter(s => s.dur >= 3 && s.dur <= 8);
-  if (displaySlots.length === 0) { body.innerHTML = "<div class=\"slot-empty\">Keine Slots verfügbar.</div>"; return; }
+  document.getElementById('slotTitle').textContent = 'Startzeit wählen';
+  document.getElementById('slotDate').textContent =
+    formatDE(selectedDate) + ' · ' + DOW_LONG[(selectedDate.getDay()+6)%7] + ' · 24/7 buchbar';
 
-  body.innerHTML = "<p class=\"slot-hint\">Min. 3 Std. · Grau = bereits angefragt/bestätigt</p><div class=\"time-grid\" id=\"timeGrid\"></div>";
-  const grid = document.getElementById("timeGrid");
+  const body = document.getElementById('slotBody');
 
-  displaySlots.forEach(slot => {
-    const booked = slotOverlaps(slot, dayBookings);
-    const booking = booked ? dayBookings.find(b => slot.start < b.end && slot.end > b.start) : null;
-    const isSel = selectedSlot && selectedSlot.id === slot.id;
-    const btn = document.createElement("button");
-    btn.className = "time-btn";
-    if (isSel) btn.classList.add("sel");
-    else if (booked && booking?.status === "confirmed") btn.classList.add("booked-c");
-    else if (booked && booking?.status === "pending") btn.classList.add("booked-p");
-    btn.disabled = booked;
-    btn.innerHTML = `<div class="time-lbl">${slot.label}</div><div class="time-sub">${booked ? (booking?.status==="confirmed"?"✓ Bestätigt gebucht":"⏳ Anfrage läuft") : slot.dur+" Std."}</div>`;
-    if (!booked) btn.addEventListener("click", () => { selectedSlot = slot; renderSlots(); showForm(); });
-    grid.appendChild(btn);
-  });
+  // Get all unique start hours (0–23)
+  const hours = Array.from({length:24}, (_,i)=>i);
+
+  // For each start hour, check if ANY 3h+ slot starting there is fully blocked
+  function isHourBlocked(h) {
+    // If all durations 3–10 are blocked, hour is fully booked
+    return [3,4,5,6,7,8,9,10].every(dur => {
+      return dayBookings.some(b => h < b.end && (h+dur) > b.start && b.status !== 'rejected');
+    });
+  }
+  function getBlockedDurs(h) {
+    const blocked = new Set();
+    dayBookings.forEach(b => {
+      if(b.status === 'rejected') return;
+      for(let dur=3;dur<=10;dur++){
+        if(h < b.end && (h+dur) > b.start) blocked.add(dur);
+      }
+    });
+    return blocked;
+  }
+
+  let selectedHour = selectedSlot ? selectedSlot.startHour : null;
+
+  function renderGrid() {
+    body.innerHTML = '<p class="slot-hint">Startzeit wählen → Dauer ausklappen · Studio 24/7 buchbar</p><div class="hour-grid" id="hourGrid"></div><div id="durPicker"></div>';
+    const grid = document.getElementById('hourGrid');
+
+    hours.forEach(h => {
+      const blocked = isHourBlocked(h);
+      const btn = document.createElement('button');
+      btn.className = 'hour-btn' + (blocked ? ' has-booking' : '') + (h === selectedHour ? ' selected' : '');
+      // Period label
+      const periods = ['Nacht','Nacht','Nacht','Nacht','Nacht','Früh','Früh','Morgen',
+                       'Morgen','Morgen','Morgen','Mittag','Mittag','Mittag','Nachm.','Nachm.',
+                       'Nachm.','Abend','Abend','Abend','Abend','Nacht','Nacht','Nacht'];
+      btn.innerHTML = pad(h) + ':00<span class="hour-period">' + (blocked ? '● gebucht' : periods[h]) + '</span>';
+      btn.disabled = false;
+      btn.addEventListener('click', () => {
+        if(blocked) return;
+        selectedHour = h;
+        if(selectedSlot && selectedSlot.startHour !== h) selectedSlot = null;
+        renderGrid();
+        document.getElementById('durPicker')?.scrollIntoView({behavior:'smooth',block:'nearest'});
+      });
+      grid.appendChild(btn);
+    });
+
+    // Show duration picker for selected hour
+    const dp = document.getElementById('durPicker');
+    if(selectedHour !== null && !isHourBlocked(selectedHour)) {
+      const blockedDurs = getBlockedDurs(selectedHour);
+      dp.innerHTML = '';
+      const picker = document.createElement('div');
+      picker.className = 'dur-picker';
+      picker.innerHTML = '<div class="dur-label">Dauer wählen (mind. 3 Std.)</div><div class="dur-grid" id="durGrid"></div>';
+      dp.appendChild(picker);
+
+      const durGrid = document.getElementById('durGrid');
+      [3,4,5,6,7,8,9,10].forEach(dur => {
+        const isBlocked = blockedDurs.has(dur);
+        const endH = selectedHour + dur;
+        const endLabel = pad(endH%24)+':00'+(endH>=24?' (+1)':'');
+        const isSel = selectedSlot && selectedSlot.startHour === selectedHour && selectedSlot.dur === dur;
+        const ph = getPriceHint(dur);
+
+        const btn = document.createElement('button');
+        btn.className = 'dur-btn' + (isSel ? ' selected' : '');
+        btn.disabled = isBlocked;
+        btn.innerHTML = `<span style="font-size:16px;font-weight:900;letter-spacing:-.03em;">${dur}h</span><span class="dur-btn-sub">bis ${endLabel}</span><span class="dur-btn-price">${ph}</span>`;
+        if(isBlocked) btn.title = 'Zeitraum belegt';
+        btn.addEventListener('click', () => {
+          if(isBlocked) return;
+          selectedSlot = {
+            id: `${selectedHour}-${dur}`,
+            start: selectedHour,
+            end: selectedHour + dur,
+            dur,
+            startHour: selectedHour,
+            label: `${pad(selectedHour)}:00 – ${endLabel}`
+          };
+          renderGrid();
+          showForm();
+        });
+        durGrid.appendChild(btn);
+      });
+    }
+  }
+
+  renderGrid();
 }
 
 function showForm() {
@@ -428,6 +1038,7 @@ function showForm() {
   document.getElementById("sSumSlot").textContent = selectedSlot.label + " (" + selectedSlot.dur + " Std.)";
   document.getElementById("sSumType").textContent = document.getElementById("fType").value;
   document.getElementById("formWrap").scrollIntoView({ behavior: "smooth", block: "start" });
+  updatePriceDisplay();
 }
 document.getElementById("fType").addEventListener("change", () => {
   document.getElementById("sSumType").textContent = document.getElementById("fType").value;
@@ -549,7 +1160,7 @@ function renderBookings() {
     div.innerHTML = `
       <div class="bi-info">
         <div class="bi-name">${b.name}${b.company?" · "+b.company:""}</div>
-        <div class="bi-meta">${b.date.split("-").reverse().join(".")} · ${b.slotLabel} · ${b.type}</div>
+        <div class="bi-meta">${b.date.split("-").reverse().join(".")} · ${b.slotLabel} · ${b.type}${b.price ? " · <strong style='color:var(--confirmed)'>" + b.price + "</strong>" : ""}</div>
         <div class="bi-email">${b.email}${b.phone?" · "+b.phone:""}</div>
       </div>
       <span class="status-pill ${statusClass}">${statusLabel}</span>
@@ -600,6 +1211,238 @@ function toggleAdmin() {
 }
 
 function closeOverlay() { document.getElementById("successOverlay").classList.remove("show"); }
+
+
+/* ══ MIX & MASTERING LOGIC ══════════════════════════════════ */
+const ADDON_PRICES = {
+  mix: 120,
+  master: 65,
+  bundle: 166.50,
+};
+
+function updateAddons() {
+  const mix    = document.getElementById('mixCheck');
+  const master = document.getElementById('masterCheck');
+  const bundle = document.getElementById('bundleCheck');
+  if(!mix || !master || !bundle) return;
+
+  // Bundle excludes individual mix/master and vice versa
+  if(bundle.checked) {
+    mix.checked = false;
+    master.checked = false;
+    document.getElementById('mixLabel').classList.remove('selected');
+    document.getElementById('masterLabel').classList.remove('selected');
+    document.getElementById('bundleLabel').classList.add('selected');
+  } else {
+    document.getElementById('bundleLabel').classList.remove('selected');
+    // If both individual are checked, suggest bundle
+    if(mix.checked && master.checked) {
+      mix.checked = false;
+      master.checked = false;
+      bundle.checked = true;
+      document.getElementById('bundleLabel').classList.add('selected');
+      document.getElementById('mixLabel').classList.remove('selected');
+      document.getElementById('masterLabel').classList.remove('selected');
+    } else {
+      document.getElementById('mixLabel').classList.toggle('selected', mix.checked);
+      document.getElementById('masterLabel').classList.toggle('selected', master.checked);
+    }
+  }
+  updatePriceDisplay();
+}
+
+function getAddonTotal() {
+  const mix    = document.getElementById('mixCheck')?.checked;
+  const master = document.getElementById('masterCheck')?.checked;
+  const bundle = document.getElementById('bundleCheck')?.checked;
+  if(!mix && !master && !bundle) return { total: 0, label: '' };
+  if(bundle) return { total: 166.50, label: 'Mix + Mastering Bundle' };
+  if(mix && !master) return { total: 120, label: 'Mix' };
+  if(!mix && master) return { total: 65, label: 'Mastering' };
+  return { total: 166.50, label: 'Mix + Mastering Bundle' };
+}
+
+/* ══ PRICING LOGIC ═══════════════════════════════════════════ */
+const PRICES = {
+  3:  { base: 35, total: 105  },
+  4:  { base: 33, total: 132  },
+  5:  { base: 31, total: 155  },
+  6:  { base: 30, total: 180  },
+  7:  { base: 29, total: 203  },
+  8:  { base: 28, total: 224  },
+  9:  { base: 26, total: 234  },
+  10: { base: 25, total: 250  },
+};
+const PRODUCER_EXTRA = 30; // €/h extra
+
+function getPrice(hours, withProducer) {
+  // Find closest bracket
+  const brackets = [3,4,6,8,10];
+  let bracket = 3;
+  for (const b of brackets) { if (hours >= b) bracket = b; }
+  // interpolate if between brackets
+  const p = PRICES[bracket] || PRICES[3];
+  const basePerH = p.base;
+  const prodPerH = withProducer ? PRODUCER_EXTRA : 0;
+  const totalPerH = basePerH + prodPerH;
+  const total = hours * totalPerH;
+  const saving = withProducer
+    ? null
+    : Math.max(0, hours * 35 - total); // saving vs always 35€/h
+  return { basePerH, prodPerH, totalPerH, total, bracket, saving };
+}
+
+function updatePriceDisplay() {
+  const slot = selectedSlot;
+  const withProducer = document.getElementById('producerCheck')?.checked || false;
+  const priceBox = document.getElementById('priceDisplay');
+  const priceTotal = document.getElementById('priceTotal');
+  const pricePerH = document.getElementById('pricePerH');
+  const priceBreak = document.getElementById('priceBreak');
+  const priceSave = document.getElementById('priceSave');
+
+  if (!slot || !priceBox) return;
+
+  const hours = slot.dur;
+  const p = getPrice(hours, withProducer);
+
+  priceBox.style.display = 'block';
+  // price set below after addon calculation
+  pricePerH.textContent = p.totalPerH + ' €/Std.';
+  priceBreak.textContent = hours + ' Std. × ' + p.totalPerH + ' €' +
+    (withProducer ? ' (Studio ' + p.basePerH + '€ + Produzent ' + p.prodPerH + '€)' : '');
+
+  // Add addon costs
+  const addon = getAddonTotal ? getAddonTotal() : { total: 0, label: '' };
+  const grandTotal = p.total + addon.total;
+
+  priceTotal.textContent = grandTotal.toFixed(2).replace('.', ',').replace(',00', '') + ' €';
+
+  if (priceSave) {
+    const lines = [];
+    if (addon.total > 0) lines.push('+ ' + addon.label + ': ' + addon.total.toFixed(2).replace('.', ',') + ' €');
+    priceSave.style.display = lines.length ? 'flex' : 'none';
+    priceSave.style.flexDirection = 'column';
+    priceSave.style.gap = '2px';
+    priceSave.innerHTML = lines.join('<br>');
+  }
+
+  // ── Calculate original (full) price and savings
+  {
+  const badgeEl   = document.getElementById('priceSavedBadge');
+  const savedAmtEl = document.getElementById('priceSavedAmt');
+  const origRow   = document.getElementById('priceOriginalRow');
+  const origEl    = document.getElementById('priceOriginal');
+  const youPayEl  = document.getElementById('priceYouPay');
+
+  // Original prices (no discounts)
+  const originalStudio   = hours * 35;
+  const _withBundle = document.getElementById('bundleCheck')?.checked;
+  const _withReels  = document.getElementById('reelsCheck')?.checked;
+  const _withProd   = document.getElementById('producerCheck')?.checked;
+
+  const originalProducer = _withProd   ? hours * 30 : 0;
+  const originalBundle   = _withBundle ? 185         : 0;
+  const originalReels    = _withReels  ? 300         : 0;
+
+  const originalTotal = originalStudio + originalProducer + originalBundle + originalReels;
+
+  // Actual total (already computed above as grandTotal)
+  const actualTotal = grandTotal;
+  const totalSaved  = Math.max(0, originalTotal - actualTotal);
+
+  if(origRow && origEl) {
+    if(totalSaved > 0.5) {
+      // Show strikethrough original
+      origRow.style.display = 'flex';
+      origEl.textContent = originalTotal.toFixed(2).replace('.00','').replace('.',',') + ' €';
+      if(youPayEl) youPayEl.style.display = 'block';
+      if(priceBox) priceBox.classList.add('has-savings');
+    } else {
+      origRow.style.display = 'none';
+      if(youPayEl) youPayEl.style.display = 'none';
+      if(priceBox) priceBox.classList.remove('has-savings');
+    }
+  }
+
+  if(badgeEl && savedAmtEl) {
+    if(totalSaved > 0.5) {
+      badgeEl.style.display = 'flex';
+      savedAmtEl.textContent = 'Du sparst insgesamt ' +
+        totalSaved.toFixed(2).replace('.00','').replace('.',',') +
+        ' € gegenüber Einzelpreisen';
+    } else {
+      badgeEl.style.display = 'none';
+    }
+  }
+  }
+
+  // Update price table active row
+  document.querySelectorAll('.price-row').forEach(row => {
+    row.classList.toggle('active-row', row.dataset.hours == p.bracket.toString());
+  });
+
+  // Update summary box
+  const sSumType = document.getElementById('sSumType');
+  if (sSumType) sSumType.textContent = document.getElementById('fType').value +
+    (withProducer ? ' + Produzent' : '');
+}
+
+
+/* ══ REELS VISIBILITY — show only when Nick booked ══════════ */
+function toggleReelsSection(){
+  const nickBooked = document.getElementById('producerCheck')?.checked;
+  const section = document.getElementById('reelsSection');
+  if(!section) return;
+  section.classList.toggle('show', !!nickBooked);
+  if(!nickBooked){
+    const reelsCheck = document.getElementById('reelsCheck');
+    if(reelsCheck) reelsCheck.checked = false;
+    document.getElementById('reelsLabel')?.classList.remove('selected');
+  }
+}
+
+// Hook into producer toggle
+const origUpdateAddons = typeof updateAddons !== 'undefined' ? updateAddons : ()=>{};
+const _producerCheck = document.getElementById('producerCheck');
+if(_producerCheck){
+  _producerCheck.addEventListener('change', ()=>{
+    toggleReelsSection();
+    updatePriceDisplay();
+  });
+}
+
+/* ══ REELS PRICE IN TOTAL ════════════════════════════════════ */
+function getReelsTotal(){
+  const c = document.getElementById('reelsCheck');
+  return (c && c.checked) ? 185 : 0;
+}
+
+function requestVoucher(){
+  let amt = selectedVoucher;
+  if(amt === 0){
+    amt = parseFloat(document.getElementById('voucherCustomAmt')?.value) || 0;
+  }
+  if(amt < 20){ alert('Mindestbetrag: 20 €'); return; }
+  window.location.href = 'mailto:hello@zinlamor.de?subject=Gutschein-Anfrage ' + amt + ' €&body=Ich möchte einen ZINLAMOR Gutschein über ' + amt + ' € anfragen.';
+}
+
+/* ══ PATCH updatePriceDisplay to include reels ═══════════════ */
+const _origUpdatePrice = updatePriceDisplay;
+updatePriceDisplay = function(){
+  _origUpdatePrice();
+  // add reels to total
+  const reels = getReelsTotal();
+  if(reels > 0){
+    const totalEl = document.getElementById('priceTotal');
+    if(totalEl){
+      const current = parseFloat(totalEl.textContent.replace(',','.'))||0;
+      const grand = current + reels;
+      totalEl.textContent = grand.toFixed(2).replace('.',',').replace(',00','') + ' €';
+    }
+  }
+};
+
 </script>
 </body>
 </html>
