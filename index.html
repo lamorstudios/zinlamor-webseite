@@ -81,7 +81,7 @@ body{background:var(--black);color:var(--body);font-family:-apple-system,BlinkMa
 nav{
   position:fixed;top:0;left:0;right:0;z-index:500;
   display:flex;align-items:center;justify-content:space-between;
-  padding:0 48px;height:130px;
+  padding:0 48px;height:160px;
   background:rgba(6,6,6,0.75);
   backdrop-filter:blur(24px) saturate(180%);
   -webkit-backdrop-filter:blur(24px) saturate(180%);
@@ -90,7 +90,7 @@ nav{
 }
 nav.scrolled{background:rgba(6,6,6,0.96);}
 .nav-logo{text-decoration:none;display:flex;align-items:center;}
-.nav-logo-img{height:120px;width:auto;object-fit:contain;transition:opacity .25s,filter .3s;}
+.nav-logo-img{height:150px;width:auto;object-fit:contain;transition:opacity .25s,filter .3s;}
 .nav-logo-img:hover{opacity:.85;filter:drop-shadow(0 0 10px rgba(255,255,255,0.25));}
 .nav-links{display:flex;gap:32px;list-style:none;align-items:center;}
 .nav-links a{color:var(--soft);text-decoration:none;font-size:13px;font-weight:400;letter-spacing:.02em;position:relative;transition:color .25s;}
@@ -1504,56 +1504,39 @@ footer > div[style*="flex-direction:column"]{
 
 
 
-/* ══ PROCESS CURVED ARROW ═══════════════════════════════════ */
-#process .process-grid{
-  position:relative;
-}
-.proc-arrow-svg{
-  position:absolute;
-  top:-30px;
-  left:0;
-  width:100%;
-  height:calc(100% + 40px);
-  pointer-events:none;
-  z-index:5;
-  overflow:visible;
-}
-.proc-arrow-track{
-  fill:none;
-  stroke:rgba(224,32,32,0.12);
-  stroke-width:2;
-  stroke-linecap:round;
-  stroke-dasharray:3 6;
-  vector-effect:non-scaling-stroke;
-}
-.proc-arrow-draw{
-  fill:none;
-  stroke:#e02020;
-  stroke-width:2.5;
-  stroke-linecap:round;
-  filter:drop-shadow(0 0 4px rgba(224,32,32,0.9));
-  vector-effect:non-scaling-stroke;
-}
-@media(max-width:900px){
-  .proc-arrow-draw{stroke-width:2.5px;}
-  .proc-arrow-track{stroke-width:1.5px;}
-}
-.proc-arrow-head{
-  fill:#e02020;
-  filter:drop-shadow(0 0 5px rgba(224,32,32,1));
-}
-@media(max-width:900px){
-  /* Mobile: narrow vertical arrow strip on the LEFT, outside cards */
-  #process .process-grid{
-    padding-left:28px;
+/* ══ PROCESS CONNECTORS ═══════════════════════════════════ */
+.proc-outer{position:relative;margin-top:80px;}
+.proc-outer .process-grid{margin-top:0;}
+@media(min-width:901px){
+  .proc-con{
+    position:absolute;top:-20px;
+    display:flex;align-items:center;
+    width:calc(33.33% - 80px);
+    pointer-events:none;z-index:5;
   }
-  .proc-arrow-svg{
-    top:0;
-    left:0;
-    width:24px;
-    height:100%;
+  .proc-con:nth-child(1){left:calc(33.33% + 40px);}
+  .proc-con:nth-child(2){left:calc(66.66% + 40px);}
+  .pcl{
+    flex:1;height:1px;
+    background:var(--red);
+    box-shadow:0 0 8px rgba(224,32,32,0.5);
+    transform:scaleX(0);transform-origin:left;
+    transition:transform .7s cubic-bezier(0.16,1,0.3,1);
   }
+  .pca{
+    width:0;height:0;
+    border-top:5px solid transparent;
+    border-bottom:5px solid transparent;
+    border-left:8px solid var(--red);
+    filter:drop-shadow(0 0 5px rgba(224,32,32,0.7));
+    opacity:0;transition:opacity .2s .65s;
+  }
+  .proc-outer.proc-visible .pcl{transform:scaleX(1);}
+  .proc-outer.proc-visible .pca{opacity:1;}
+  .proc-outer.proc-visible .proc-con:nth-child(2) .pcl{transition-delay:.35s;}
+  .proc-outer.proc-visible .proc-con:nth-child(2) .pca{transition-delay:.95s;}
 }
+@media(max-width:900px){.proc-con{display:none;}}
 
 
 /* ══ STATS FLY-IN ANIMATION ═════════════════════════════════ */
@@ -2142,19 +2125,14 @@ footer > div[style*="flex-direction:column"]{
 <div id="process" class="section section-dark2">
   <span class="s-ey rb"><span class="s-ey-line"></span>So funktioniert's</span>
   <h2 class="s-title"><span class="rt"><span class="rti">Einfach.</span></span><span class="rt"><span class="rti">Direkt. Los.</span></span></h2>
-  <div class="process-grid rb d1">
-    <svg class="proc-arrow-svg" id="procArrowSvg" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- faint full track -->
-      <path class="proc-arrow-track" d="M17,30 C17,8 50,8 50,30 M50,30 C50,8 83,8 83,30"/>
-      <!-- animated drawn path -->
-      <path class="proc-arrow-draw" id="procArrowDraw" d="M17,30 C17,8 50,8 50,30 M50,30 C50,8 83,8 83,30"/>
-      <!-- arrow head -->
-      <polygon class="proc-arrow-head" id="procArrowHead" points="0,0 -4,-7 4,-7"/>
-    </svg>
-    
-    <div class="proc"><div class="proc-num">01</div><p class="proc-title">Termin anfragen</p><p class="proc-desc">Du wählst Tag und Zeitraum im Buchungskalender — mindestens 3 Stunden. Wir prüfen die Verfügbarkeit sofort.</p></div>
-    <div class="proc"><div class="proc-num">02</div><p class="proc-title">Bestätigung per Mail</p><p class="proc-desc">Du erhältst eine Bestätigung per E-Mail — erst dann ist dein Termin offiziell reserviert.</p></div>
-    <div class="proc"><div class="proc-num">03</div><p class="proc-title">Produzieren & liefern</p><p class="proc-desc">Du kommst ins Studio, alles ist vorbereitet. Add-ons wie Videograf oder Musikproduzent buchst du einfach dazu.</p></div>
+  <div class="proc-outer">
+    <div class="proc-con" aria-hidden="true"><span class="pcl"></span><span class="pca"></span></div>
+    <div class="proc-con" aria-hidden="true"><span class="pcl"></span><span class="pca"></span></div>
+    <div class="process-grid rb d1">
+      <div class="proc"><div class="proc-num">01</div><p class="proc-title">Termin anfragen</p><p class="proc-desc">Du wählst Tag und Zeitraum im Buchungskalender — mindestens 3 Stunden. Wir prüfen die Verfügbarkeit sofort.</p></div>
+      <div class="proc"><div class="proc-num">02</div><p class="proc-title">Bestätigung per Mail</p><p class="proc-desc">Du erhältst eine Bestätigung per E-Mail — erst dann ist dein Termin offiziell reserviert.</p></div>
+      <div class="proc"><div class="proc-num">03</div><p class="proc-title">Produzieren & liefern</p><p class="proc-desc">Du kommst ins Studio, alles ist vorbereitet. Add-ons wie Videograf oder Musikproduzent buchst du einfach dazu.</p></div>
+    </div>
   </div>
 </div>
 
@@ -2380,55 +2358,16 @@ document.querySelectorAll('.stat').forEach(s=>{s.addEventListener('mousemove',e=
 
 
 
-/* ══ PROCESS CURVED ARROW ═══════════════════════════════════ */
+/* ══ PROCESS CONNECTORS ═══════════════════════════════════ */
 (()=>{
-  const grid = document.querySelector('#process .process-grid');
-  const draw = document.getElementById('procArrowDraw');
-  const track= document.querySelector('.proc-arrow-track');
-  const head = document.getElementById('procArrowHead');
-  const svg  = document.getElementById('procArrowSvg');
-  if(!grid || !draw || !head) return;
-
-  // Desktop path: horizontal arcs over 3 side-by-side cards
-  const desktopPath = "M17,30 C17,8 50,8 50,30 M50,30 C50,8 83,8 83,30";
-  // Mobile path: vertical S-curve down the left side of stacked cards
-  const mobilePath  = "M50,4 C30,12 30,20 50,28 C70,36 70,44 50,52 C30,60 30,68 50,76 C70,84 70,90 50,96";
-
-  function setPath(){
-    const isMobile = window.innerWidth <= 900;
-    const d = isMobile ? mobilePath : desktopPath;
-    draw.setAttribute('d', d);
-    if(track) track.setAttribute('d', d);
-    const len = draw.getTotalLength();
-    draw.style.strokeDasharray  = len;
-    draw.style.strokeDashoffset = len;
-    return len;
-  }
-
-  let len = setPath();
-
-  function update(){
-    const r  = grid.getBoundingClientRect();
-    const vh = window.innerHeight;
-    const raw = (vh * 0.85 - r.top) / (r.height * 0.7);
-    const t   = Math.max(0, Math.min(1, raw));
-
-    draw.style.strokeDashoffset = len * (1 - t);
-
-    if(t > 0.01){
-      const pt   = draw.getPointAtLength(len * t);
-      const pt2  = draw.getPointAtLength(Math.min(len, len * t + 1));
-      const ang  = Math.atan2(pt2.y - pt.y, pt2.x - pt.x) * 180 / Math.PI + 90;
-      head.setAttribute('transform', `translate(${pt.x},${pt.y}) rotate(${ang})`);
-      head.style.opacity = '1';
-    } else {
-      head.style.opacity = '0';
-    }
-  }
-
-  window.addEventListener('scroll', update, {passive:true});
-  window.addEventListener('resize', ()=>{ len = setPath(); update(); }, {passive:true});
-  update();
+  const outer = document.querySelector('.proc-outer');
+  if(!outer) return;
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ outer.classList.add('proc-visible'); obs.unobserve(e.target); }
+    });
+  },{threshold:0.25});
+  obs.observe(outer);
 })();
 
 
