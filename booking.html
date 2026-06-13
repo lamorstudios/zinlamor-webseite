@@ -582,6 +582,210 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
   text-shadow:0 0 30px rgba(255,255,255,0.15);
 }
 
+
+/* ══ INTERACTIVE PACKAGE CARDS ══════════════════════════════ */
+.pkg-select-card{
+  background:var(--card2);
+  border:1px solid var(--border2);
+  border-radius:12px;
+  padding:14px 12px;
+  text-align:center;
+  cursor:pointer;
+  position:relative;
+  transition:all .2s cubic-bezier(0.16,1,0.3,1);
+  user-select:none;
+}
+.pkg-select-card:hover{
+  border-color:rgba(255,255,255,0.2);
+  background:#1a1a1a;
+  transform:translateY(-2px);
+}
+.pkg-select-card.featured{
+  background:var(--red);
+  border-color:var(--red);
+}
+.pkg-select-card.featured:hover{
+  background:#c81818;
+}
+.pkg-select-card.active{
+  border-color:var(--white) !important;
+  box-shadow:0 0 0 2px rgba(255,255,255,0.3), 0 8px 24px rgba(0,0,0,0.4);
+  transform:translateY(-3px);
+}
+.pkg-select-card.featured.active{
+  border-color:var(--white) !important;
+  box-shadow:0 0 0 2px rgba(255,255,255,0.5), 0 8px 24px rgba(224,32,32,0.4);
+}
+.psc-name{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.pkg-select-card.featured .psc-name{color:rgba(255,255,255,0.7);}
+.psc-price{font-size:22px;font-weight:900;color:var(--white);letter-spacing:-.03em;}
+.pkg-select-card.featured .psc-price{color:#fff;}
+.psc-sub{font-size:10px;color:var(--muted);margin-bottom:6px;}
+.pkg-select-card.featured .psc-sub{color:rgba(255,255,255,0.6);}
+.psc-hours{font-size:11px;color:var(--body);font-weight:700;}
+.pkg-select-card.featured .psc-hours{color:#fff;}
+.psc-min{font-size:10px;color:var(--muted);}
+.pkg-select-card.featured .psc-min{color:rgba(255,255,255,0.55);}
+.psc-save{font-size:10px;color:#3dbd6e;margin-top:4px;font-weight:600;}
+.pkg-select-card.featured .psc-save{color:#fff;font-weight:700;}
+.psc-top{
+  font-size:8px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  background:#fff;color:var(--red);padding:1px 7px;
+  border-radius:980px;display:inline-block;margin-bottom:4px;
+}
+.psc-check{
+  position:absolute;top:-8px;right:-8px;
+  width:22px;height:22px;border-radius:50%;
+  background:var(--white);color:var(--black);
+  font-size:12px;font-weight:900;
+  display:none;align-items:center;justify-content:center;
+  box-shadow:0 2px 8px rgba(0,0,0,0.3);
+}
+.pkg-select-card.active .psc-check{display:flex;}
+
+
+/* ══ BOOKING MODE SWITCH ════════════════════════════════════ */
+.mode-notice{
+  background:rgba(224,32,32,0.08);
+  border:1px solid rgba(224,32,32,0.25);
+  border-radius:12px;
+  padding:12px 16px;
+  font-size:13px;
+  color:var(--body);
+  line-height:1.6;
+  margin-bottom:16px;
+  display:none;
+  align-items:center;
+  gap:10px;
+}
+.mode-notice.show{display:flex;}
+.mode-notice-icon{font-size:18px;flex-shrink:0;}
+.mode-switch-btn{
+  background:none;border:1px solid var(--border2);
+  color:var(--muted);font-size:11px;padding:5px 12px;
+  border-radius:980px;cursor:pointer;font-family:inherit;
+  transition:all .2s;white-space:nowrap;flex-shrink:0;
+}
+.mode-switch-btn:hover{border-color:var(--soft);color:var(--white);}
+
+/* When package mode active — dim the calendar/slot area */
+.booking-disabled{
+  opacity:.3;
+  pointer-events:none;
+  user-select:none;
+  filter:grayscale(1);
+  transition:opacity .3s,filter .3s;
+}
+
+
+/* ══ SHINY SWEEP ON BTN-GLOW ════════════════════════════════ */
+.btn-glow{position:relative;overflow:hidden;}
+.btn-glow::after{
+  content:'';
+  position:absolute;
+  top:0;left:-100%;
+  width:55%;height:100%;
+  background:linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255,255,255,0.22) 50%,
+    transparent 100%
+  );
+  transform:skewX(-15deg);
+  animation:shineSweep 3s ease-in-out infinite;
+}
+@keyframes shineSweep{
+  0%   {left:-100%;}
+  40%  {left:150%;}
+  100% {left:150%;}
+}
+
+
+/* ══ EARLY BIRD DISCOUNT ════════════════════════════════════ */
+.early-bird-box{
+  display:none;
+  background:linear-gradient(135deg,rgba(61,189,110,0.12),rgba(61,189,110,0.06));
+  border:1px solid rgba(61,189,110,0.35);
+  border-radius:12px;
+  padding:12px 16px;
+  margin-bottom:12px;
+  align-items:center;
+  gap:12px;
+  animation:fadeUp .4s ease;
+}
+.early-bird-box.show{display:flex;}
+.eb-icon{font-size:22px;flex-shrink:0;}
+.eb-text strong{display:block;font-size:13px;font-weight:700;color:#3dbd6e;margin-bottom:2px;}
+.eb-text span{font-size:12px;color:var(--soft);line-height:1.5;}
+.eb-badge{
+  background:#3dbd6e;color:#fff;
+  font-size:11px;font-weight:800;
+  padding:4px 10px;border-radius:980px;
+  white-space:nowrap;flex-shrink:0;
+  margin-left:auto;
+}
+
+
+/* ══ AGB CHECKBOX ═══════════════════════════════════════════ */
+.agb-wrap{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  padding:14px 16px;
+  background:rgba(255,255,255,0.03);
+  border:1px solid var(--border2);
+  border-radius:12px;
+  cursor:pointer;
+  transition:border-color .2s;
+  user-select:none;
+  margin-bottom:4px;
+}
+.agb-wrap:hover{border-color:rgba(255,255,255,0.2);}
+.agb-wrap.checked{
+  border-color:rgba(61,189,110,0.4);
+  background:rgba(61,189,110,0.05);
+}
+.agb-checkbox{
+  width:20px;height:20px;
+  border:2px solid var(--border2);
+  border-radius:6px;
+  flex-shrink:0;
+  margin-top:1px;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s,border-color .2s;
+  background:var(--card2);
+}
+.agb-wrap.checked .agb-checkbox{
+  background:#3dbd6e;
+  border-color:#3dbd6e;
+}
+.agb-checkmark{
+  color:#fff;
+  font-size:13px;
+  font-weight:900;
+  display:none;
+}
+.agb-wrap.checked .agb-checkmark{display:block;}
+.agb-text{
+  font-size:13px;
+  color:var(--soft);
+  line-height:1.6;
+}
+.agb-text a{
+  color:var(--red);
+  text-decoration:none;
+  font-weight:600;
+}
+.agb-text a:hover{text-decoration:underline;}
+.agb-error{
+  font-size:12px;
+  color:#e02020;
+  display:none;
+  margin-top:4px;
+  padding-left:4px;
+}
+.agb-error.show{display:block;}
+
 </style>
 </head>
 <body>
@@ -651,7 +855,23 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
       <div class="form-wrap" id="formWrap" style="display:none;">
         <div class="form-header"><div class="form-title">Anfrage stellen</div></div>
         <div class="form-body">
+          <!-- Mode notice -->
+          <div class="mode-notice" id="modeNotice">
+            <span class="mode-notice-icon">📦</span>
+            <span>Du hast ein <strong id="modeNoticePkg"></strong> gewählt. Der Einzeltermin wird ignoriert.</span>
+            <button class="mode-switch-btn" onclick="clearPackage()">✕ Paket abwählen</button>
+          </div>
           <!-- PRICE DISPLAY -->
+          <!-- EARLY BIRD BOX -->
+          <div class="early-bird-box" id="earlyBirdBox">
+            <span class="eb-icon">🏷️</span>
+            <div class="eb-text">
+              <strong>Early Bird Rabatt aktiv!</strong>
+              <span>Du buchst 14+ Tage im Voraus — du sparst automatisch <strong style="color:#3dbd6e;">10%</strong> auf die Studiomiete.</span>
+            </div>
+            <span class="eb-badge">−10%</span>
+          </div>
+
           <div class="price-display" id="priceDisplay" style="display:none;">
             <div class="price-original-row" id="priceOriginalRow" style="display:none;">
               <span class="price-original" id="priceOriginal"></span>
@@ -679,7 +899,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
               <strong>+ Produzent / Techniker</strong>
               <span>Professionelle Begleitung vor Ort</span>
             </div>
-            <span class="producer-price">+30 €/Std.</span>
+            <span class="producer-price">+35 €/Std.</span>
           </label>
 
           <!-- MIX & MASTERING ADD-ONS -->
@@ -735,7 +955,10 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 
           <!-- PRICE TABLE -->
           <div class="price-table">
-            <div class="price-table-title">Preisstaffelung (Studio ohne Produzent)</div>
+            <div class="price-table-title" style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+              <span>Preisstaffelung (Studio ohne Produzent)</span>
+              <span style="background:rgba(224,32,32,0.2);border:1px solid rgba(224,32,32,0.4);color:var(--red);font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:980px;white-space:nowrap;">🏷️ Eröffnungspreise</span>
+            </div>
             <div class="price-row" data-hours="3"><span>3 Std.</span><span>35 €/Std.</span><span>105 €</span></div>
             <div class="price-row" data-hours="4"><span>4 Std.</span><span>33 €/Std.</span><span>132 €</span></div>
             <div class="price-row" data-hours="6"><span>6 Std.</span><span>30 €/Std.</span><span>180 €</span></div>
@@ -749,6 +972,60 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
             <div><strong>Studio:</strong> <span id="sSumType">—</span></div>
             <div class="summary-warn">⏳ Deine Anfrage gilt erst nach unserer Bestätigung per E-Mail als offiziell gebucht.</div>
           </div>
+
+          <!-- MONTHLY PACKAGES — interactive -->
+          <div style="border-top:1px solid var(--border2);padding-top:20px;margin-top:4px;">
+            <p style="font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;">💡 Oder langfristig günstiger — Monatspaket wählen</p>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px;" id="pkgGrid">
+
+              <div class="pkg-select-card" data-pkg="Pro Artist" data-price="249" data-hours="15" onclick="selectPackage(this)">
+                <p class="psc-name">Pro Artist</p>
+                <p class="psc-price">249€</p>
+                <p class="psc-sub">/Monat</p>
+                <p class="psc-hours">15 Std.</p>
+                <p class="psc-min">min. 5h/Session · 3 Sessions</p>
+                <p class="psc-save">~126€ gespart</p>
+                <div class="psc-check">✓</div>
+              </div>
+
+              <div class="pkg-select-card featured" data-pkg="Business" data-price="449" data-hours="25" onclick="selectPackage(this)">
+                <p class="psc-top">TOP</p>
+                <p class="psc-name">Business</p>
+                <p class="psc-price">449€</p>
+                <p class="psc-sub">/Monat</p>
+                <p class="psc-hours">25 Std.</p>
+                <p class="psc-min">min. 5h/Session</p>
+                <p class="psc-min" style="color:rgba(255,255,255,0.55);margin-top:3px;">Mo–Fr · 1× WE/Monat inkl.</p>
+                <p class="psc-save">~150€ gespart</p>
+                <div class="psc-check">✓</div>
+              </div>
+
+              <div class="pkg-select-card" data-pkg="Label / Fulltime" data-price="749" data-hours="40" onclick="selectPackage(this)">
+                <p class="psc-name">Label</p>
+                <p class="psc-price">749€</p>
+                <p class="psc-sub">/Monat</p>
+                <p class="psc-hours">40 Std.</p>
+                <p class="psc-min">min. 5h/Session</p>
+                <p class="psc-min" style="color:rgba(255,255,255,0.35);margin-top:3px;">Mo–So · Fr/Sa/So 72h Voranm.</p>
+                <p class="psc-save">~210€ gespart</p>
+                <div class="psc-check">✓</div>
+              </div>
+
+            </div>
+
+            <!-- Selected package display -->
+            <div id="pkgSelected" style="display:none;background:rgba(224,32,32,0.08);border:1px solid rgba(224,32,32,0.3);border-radius:12px;padding:12px 16px;margin-bottom:12px;display:none;align-items:center;justify-content:space-between;gap:12px;">
+              <div>
+                <p style="font-size:12px;font-weight:700;color:var(--white);" id="pkgSelectedName"></p>
+                <p style="font-size:11px;color:var(--muted);">Monatspaket — wird mit Anfrage gesendet</p>
+              </div>
+              <button onclick="clearPackage()" style="background:none;border:1px solid var(--border2);color:var(--muted);font-size:11px;padding:4px 10px;border-radius:980px;cursor:pointer;font-family:inherit;">✕ Abwählen</button>
+            </div>
+
+            <p style="font-size:10px;color:var(--muted);text-align:center;margin-top:4px;">Alle Preise zzgl. MwSt. · Nicht genutzte Std. verfallen am Monatsende</p>
+            <p style="font-size:10px;color:var(--muted);text-align:center;margin-top:6px;line-height:1.5;">📅 Wochenend-Slots für Einzelbuchungen reserviert — Paket-Kunden bevorzugt Mo–Do. Ausnahmen nach Absprache.</p>
+          </div>
+
           <div class="field-row">
             <div class="field"><label>Name *</label><input type="text" id="fName" placeholder="Dein Name"></div>
             <div class="field"><label>E-Mail *</label><input type="email" id="fEmail" placeholder="deine@email.de"></div>
@@ -758,21 +1035,33 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
             <div class="field"><label>Unternehmen / Kanal</label><input type="text" id="fCompany" placeholder="Optional"></div>
           </div>
           <div class="field">
-            <label>Studiotyp</label>
+            <label>Für welchen Zweck nutzt du das Studio?</label>
             <select id="fType">
-              <option>Podcast-Studio</option>
-              <option>Musikstudio</option>
-              <option>Foto- & Videostudio</option>
-              <option>Livestream-Setup</option>
+              <option value="">— Bitte wählen —</option>
+              <option>Podcast</option>
+              <option>Musikproduktion</option>
+              <option>Foto & Video</option>
+              <option>Livestream</option>
               <option>Content Creation</option>
-              <option>Interview / Talkformat</option>
+              <option>Interview / Talk</option>
               <option>Sonstiges</option>
             </select>
           </div>
           <div class="field"><label>Projekt / Notizen</label><textarea id="fNotes" placeholder="Worum geht es? Besondere Anforderungen?"></textarea></div>
+          <!-- AGB CHECKBOX -->
+          <div class="agb-wrap" id="agbWrap">
+            <div class="agb-checkbox">
+              <span class="agb-checkmark">✓</span>
+            </div>
+            <p class="agb-text">
+              Ich habe die <a href="agb.html" target="_blank" onclick="event.stopPropagation()">Allgemeinen Geschäftsbedingungen</a> gelesen und akzeptiere diese.
+            </p>
+          </div>
+          <p class="agb-error" id="agbError">Bitte bestätige die AGB um fortzufahren.</p>
+
           <button class="submit-btn" id="submitBtn" onclick="handleSubmit()">Anfrage absenden →</button>
           <p style="font-size:11px;color:var(--muted);text-align:center;line-height:1.6;margin-top:10px;">
-            ✓ Kostenlose Stornierung bis <strong style="color:var(--body);">48 Stunden</strong> vor dem Termin.<br>
+            🏷️ <strong style="color:var(--red);">Eröffnungspreise</strong> — nur für kurze Zeit gültig. Jetzt Vorzugspreis sichern.<br><br>✓ Kostenlose Stornierung bis <strong style="color:var(--body);">48 Stunden</strong> vor dem Termin.<br>
             Bei späterer Stornierung wird eine Bearbeitungsgebühr von <strong style="color:var(--body);">50%</strong> des Buchungsbetrags fällig.<br>
             Bei No-Show wird der <strong style="color:var(--body);">volle Betrag</strong> berechnet.
           </p>
@@ -916,6 +1205,7 @@ function selectDay(date) {
   document.getElementById("formWrap").style.display = "none";
   renderCalendar();
   renderSlots();
+    if(typeof checkEarlyBird === "function") { checkEarlyBird(); updatePriceDisplay(); }
 }
 
 // ══ SLOTS ══
@@ -1048,7 +1338,21 @@ document.getElementById("fType").addEventListener("change", () => {
 async function handleSubmit() {
   const name = document.getElementById("fName").value.trim();
   const email = document.getElementById("fEmail").value.trim();
-  if (!name || !email || !selectedDate || !selectedSlot) { alert("Bitte Name und E-Mail ausfüllen."); return; }
+
+  // AGB check
+  if(!agbAccepted){
+    const agbError = document.getElementById('agbError');
+    if(agbError) agbError.classList.add('show');
+    document.getElementById('agbWrap').scrollIntoView({behavior:'smooth', block:'center'});
+    return;
+  }
+
+  // Package mode: no slot required
+  if(selectedPackage) {
+    if (!name || !email) { alert("Bitte Name und E-Mail ausfüllen."); return; }
+  } else {
+    if (!name || !email || !selectedDate || !selectedSlot) { alert("Bitte Name, E-Mail, Datum und Zeitraum ausfüllen."); return; }
+  }
 
   const btn = document.getElementById("submitBtn");
   btn.disabled = true;
@@ -1273,7 +1577,7 @@ const PRICES = {
   9:  { base: 26, total: 234  },
   10: { base: 25, total: 250  },
 };
-const PRODUCER_EXTRA = 30; // €/h extra
+const PRODUCER_EXTRA = 35; // €/h extra
 
 function getPrice(hours, withProducer) {
   // Find closest bracket
@@ -1314,7 +1618,10 @@ function updatePriceDisplay() {
 
   // Add addon costs
   const addon = getAddonTotal ? getAddonTotal() : { total: 0, label: '' };
-  const grandTotal = p.total + addon.total;
+  // Apply Early Bird -10% on studio portion only
+  const isEB = checkEarlyBird();
+  const studioTotal = isEB ? p.total * 0.9 : p.total;
+  const grandTotal = studioTotal + addon.total;
 
   priceTotal.textContent = grandTotal.toFixed(2).replace('.', ',').replace(',00', '') + ' €';
 
@@ -1341,7 +1648,7 @@ function updatePriceDisplay() {
   const _withReels  = document.getElementById('reelsCheck')?.checked;
   const _withProd   = document.getElementById('producerCheck')?.checked;
 
-  const originalProducer = _withProd   ? hours * 30 : 0;
+  const originalProducer = _withProd   ? hours * 35 : 0;
   const originalBundle   = _withBundle ? 185         : 0;
   const originalReels    = _withReels  ? 300         : 0;
 
@@ -1349,7 +1656,8 @@ function updatePriceDisplay() {
 
   // Actual total (already computed above as grandTotal)
   const actualTotal = grandTotal;
-  const totalSaved  = Math.max(0, originalTotal - actualTotal);
+  const ebSaving = isEB ? p.total * 0.1 : 0;
+  const totalSaved  = Math.max(0, originalTotal - actualTotal) + ebSaving;
 
   if(origRow && origEl) {
     if(totalSaved > 0.5) {
@@ -1443,6 +1751,112 @@ updatePriceDisplay = function(){
   }
 };
 
+
+/* ══ PACKAGE SELECTION ═══════════════════════════════════════ */
+let selectedPackage = null;
+
+function selectPackage(el) {
+  document.querySelectorAll('.pkg-select-card').forEach(c => c.classList.remove('active'));
+
+  if(selectedPackage && selectedPackage.name === el.dataset.pkg) {
+    clearPackage();
+    return;
+  }
+
+  el.classList.add('active');
+  selectedPackage = {
+    name: el.dataset.pkg,
+    price: el.dataset.price,
+    hours: el.dataset.hours,
+  };
+
+  // Show selected display
+  const display = document.getElementById('pkgSelected');
+  const nameEl  = document.getElementById('pkgSelectedName');
+  if(display && nameEl) {
+    nameEl.textContent = selectedPackage.name + ' — ' + selectedPackage.price + ' €/Monat · ' + selectedPackage.hours + ' Std.';
+    display.style.display = 'flex';
+  }
+
+  // Show mode notice in form
+  const notice = document.getElementById('modeNotice');
+  const noticePkg = document.getElementById('modeNoticePkg');
+  if(notice && noticePkg) {
+    noticePkg.textContent = selectedPackage.name + ' Monatspaket (' + selectedPackage.price + '€/Monat)';
+    notice.classList.add('show');
+  }
+
+  // Disable calendar + slot picker visually
+  const calWrap = document.querySelector('.cal-wrap');
+  const slotWrap = document.querySelector('.slot-wrap');
+  if(calWrap) calWrap.classList.add('booking-disabled');
+  if(slotWrap) slotWrap.classList.add('booking-disabled');
+
+  // Make submit button reflect package mode
+  const submitBtn = document.getElementById('submitBtn');
+  if(submitBtn) submitBtn.textContent = selectedPackage.name + ' anfragen →';
+
+  // Scroll to form
+  document.getElementById('formWrap')?.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function clearPackage() {
+  selectedPackage = null;
+  document.querySelectorAll('.pkg-select-card').forEach(c => c.classList.remove('active'));
+
+  const display = document.getElementById('pkgSelected');
+  if(display) display.style.display = 'none';
+
+  const notice = document.getElementById('modeNotice');
+  if(notice) notice.classList.remove('show');
+
+  // Re-enable calendar + slots
+  const calWrap = document.querySelector('.cal-wrap');
+  const slotWrap = document.querySelector('.slot-wrap');
+  if(calWrap) calWrap.classList.remove('booking-disabled');
+  if(slotWrap) slotWrap.classList.remove('booking-disabled');
+
+  // Reset submit button
+  const submitBtn = document.getElementById('submitBtn');
+  if(submitBtn) submitBtn.textContent = 'Anfrage absenden →';
+}
+
+
+/* ══ EARLY BIRD LOGIC ═══════════════════════════════════════ */
+function checkEarlyBird() {
+  const box = document.getElementById('earlyBirdBox');
+  if(!box) return false;
+  if(!selectedDate) { box.classList.remove('show'); return false; }
+
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  const diff = Math.floor((selectedDate - today) / (1000*60*60*24));
+  const isEarlyBird = diff >= 14;
+
+  box.classList.toggle('show', isEarlyBird);
+  return isEarlyBird;
+}
+
+function applyEarlyBird(total) {
+  return checkEarlyBird() ? total * 0.9 : total;
+}
+
 </script>
+
+<div style="width:100%;text-align:center;padding:12px;background:#060606;border-top:1px solid #111;font-size:11px;color:rgba(255,255,255,0.25);">Website made by <a href="https://lamoragency.de" target="_blank" style="color:rgba(255,255,255,0.4);text-decoration:none;font-weight:600;transition:color .2s;" onmouseover="this.style.color='#e02020'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">LAMORAGENCY</a></div>
+
+<script>
+var agbAccepted = false;
+function toggleAgb(){
+  agbAccepted = !agbAccepted;
+  var wrap  = document.getElementById('agbWrap');
+  var error = document.getElementById('agbError');
+  if(wrap) wrap.classList.toggle('checked', agbAccepted);
+  if(agbAccepted && error) error.classList.remove('show');
+}
+var agbWrap = document.getElementById('agbWrap');
+if(agbWrap) agbWrap.addEventListener('click', toggleAgb);
+</script>
+
 </body>
 </html>
