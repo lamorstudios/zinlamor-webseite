@@ -41,8 +41,13 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .setup-notice a{color:#f0b830;font-weight:600;}
 
 /* GRID */
-.main-grid{display:grid;grid-template-columns:1fr 420px;gap:32px;align-items:start;}
+.main-grid{display:grid;grid-template-columns:minmax(280px,400px) 1fr;gap:28px;align-items:start;}
 @media(max-width:900px){.main-grid{grid-template-columns:1fr;}}
+@media(min-width:901px){
+  .right-panel.form-visible{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;}
+  .right-panel.form-visible .slot-wrap{grid-column:1;}
+  .right-panel.form-visible .form-wrap{grid-column:2;}
+}
 
 /* CALENDAR */
 .cal-wrap{background:var(--glass);border:1px solid var(--glass-b);border-radius:22px;overflow:hidden;backdrop-filter:blur(12px);}
@@ -1203,6 +1208,7 @@ function selectDay(date) {
   selectedDate = date;
   selectedSlot = null;
   document.getElementById("formWrap").style.display = "none";
+  document.querySelector('.right-panel')?.classList.remove('form-visible');
   renderCalendar();
   renderSlots();
     if(typeof checkEarlyBird === "function") { checkEarlyBird(); updatePriceDisplay(); }
@@ -1324,10 +1330,11 @@ function renderSlots() {
 function showForm() {
   if (!selectedDate || !selectedSlot) return;
   document.getElementById("formWrap").style.display = "block";
+  document.querySelector('.right-panel')?.classList.add('form-visible');
   document.getElementById("sSumDate").textContent = formatDE(selectedDate) + " · " + DOW_LONG[(selectedDate.getDay()+6)%7];
   document.getElementById("sSumSlot").textContent = selectedSlot.label + " (" + selectedSlot.dur + " Std.)";
   document.getElementById("sSumType").textContent = document.getElementById("fType").value;
-  document.getElementById("formWrap").scrollIntoView({ behavior: "smooth", block: "start" });
+  if(window.innerWidth < 901) document.getElementById("formWrap").scrollIntoView({ behavior: "smooth", block: "start" });
   updatePriceDisplay();
 }
 document.getElementById("fType").addEventListener("change", () => {
@@ -1411,6 +1418,7 @@ async function handleSubmit() {
   document.getElementById("fCompany").value = "";
   document.getElementById("fNotes").value = "";
   document.getElementById("formWrap").style.display = "none";
+  document.querySelector('.right-panel')?.classList.remove('form-visible');
   renderCalendar();
   renderBookings();
   renderSlots();
@@ -1797,7 +1805,9 @@ function selectPackage(el) {
   if(submitBtn) submitBtn.textContent = selectedPackage.name + ' anfragen →';
 
   // Scroll to form
-  document.getElementById('formWrap')?.scrollIntoView({behavior:'smooth', block:'start'});
+  const fw = document.getElementById('formWrap');
+  if(fw && fw.style.display !== 'block'){ fw.style.display = 'block'; document.querySelector('.right-panel')?.classList.add('form-visible'); }
+  if(window.innerWidth < 901) fw?.scrollIntoView({behavior:'smooth', block:'start'});
 }
 
 function clearPackage() {
