@@ -786,6 +786,295 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 }
 .agb-error.show{display:block;}
 
+
+/* ══ DESKTOP BOOKING LAYOUT — PREMIUM REDESIGN ══════════════ */
+@media(min-width:901px){
+
+  /* ── Page container */
+  .page{
+    max-width:1600px;
+    margin:0 auto;
+    padding:40px 40px 100px;
+  }
+
+  /* ── Two-column grid: 70% left / 30% right */
+  .main-grid{
+    display:grid;
+    grid-template-columns:1fr 400px;
+    gap:24px;
+    align-items:start;
+  }
+
+  /* ── LEFT column: calendar + bookings */
+  .main-grid > div:first-child{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    min-width:0;
+  }
+
+  /* ── RIGHT column: normal flow, page scrolls */
+  .right-panel{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+
+  /* ── Card consistency */
+  .cal-wrap,
+  .slot-wrap,
+  .form-wrap,
+  .bookings-wrap{
+    border-radius:18px;
+    border:1px solid rgba(255,255,255,0.08);
+    background:rgba(255,255,255,0.03);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    transition:border-color .25s;
+    overflow:hidden;
+  }
+  .cal-wrap:hover,
+  .slot-wrap:hover,
+  .form-wrap:hover,
+  .bookings-wrap:hover{
+    border-color:rgba(255,255,255,0.13);
+  }
+
+  /* ── Calendar — full left column width */
+  .cal-wrap{
+    width:100%;
+  }
+  .cal-body{
+    padding:16px 20px 24px;
+  }
+  .cal-days{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:4px;
+    margin-top:8px;
+  }
+  .cal-day{
+    aspect-ratio:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:10px;
+    font-size:14px;
+    font-weight:500;
+    cursor:pointer;
+    transition:background .15s, color .15s, transform .15s;
+  }
+  .cal-day:hover:not(.disabled):not(.empty){
+    background:rgba(255,255,255,0.09);
+    transform:scale(1.08);
+  }
+  .cal-day.selected{
+    background:var(--red);
+    color:#fff;
+    font-weight:700;
+    box-shadow:0 4px 16px rgba(224,32,32,0.35);
+    transform:scale(1.08);
+  }
+
+  /* ── Slot picker */
+  .slot-wrap{
+    width:100%;
+  }
+  .slot-header{
+    padding:18px 22px;
+    border-bottom:1px solid rgba(255,255,255,0.07);
+  }
+  .slot-title{
+    font-size:16px;
+    font-weight:700;
+    color:var(--white);
+    margin-bottom:4px;
+  }
+  .slot-date{
+    font-size:12px;
+    color:var(--muted);
+  }
+  .slot-body{
+    padding:18px;
+  }
+
+  /* ── Hour grid — 6 cols on desktop */
+  .hour-grid{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:7px;
+  }
+  .hour-btn{
+    padding:10px 4px;
+    font-size:12px;
+    border-radius:10px;
+  }
+
+  /* ── Duration grid — 4 cols */
+  .dur-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:7px;
+  }
+
+  /* ── Bookings overview */
+  .bookings-wrap{
+    width:100%;
+  }
+
+  /* ── Right panel — form cards smaller padding */
+  .form-header{
+    padding:16px 20px;
+    border-bottom:1px solid rgba(255,255,255,0.07);
+  }
+  .form-title{
+    font-size:16px;
+    font-weight:700;
+  }
+  .form-body{
+    padding:16px;
+    gap:12px;
+  }
+
+  /* ── Field inputs */
+  .field label{
+    font-size:10px;
+    letter-spacing:.14em;
+  }
+  .field input,
+  .field select,
+  .field textarea{
+    font-size:13px;
+    padding:10px 14px;
+    border-radius:10px;
+  }
+
+  /* ── Packages grid on desktop — 1 col in sidebar */
+  .section-divider{
+    font-size:9px;
+  }
+  #pkgGrid{
+    grid-template-columns:1fr !important;
+    gap:8px !important;
+  }
+  .pkg-select-card{
+    border-radius:12px;
+    padding:14px 14px;
+  }
+  .psc-price{
+    font-size:18px;
+  }
+
+  /* ── Price display */
+  .price-display{
+    border-radius:12px;
+  }
+  .price-total{
+    font-size:28px;
+  }
+
+  /* ── Submit button */
+  .submit-btn{
+    font-size:14px;
+    padding:13px 20px;
+    border-radius:12px;
+  }
+
+  /* ── Booking header */
+  .booking-hero{
+    margin-bottom:32px;
+  }
+  .booking-hero h1{
+    font-size:clamp(32px,3.5vw,52px);
+  }
+
+  /* ── Smooth fade-in for cards */
+  .cal-wrap,
+  .slot-wrap,
+  .form-wrap,
+  .bookings-wrap,
+  .right-panel > *{
+    animation:bookingFadeIn .4s ease both;
+  }
+  .right-panel > *:nth-child(1){animation-delay:.05s;}
+  .right-panel > *:nth-child(2){animation-delay:.1s;}
+  .right-panel > *:nth-child(3){animation-delay:.15s;}
+  .right-panel > *:nth-child(4){animation-delay:.2s;}
+  @keyframes bookingFadeIn{
+    from{opacity:0;transform:translateY(12px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+}
+
+/* ── Wide screens — more breathing room */
+@media(min-width:1400px){
+  .main-grid{
+    grid-template-columns:1fr 440px;
+    gap:32px;
+  }
+  .page{
+    padding:48px 60px 100px;
+  }
+}
+
+
+/* ══ BOOKING PAGE HERO — DESKTOP ════════════════════════════ */
+@media(min-width:901px){
+  .page-ey{
+    font-size:10px;
+    letter-spacing:.26em;
+    text-transform:uppercase;
+    color:var(--red);
+    font-weight:700;
+    margin-bottom:14px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .page-ey-line{
+    width:24px;height:1px;
+    background:var(--red);
+    flex-shrink:0;
+    display:block;
+  }
+  .page-title{
+    font-size:clamp(36px,4vw,60px);
+    font-weight:900;
+    color:var(--white);
+    letter-spacing:-.045em;
+    line-height:.95;
+    margin-bottom:14px;
+  }
+  .page-sub{
+    font-size:16px;
+    color:var(--soft);
+    font-weight:300;
+    line-height:1.7;
+    max-width:680px;
+    margin-bottom:36px;
+  }
+}
+
+
+/* ══ DESKTOP SLOT ALWAYS VISIBLE ════════════════════════════ */
+@media(min-width:901px){
+  .slot-wrap{
+    display:block !important;
+  }
+  /* Left col gap */
+  .main-grid > div:first-child{
+    gap:18px;
+  }
+  /* Form wrap takes full right col */
+  .right-panel{
+    width:100%;
+  }
+  /* No auto-scroll into view on desktop */
+  .form-wrap{
+    scroll-margin-top:0;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -797,7 +1086,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 
 <div class="page">
   <!-- SETUP NOTICE — shown until EmailJS is configured -->
-  <div class="setup-notice show" id="setupNotice">
+  <div class="setup-notice" id="setupNotice" style="display:none;">
     ⚙️ <strong>E-Mail noch nicht konfiguriert.</strong> Damit Buchungsanfragen per Mail ankommen, müssen wir einmalig EmailJS einrichten. <a href="#" onclick="alert('Schreib uns deine E-Mail-Adresse — wir richten das in 5 Minuten ein.')">Hier klicken für Anleitung →</a>
   </div>
 
@@ -828,18 +1117,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
         </div>
       </div>
 
-      <!-- BOOKINGS LIST -->
-      <div class="bookings-wrap" id="bookingsWrap">
-        <div class="bw-header">
-          <span class="bw-title">Buchungsübersicht</span>
-          <button class="admin-btn" id="adminBtn" onclick="toggleAdmin()">⚙ Admin</button>
-        </div>
-        <div id="bookingsList"><div class="no-bookings">Noch keine Buchungsanfragen.</div></div>
-      </div>
-    </div>
 
-    <!-- RIGHT -->
-    <div class="right-panel">
       <!-- SLOT PICKER -->
       <div class="slot-wrap">
         <div class="slot-header">
@@ -851,6 +1129,19 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
         </div>
       </div>
 
+            <!-- BOOKINGS LIST -->
+      <div class="bookings-wrap" id="bookingsWrap">
+        <div class="bw-header">
+          <span class="bw-title">Buchungsübersicht</span>
+          <button class="admin-btn" id="adminBtn" onclick="toggleAdmin()">⚙ Admin</button>
+        </div>
+        <div id="bookingsList"><div class="no-bookings">Noch keine Buchungsanfragen.</div></div>
+      </div>
+    </div>
+
+
+    <!-- RIGHT -->
+    <div class="right-panel">
       <!-- FORM (hidden until slot selected) -->
       <div class="form-wrap" id="formWrap" style="display:none;">
         <div class="form-header"><div class="form-title">Anfrage stellen</div></div>
@@ -1091,15 +1382,28 @@ const EMAILJS_SERVICE_ID  = "zinlamor_booking";
 const EMAILJS_TEMPLATE_ID = "template_1d3s9mj";
 const EMAILJS_PUBLIC_KEY  = "g8L8-qy2CJxYGV-dn";
 const EMAILJS_CUSTOMER_TEMPLATE_ID = "template_7ebmpce"; // ← In EmailJS separates Template erstellen und ID eintragen
-const STUDIO_EMAIL        = "info@zinlamor.de";gen
+const STUDIO_EMAIL        = "info@zinlamor.de";
 
-const EMAILJS_CONFIGURED = 
-  EMAILJS_SERVICE_ID !== "DEINE_SERVICE_ID" && 
-  EMAILJS_PUBLIC_KEY !== "DEIN_PUBLIC_KEY";
+const EMAILJS_CONFIGURED =
+  typeof EMAILJS_SERVICE_ID  === "string" && EMAILJS_SERVICE_ID.length  > 3 &&
+  typeof EMAILJS_TEMPLATE_ID === "string" && EMAILJS_TEMPLATE_ID.length > 3 &&
+  typeof EMAILJS_PUBLIC_KEY  === "string" && EMAILJS_PUBLIC_KEY.length  > 3 &&
+  !EMAILJS_SERVICE_ID.includes("DEINE") &&
+  !EMAILJS_TEMPLATE_ID.includes("DEINE") &&
+  !EMAILJS_PUBLIC_KEY.includes("DEIN");
 
-if (EMAILJS_CONFIGURED) {
-  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
-  document.getElementById("setupNotice").classList.remove("show");
+// Init EmailJS after CDN is ready
+function initEmailJS() {
+  if (EMAILJS_CONFIGURED && typeof emailjs !== "undefined") {
+    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+    const notice = document.getElementById("setupNotice");
+    if (notice) notice.style.display = "none";
+  }
+}
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initEmailJS);
+} else {
+  initEmailJS();
 }
 
 // ══ STORAGE HELPERS ══
@@ -1328,7 +1632,7 @@ function showForm() {
   document.getElementById("sSumDate").textContent = formatDE(selectedDate) + " · " + DOW_LONG[(selectedDate.getDay()+6)%7];
   document.getElementById("sSumSlot").textContent = selectedSlot.label + " (" + selectedSlot.dur + " Std.)";
   document.getElementById("sSumType").textContent = document.getElementById("fType").value;
-  document.getElementById("formWrap").scrollIntoView({ behavior: "smooth", block: "start" });
+  // desktop: page scrolls naturally — no auto-scroll needed
   updatePriceDisplay();
 }
 document.getElementById("fType").addEventListener("change", () => {
@@ -1336,7 +1640,7 @@ document.getElementById("fType").addEventListener("change", () => {
 });
 
 // ══ SUBMIT ══
-async async function handleSubmit() {
+async function handleSubmit() {
   const name  = document.getElementById("fName").value.trim();
   const email = document.getElementById("fEmail").value.trim();
   const btn   = document.getElementById("submitBtn");
