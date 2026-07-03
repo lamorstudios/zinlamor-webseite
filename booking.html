@@ -1075,6 +1075,127 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
   }
 }
 
+
+/* ══ BOOKING SUMMARY CARD ═══════════════════════════════════ */
+.booking-summary-card{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:14px;
+  overflow:hidden;
+  display:none;
+  animation:fadeUpCard .35s cubic-bezier(0.16,1,0.3,1);
+}
+.booking-summary-card.show{display:block;}
+@keyframes fadeUpCard{
+  from{opacity:0;transform:translateY(8px);}
+  to{opacity:1;transform:translateY(0);}
+}
+.bsc-header{
+  padding:12px 16px;
+  background:rgba(255,255,255,0.04);
+  border-bottom:1px solid rgba(255,255,255,0.07);
+  display:flex;align-items:center;gap:8px;
+}
+.bsc-header-icon{font-size:14px;}
+.bsc-header-title{
+  font-size:11px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--white);
+}
+.bsc-header-badge{
+  margin-left:auto;
+  background:rgba(224,32,32,0.15);
+  border:1px solid rgba(224,32,32,0.3);
+  color:var(--red);
+  font-size:9px;font-weight:800;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:2px 8px;border-radius:980px;
+}
+.bsc-body{
+  padding:12px 16px;
+  display:flex;flex-direction:column;gap:6px;
+}
+.bsc-row{
+  display:flex;align-items:baseline;gap:8px;
+  font-size:12px;line-height:1.5;
+  animation:fadeUpCard .25s ease;
+}
+.bsc-icon{font-size:13px;flex-shrink:0;width:18px;text-align:center;}
+.bsc-label{color:var(--muted);flex-shrink:0;min-width:80px;}
+.bsc-value{color:var(--body);font-weight:500;}
+.bsc-value.highlight{color:var(--white);font-weight:700;}
+.bsc-value.price-val{
+  color:var(--white);font-weight:900;
+  font-size:16px;letter-spacing:-.02em;
+}
+.bsc-value.saving-val{color:#3dbd6e;font-weight:700;}
+.bsc-divider{
+  height:1px;background:rgba(255,255,255,0.06);
+  margin:4px 0;
+}
+
+
+/* ══ BOOKING SUMMARY CARD — MOBILE ══════════════════════════ */
+@media(max-width:900px){
+  .booking-summary-card{
+    width:100%;
+    border-radius:14px;
+    margin-bottom:4px;
+  }
+  .bsc-header{
+    padding:11px 14px;
+  }
+  .bsc-header-title{
+    font-size:10px;
+  }
+  .bsc-header-badge{
+    font-size:8px;
+    padding:2px 6px;
+  }
+  .bsc-body{
+    padding:10px 14px;
+    gap:5px;
+  }
+  .bsc-row{
+    font-size:12px;
+  }
+  .bsc-label{
+    min-width:72px;
+  }
+  .bsc-value.price-val{
+    font-size:15px;
+  }
+}
+
+
+/* ══ MOBILE FORM ORDER — Summary card last before fields ═════ */
+@media(max-width:900px){
+  .form-body{
+    display:flex;
+    flex-direction:column;
+  }
+  /* Keep natural order for all except summary card */
+  .mode-notice    { order:1; }
+  .producer-toggle{ order:2; }
+  .addon-section  { order:3; }
+  #reelsSection   { order:4; }
+  /* Package section wrapper */
+  .pkg-section-wrap { order:5; }
+  /* Price box + Early Bird — after packages */
+  .early-bird-box { order:6; }
+  .price-display  { order:6; }
+  /* Summary card — after price */
+  .booking-summary-card { order:7; }
+  /* All field-rows (name, email, etc) */
+  .field-row      { order:9; }
+  /* AGB and submit */
+  .agb-wrap       { order:10; }
+  .agb-error      { order:10; }
+  .submit-btn     { order:11; }
+  .cancellation-note,
+  p[style*="font-size:11px"] { order:12; }
+}
+
 </style>
 </head>
 <body>
@@ -1152,38 +1273,6 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
             <span>Du hast ein <strong id="modeNoticePkg"></strong> gewählt. Der Einzeltermin wird ignoriert.</span>
             <button class="mode-switch-btn" onclick="clearPackage()">✕ Paket abwählen</button>
           </div>
-          <!-- PRICE DISPLAY -->
-          <!-- EARLY BIRD BOX -->
-          <div class="early-bird-box" id="earlyBirdBox">
-            <span class="eb-icon">🏷️</span>
-            <div class="eb-text">
-              <strong>Early Bird Rabatt aktiv!</strong>
-              <span>Du buchst 14+ Tage im Voraus — du sparst automatisch <strong style="color:#3dbd6e;">10%</strong> auf die Studiomiete.</span>
-            </div>
-            <span class="eb-badge">−10%</span>
-          </div>
-
-          <div class="price-display" id="priceDisplay" style="display:none;">
-            <div class="price-original-row" id="priceOriginalRow" style="display:none;">
-              <span class="price-original" id="priceOriginal"></span>
-              <span class="price-original-label">Einzelpreise</span>
-            </div>
-            <div class="price-main">
-              <div>
-                <span class="price-total" id="priceTotal">—</span>
-                <span class="price-you-pay" id="priceYouPay" style="display:none;">Dein Preis</span>
-              </div>
-              <span class="price-per-hour" id="pricePerH"></span>
-            </div>
-            <div class="price-breakdown" id="priceBreak"></div>
-            <div class="price-saving" id="priceSave" style="display:none;"></div>
-            <div class="price-saved-badge" id="priceSavedBadge" style="display:none;">
-              <span class="saved-icon">🏷</span>
-              <span id="priceSavedAmt"></span>
-            </div>
-          </div>
-
-          <!-- PRODUCER TOGGLE -->
           <label class="producer-toggle" id="producerToggle">
             <input type="checkbox" id="producerCheck" onchange="updatePriceDisplay()">
             <div class="producer-label">
@@ -1265,7 +1354,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
           </div>
 
           <!-- MONTHLY PACKAGES — interactive -->
-          <div style="border-top:1px solid var(--border2);padding-top:20px;margin-top:4px;">
+          <div class="pkg-section-wrap" style="border-top:1px solid var(--border2);padding-top:20px;margin-top:4px;">
             <p style="font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;">💡 Oder langfristig günstiger — Monatspaket wählen</p>
             <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px;" id="pkgGrid">
 
@@ -1317,7 +1406,51 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
             <p style="font-size:10px;color:var(--muted);text-align:center;margin-top:6px;line-height:1.5;">📅 Wochenend-Slots für Einzelbuchungen reserviert — Paket-Kunden bevorzugt Mo–Do. Ausnahmen nach Absprache.</p>
           </div>
 
-          <div class="field-row">
+          <!-- PRICE DISPLAY -->
+          <!-- EARLY BIRD BOX -->
+          <div class="early-bird-box" id="earlyBirdBox">
+            <span class="eb-icon">🏷️</span>
+            <div class="eb-text">
+              <strong>Early Bird Rabatt aktiv!</strong>
+              <span>Du buchst 14+ Tage im Voraus — du sparst automatisch <strong style="color:#3dbd6e;">10%</strong> auf die Studiomiete.</span>
+            </div>
+            <span class="eb-badge">−10%</span>
+          </div>
+
+          <div class="price-display" id="priceDisplay" style="display:none;">
+            <div class="price-original-row" id="priceOriginalRow" style="display:none;">
+              <span class="price-original" id="priceOriginal"></span>
+              <span class="price-original-label">Einzelpreise</span>
+            </div>
+            <div class="price-main">
+              <div>
+                <span class="price-total" id="priceTotal">—</span>
+                <span class="price-you-pay" id="priceYouPay" style="display:none;">Dein Preis</span>
+              </div>
+              <span class="price-per-hour" id="pricePerH"></span>
+            </div>
+            <div class="price-breakdown" id="priceBreak"></div>
+            <div class="price-saving" id="priceSave" style="display:none;"></div>
+            <div class="price-saved-badge" id="priceSavedBadge" style="display:none;">
+              <span class="saved-icon">🏷</span>
+              <span id="priceSavedAmt"></span>
+            </div>
+          </div>
+
+          <!-- PRODUCER TOGGLE -->
+          <!-- BOOKING SUMMARY CARD -->
+          <div class="booking-summary-card" id="bookingSummaryCard">
+            <div class="bsc-header">
+              <span class="bsc-header-icon">📋</span>
+              <span class="bsc-header-title">Deine Buchungsübersicht</span>
+              <span class="bsc-header-badge">Vor dem Absenden prüfen</span>
+            </div>
+            <div class="bsc-body" id="bscBody">
+              <!-- Filled by JS -->
+            </div>
+          </div>
+
+                    <div class="field-row">
             <div class="field"><label>Name *</label><input type="text" id="fName" placeholder="Dein Name"></div>
             <div class="field"><label>E-Mail *</label><input type="email" id="fEmail" placeholder="deine@email.de"></div>
           </div>
@@ -1635,7 +1768,7 @@ function showForm() {
   // desktop: page scrolls naturally — no auto-scroll needed
   updatePriceDisplay();
 }
-document.getElementById("fType").addEventListener("change", () => {
+document.getElementById("fType").addEventListener("change", () => { updateBookingSummary();
   document.getElementById("sSumType").textContent = document.getElementById("fType").value;
 });
 
@@ -2246,6 +2379,136 @@ function toggleAgb(){
 }
 var agbWrap = document.getElementById('agbWrap');
 if(agbWrap) agbWrap.addEventListener('click', toggleAgb);
+
+/* ══ BOOKING SUMMARY CARD ═══════════════════════════════════ */
+function updateBookingSummary() {
+  var card = document.getElementById('bookingSummaryCard');
+  var body = document.getElementById('bscBody');
+  if (!card || !body) return;
+
+  var rows = [];
+
+  if (selectedDate) {
+    rows.push({ icon:'📅', label:'Datum', value: formatDE(selectedDate) + ' · ' + DOW_LONG[(selectedDate.getDay()+6)%7] });
+  }
+  if (selectedSlot) {
+    rows.push({ icon:'🕒', label:'Uhrzeit', value: selectedSlot.label });
+    rows.push({ icon:'⏳', label:'Dauer',   value: selectedSlot.dur + ' Stunden' });
+  }
+  if (selectedPackage) {
+    rows.push({ icon:'📦', label:'Paket', value: selectedPackage.name + ' — ' + selectedPackage.price + '€/Mon.', highlight: true });
+  }
+  var fType = document.getElementById('fType');
+  if (fType && fType.value) rows.push({ icon:'🎙', label:'Zweck', value: fType.value });
+
+  var withProd = document.getElementById('producerCheck') && document.getElementById('producerCheck').checked;
+  rows.push({ icon:'🎧', label:'Produzent', value: withProd ? 'Nick (Lamor) +35€/Std.' : 'Nein' });
+
+  var mixC    = document.getElementById('mixCheck')    && document.getElementById('mixCheck').checked;
+  var masterC = document.getElementById('masterCheck') && document.getElementById('masterCheck').checked;
+  var bundleC = document.getElementById('bundleCheck') && document.getElementById('bundleCheck').checked;
+  var reelsC  = document.getElementById('reelsCheck')  && document.getElementById('reelsCheck').checked;
+
+  if (bundleC)  rows.push({ icon:'🎵', label:'Mix+Master', value: 'Bundle 166,50 €' });
+  else {
+    if (mixC)    rows.push({ icon:'🎵', label:'Mix',       value: '120 €' });
+    if (masterC) rows.push({ icon:'🎚', label:'Mastering', value: '65 €' });
+  }
+  if (reelsC) rows.push({ icon:'🎬', label:'Reels', value: '3× Session — 185 €' });
+
+  var priceEl = document.getElementById('priceTotal');
+  var priceDisplay = document.getElementById('priceDisplay');
+  if (priceEl && priceDisplay && priceDisplay.style.display !== 'none' && priceEl.textContent !== '—') {
+    rows.push({ divider: true });
+    rows.push({ icon:'💰', label:'Gesamtpreis', value: priceEl.textContent, price: true });
+  }
+
+  var savedEl = document.getElementById('priceSavedAmt');
+  var savedBadge = document.getElementById('priceSavedBadge');
+  if (savedEl && savedBadge && savedBadge.style.display !== 'none' && savedEl.textContent) {
+    rows.push({ icon:'💸', label:'Ersparnis', value: savedEl.textContent, saving: true });
+  }
+
+  if (rows.length <= 1) { card.classList.remove('show'); return; }
+  card.classList.add('show');
+  body.innerHTML = rows.map(function(r) {
+    if (r.divider) return '<div class="bsc-divider"></div>';
+    var cls = r.price ? 'price-val' : r.saving ? 'saving-val' : r.highlight ? 'highlight' : '';
+    return '<div class="bsc-row"><span class="bsc-icon">' + r.icon + '</span><span class="bsc-label">' + r.label + '</span><span class="bsc-value ' + cls + '">' + r.value + '</span></div>';
+  }).join('');
+}
+
+
+// Hook summary into price updates
+var _bsc_origPrice = updatePriceDisplay;
+updatePriceDisplay = function() {
+  _bsc_origPrice.apply(this, arguments);
+  setTimeout(updateBookingSummary, 60);
+};
+var _bsc_origShow = showForm;
+showForm = function() {
+  _bsc_origShow.apply(this, arguments);
+  updateBookingSummary();
+};
+
+/* ══ BOOKING SUMMARY CARD ═══════════════════════════════════ */
+function updateBookingSummary() {
+  var card = document.getElementById('bookingSummaryCard');
+  var body = document.getElementById('bscBody');
+  if (!card || !body) return;
+
+  var rows = [];
+
+  if (selectedDate) {
+    rows.push({ icon:'📅', label:'Datum', value: formatDE(selectedDate) + ' · ' + DOW_LONG[(selectedDate.getDay()+6)%7] });
+  }
+  if (selectedSlot) {
+    rows.push({ icon:'🕒', label:'Uhrzeit', value: selectedSlot.label });
+    rows.push({ icon:'⏳', label:'Dauer',   value: selectedSlot.dur + ' Stunden' });
+  }
+  if (selectedPackage) {
+    rows.push({ icon:'📦', label:'Paket', value: selectedPackage.name + ' — ' + selectedPackage.price + '€/Mon.', highlight: true });
+  }
+  var fType = document.getElementById('fType');
+  if (fType && fType.value) rows.push({ icon:'🎙', label:'Zweck', value: fType.value });
+
+  var withProd = document.getElementById('producerCheck') && document.getElementById('producerCheck').checked;
+  rows.push({ icon:'🎧', label:'Produzent', value: withProd ? 'Nick (Lamor) +35€/Std.' : 'Nein' });
+
+  var mixC    = document.getElementById('mixCheck')    && document.getElementById('mixCheck').checked;
+  var masterC = document.getElementById('masterCheck') && document.getElementById('masterCheck').checked;
+  var bundleC = document.getElementById('bundleCheck') && document.getElementById('bundleCheck').checked;
+  var reelsC  = document.getElementById('reelsCheck')  && document.getElementById('reelsCheck').checked;
+
+  if (bundleC)  rows.push({ icon:'🎵', label:'Mix+Master', value: 'Bundle 166,50 €' });
+  else {
+    if (mixC)    rows.push({ icon:'🎵', label:'Mix',       value: '120 €' });
+    if (masterC) rows.push({ icon:'🎚', label:'Mastering', value: '65 €' });
+  }
+  if (reelsC) rows.push({ icon:'🎬', label:'Reels', value: '3× Session — 185 €' });
+
+  var priceEl = document.getElementById('priceTotal');
+  var priceDisplay = document.getElementById('priceDisplay');
+  if (priceEl && priceDisplay && priceDisplay.style.display !== 'none' && priceEl.textContent !== '—') {
+    rows.push({ divider: true });
+    rows.push({ icon:'💰', label:'Gesamtpreis', value: priceEl.textContent, price: true });
+  }
+
+  var savedEl = document.getElementById('priceSavedAmt');
+  var savedBadge = document.getElementById('priceSavedBadge');
+  if (savedEl && savedBadge && savedBadge.style.display !== 'none' && savedEl.textContent) {
+    rows.push({ icon:'💸', label:'Ersparnis', value: savedEl.textContent, saving: true });
+  }
+
+  if (rows.length <= 1) { card.classList.remove('show'); return; }
+  card.classList.add('show');
+  body.innerHTML = rows.map(function(r) {
+    if (r.divider) return '<div class="bsc-divider"></div>';
+    var cls = r.price ? 'price-val' : r.saving ? 'saving-val' : r.highlight ? 'highlight' : '';
+    return '<div class="bsc-row"><span class="bsc-icon">' + r.icon + '</span><span class="bsc-label">' + r.label + '</span><span class="bsc-value ' + cls + '">' + r.value + '</span></div>';
+  }).join('');
+}
+
 </script>
 
 </body>
