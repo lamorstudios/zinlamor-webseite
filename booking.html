@@ -1845,50 +1845,44 @@ async function handleSubmit() {
   // ── EmailJS — Studio notification
   if (EMAILJS_CONFIGURED) {
     try {
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        {
-          to_email:        "info@zinlamor.de",
-          booking_id:      booking.id,
-          client_name:     booking.name,
-          client_email:    booking.email,
-          client_phone:    booking.phone   || "—",
-          client_company:  booking.company || "—",
-          studio_type:     booking.type    || "—",
-          booking_date:    dateStr,
-          booking_time:    timeStr,
-          booking_price:   booking.price,
-          booking_addons:  booking.addons,
-          booking_package: booking.monthlyPackage,
-          notes:           booking.notes   || "—",
-          confirm_link:    baseUrl + "?confirm=" + booking.id,
-          reject_link:     baseUrl + "?reject="  + booking.id,
-        },
-        EMAILJS_PUBLIC_KEY
-      );
-      console.log("✓ Studio-E-Mail gesendet");
+      // ── Shared booking params (no to_email yet)
+      const bookingParams = {
+        booking_id:      booking.id,
+        client_name:     booking.name,
+        client_email:    booking.email,
+        client_phone:    booking.phone        || "—",
+        client_company:  booking.company      || "—",
+        studio_type:     booking.type         || "—",
+        booking_date:    dateStr,
+        booking_time:    timeStr,
+        booking_price:   booking.price,
+        booking_addons:  booking.addons,
+        booking_package: booking.monthlyPackage,
+        notes:           booking.notes        || "—",
+        confirm_link:    baseUrl + "?confirm=" + booking.id,
+        reject_link:     baseUrl + "?reject="  + booking.id,
+      };
 
-      // ── EmailJS — Customer confirmation (separate template, no admin links)
+      // ── Studio mail — always to info@zinlamor.de
+      const studioParams = {
+        ...bookingParams,
+        to_email: "info@zinlamor.de"
+      };
+      console.log("STUDIO TO:", studioParams.to_email);
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, studioParams);
+      console.log("✓ Studio-E-Mail gesendet an:", studioParams.to_email);
+
+      // ── Customer confirmation — always to the client
       try {
-        await emailjs.send(
-          EMAILJS_SERVICE_ID,
-          EMAILJS_CUSTOMER_TEMPLATE_ID,
-          {
-            to_email:        booking.email,
-            client_name:     booking.name,
-            client_email:    booking.email,
-            client_phone:    booking.phone   || "—",
-            client_company:  booking.company || "—",
-            studio_type:     booking.type    || "—",
-            booking_date:    dateStr,
-            booking_time:    timeStr,
-            booking_price:   booking.price,
-            booking_addons:  booking.addons,
-            booking_package: booking.monthlyPackage,
-            notes:           booking.notes   || "—",
-          }
-        );
+        const clientEmail = booking.email;
+        const customerParams = {
+          ...bookingParams,
+          to_email:     clientEmail,
+          confirm_link: undefined,
+          reject_link:  undefined,
+        };
+        console.log("CUSTOMER TO:", customerParams.to_email);
+        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_CUSTOMER_TEMPLATE_ID, customerParams);
         console.log("✓ Kunden-Bestätigungs-E-Mail gesendet");
       } catch (e2) {
         console.warn("Kunden-E-Mail Fehler:", e2);
