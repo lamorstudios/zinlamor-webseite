@@ -1868,9 +1868,9 @@ async function handleSubmit() {
         ...bookingParams,
         to_email: "info@zinlamor.de"
       };
-      console.log("STUDIO TO:", studioParams.to_email);
-      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, studioParams);
-      console.log("✓ Studio-E-Mail gesendet an:", studioParams.to_email);
+      console.log("STUDIO TEMPLATE:", EMAILJS_TEMPLATE_ID, studioParams.to_email);
+      const studioResult = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, studioParams);
+      console.log("✓ Studio-E-Mail gesendet an:", studioParams.to_email, "Status:", studioResult.status, studioResult.text);
 
       // ── Customer confirmation — always to the client
       try {
@@ -1881,18 +1881,20 @@ async function handleSubmit() {
           confirm_link: undefined,
           reject_link:  undefined,
         };
-        console.log("CUSTOMER TO:", customerParams.to_email);
-        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_CUSTOMER_TEMPLATE_ID, customerParams);
+        console.log("CUSTOMER TEMPLATE:", EMAILJS_CUSTOMER_TEMPLATE_ID, customerParams.to_email);
+        const customerResult = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_CUSTOMER_TEMPLATE_ID, customerParams);
+        console.log("✓ Kunden-E-Mail gesendet an:", customerParams.to_email, "Status:", customerResult.status, customerResult.text);
         console.log("✓ Kunden-Bestätigungs-E-Mail gesendet");
       } catch (e2) {
         console.warn("Kunden-E-Mail Fehler:", e2);
       }
 
     } catch (e) {
-      console.error("EmailJS Fehler:", e);
+      console.error("EmailJS Studio-Mail Fehler:", JSON.stringify(e));
+      console.error("Template:", EMAILJS_TEMPLATE_ID, "to:", studioParams ? studioParams.to_email : "unknown");
       btn.disabled = false;
       btn.textContent = "Anfrage absenden →";
-      alert("❌ E-Mail konnte nicht gesendet werden. Bitte versuche es erneut oder kontaktiere uns direkt unter info@zinlamor.de");
+      alert("❌ Studio-Mail konnte nicht gesendet werden (" + (e.text || e.message || JSON.stringify(e)) + "). Bitte kontaktiere uns direkt unter info@zinlamor.de");
       return;
     }
   } else {
