@@ -1864,24 +1864,47 @@ async function handleSubmit() {
       };
 
       // ── Studio mail — always to info@zinlamor.de
+      // Studio-Template hat feste Empfängeradresse (info@zinlamor.de) in EmailJS
+      // Kein to_email im Parameter — Template nutzt seine eigene feste Adresse
       const studioParams = {
-        ...bookingParams,
-        to_email: "info@zinlamor.de"
+        booking_id:      booking.id,
+        client_name:     booking.name,
+        client_email:    booking.email,
+        client_phone:    booking.phone        || "—",
+        client_company:  booking.company      || "—",
+        studio_type:     booking.type         || "—",
+        booking_date:    dateStr,
+        booking_time:    timeStr,
+        booking_price:   booking.price,
+        booking_addons:  booking.addons,
+        booking_package: booking.monthlyPackage,
+        notes:           booking.notes        || "—",
+        confirm_link:    baseUrl + "?confirm=" + booking.id,
+        reject_link:     baseUrl + "?reject="  + booking.id,
       };
-      console.log("STUDIO TEMPLATE:", EMAILJS_TEMPLATE_ID, studioParams.to_email);
+      console.log("STUDIO TEMPLATE:", EMAILJS_TEMPLATE_ID, "→ feste Adresse in EmailJS");
       const studioResult = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, studioParams);
-      console.log("✓ Studio-E-Mail gesendet an:", studioParams.to_email, "Status:", studioResult.status, studioResult.text);
+      console.log("✓ Studio-E-Mail gesendet. Status:", studioResult.status, studioResult.text);
 
       // ── Customer confirmation — always to the client
       try {
         const clientEmail = booking.email;
         const customerParams = {
-          ...bookingParams,
-          to_email:     clientEmail,
-          confirm_link: undefined,
-          reject_link:  undefined,
+          to_email:        clientEmail,
+          booking_id:      booking.id,
+          client_name:     booking.name,
+          client_email:    booking.email,
+          client_phone:    booking.phone        || "—",
+          client_company:  booking.company      || "—",
+          studio_type:     booking.type         || "—",
+          booking_date:    dateStr,
+          booking_time:    timeStr,
+          booking_price:   booking.price,
+          booking_addons:  booking.addons,
+          booking_package: booking.monthlyPackage,
+          notes:           booking.notes        || "—",
         };
-        console.log("CUSTOMER TEMPLATE:", EMAILJS_CUSTOMER_TEMPLATE_ID, customerParams.to_email);
+        console.log("CUSTOMER TEMPLATE:", EMAILJS_CUSTOMER_TEMPLATE_ID, "→", customerParams.to_email);
         const customerResult = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_CUSTOMER_TEMPLATE_ID, customerParams);
         console.log("✓ Kunden-E-Mail gesendet an:", customerParams.to_email, "Status:", customerResult.status, customerResult.text);
         console.log("✓ Kunden-Bestätigungs-E-Mail gesendet");
