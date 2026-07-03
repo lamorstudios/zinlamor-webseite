@@ -1087,10 +1087,11 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 //  1. Gehe zu emailjs.com → kostenloses Konto erstellen
 //  2. Service ID, Template ID und Public Key eintragen
 // ══════════════════════════════════════════════
-const EMAILJS_SERVICE_ID  = "DEINE_SERVICE_ID";   // z.B. "service_abc123"
-const EMAILJS_TEMPLATE_ID = "DEINE_TEMPLATE_ID";  // z.B. "template_xyz789"
-const EMAILJS_PUBLIC_KEY  = "DEIN_PUBLIC_KEY";    // z.B. "abcDEFghiJKL"
-const STUDIO_EMAIL        = "deine@email.de";     // ← Deine E-Mail-Adresse eintragen
+const EMAILJS_SERVICE_ID  = "zinlamor_booking";
+const EMAILJS_TEMPLATE_ID = "template_1d3s9mj";
+const EMAILJS_PUBLIC_KEY  = "g8L8-qy2CJxYGV-dn";
+const EMAILJS_CUSTOMER_TEMPLATE_ID = "template_7ebmpce"; // ← In EmailJS separates Template erstellen und ID eintragen
+const STUDIO_EMAIL        = "info@zinlamor.de";gen
 
 const EMAILJS_CONFIGURED = 
   EMAILJS_SERVICE_ID !== "DEINE_SERVICE_ID" && 
@@ -1335,81 +1336,166 @@ document.getElementById("fType").addEventListener("change", () => {
 });
 
 // ══ SUBMIT ══
-async function handleSubmit() {
-  const name = document.getElementById("fName").value.trim();
+async async function handleSubmit() {
+  const name  = document.getElementById("fName").value.trim();
   const email = document.getElementById("fEmail").value.trim();
+  const btn   = document.getElementById("submitBtn");
 
-  // AGB check
-  if(!agbAccepted){
+  // ── AGB check
+  if (!agbAccepted) {
     const agbError = document.getElementById('agbError');
-    if(agbError) agbError.classList.add('show');
-    document.getElementById('agbWrap').scrollIntoView({behavior:'smooth', block:'center'});
+    if (agbError) agbError.classList.add('show');
+    document.getElementById('agbWrap')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     return;
   }
 
-  // Package mode: no slot required
-  if(selectedPackage) {
+  // ── Field validation
+  if (selectedPackage) {
     if (!name || !email) { alert("Bitte Name und E-Mail ausfüllen."); return; }
   } else {
-    if (!name || !email || !selectedDate || !selectedSlot) { alert("Bitte Name, E-Mail, Datum und Zeitraum ausfüllen."); return; }
+    if (!name || !email || !selectedDate || !selectedSlot) {
+      alert("Bitte Name, E-Mail, Datum und Zeitraum ausfüllen.");
+      return;
+    }
   }
 
-  const btn = document.getElementById("submitBtn");
+  // ── Loading state
   btn.disabled = true;
-  btn.textContent = "Wird gesendet…";
+  btn.textContent = "⏳ Wird gesendet…";
+
+  // ── Build booking object
+  const withProducer  = document.getElementById("producerCheck")?.checked || false;
+  const priceInfo     = selectedSlot ? getPrice(selectedSlot.dur, withProducer) : { total: 0 };
+  const addonInfo     = typeof getAddonTotal === "function" ? getAddonTotal() : { total: 0, label: "" };
+  const reelsTotal    = typeof getReelsTotal === "function" ? getReelsTotal() : 0;
+  const grandTotal    = (priceInfo.total + addonInfo.total + reelsTotal).toFixed(2).replace(".", ",");
 
   const booking = {
-    id: Date.now().toString(),
-    date: dateKey(selectedDate),
-    start: selectedSlot.start,
-    end: selectedSlot.end,
-    slotLabel: selectedSlot.label,
-    dur: selectedSlot.dur,
+    id:             Date.now().toString(),
+    date:           selectedDate ? dateKey(selectedDate) : "—",
+    start:          selectedSlot ? selectedSlot.start : 0,
+    end:            selectedSlot ? selectedSlot.end   : 0,
+    slotLabel:      selectedSlot ? selectedSlot.label : (selectedPackage ? "Monatspaket" : "—"),
+    dur:            selectedSlot ? selectedSlot.dur   : 0,
     name,
     email,
-    phone: document.getElementById("fPhone").value.trim(),
-    company: document.getElementById("fCompany").value.trim(),
-    type: document.getElementById("fType").value,
-    notes: document.getElementById("fNotes").value.trim(),
-    status: "pending",
-    createdAt: new Date().toISOString()
+    phone:          document.getElementById("fPhone").value.trim(),
+    company:        document.getElementById("fCompany").value.trim(),
+    type:           document.getElementById("fType").value + (withProducer ? " + Produzent Nick (Lamor)" : ""),
+    notes:          document.getElementById("fNotes").value.trim(),
+    price:          grandTotal + " €",
+    addons:         addonInfo.label || "—",
+    monthlyPackage: selectedPackage
+      ? selectedPackage.name + " — " + selectedPackage.price + "€/Monat · " + selectedPackage.hours + " Std."
+      : "—",
+    status:         "pending",
+    createdAt:      new Date().toISOString()
   };
 
-  // Save to storage
+  // ── Save locally
   bookings.push(booking);
   await saveBookings(bookings);
 
-  // Send E-Mail via EmailJS if configured
+  // ── Readable strings
+  const dateStr = selectedDate
+    ? formatDE(selectedDate) + " · " + DOW_LONG[(selectedDate.getDay() + 6) % 7]
+    : "Monatspaket — kein fixer Termin";
+  const timeStr = selectedSlot
+    ? booking.slotLabel + " (" + booking.dur + " Std.)"
+    : (selectedPackage ? selectedPackage.name : "—");
+  const baseUrl = window.location.origin + window.location.pathname;
+
+  // ── EmailJS — Studio notification
   if (EMAILJS_CONFIGURED) {
     try {
-      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-        to_email: STUDIO_EMAIL,
-        booking_id: booking.id,
-        client_name: booking.name,
-        client_email: booking.email,
-        client_phone: booking.phone || "—",
-        client_company: booking.company || "—",
-        studio_type: booking.type,
-        booking_date: formatDE(selectedDate) + " · " + DOW_LONG[(selectedDate.getDay()+6)%7],
-        booking_time: booking.slotLabel + " (" + booking.dur + " Std.)",
-        notes: booking.notes || "—",
-        confirm_link: window.location.href + "?confirm=" + booking.id,
-        reject_link: window.location.href + "?reject=" + booking.id,
-      });
-    } catch(e) { console.warn("EmailJS error:", e); }
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          to_email:        STUDIO_EMAIL,
+          booking_id:      booking.id,
+          client_name:     booking.name,
+          client_email:    booking.email,
+          client_phone:    booking.phone   || "—",
+          client_company:  booking.company || "—",
+          studio_type:     booking.type    || "—",
+          booking_date:    dateStr,
+          booking_time:    timeStr,
+          booking_price:   booking.price,
+          booking_addons:  booking.addons,
+          booking_package: booking.monthlyPackage,
+          notes:           booking.notes   || "—",
+          confirm_link:    baseUrl + "?confirm=" + booking.id,
+          reject_link:     baseUrl + "?reject="  + booking.id,
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+      console.log("✓ Studio-E-Mail gesendet");
+
+      // ── EmailJS — Customer confirmation (separate template, no admin links)
+      try {
+        await emailjs.send(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_CUSTOMER_TEMPLATE_ID,
+          {
+            to_email:        booking.email,
+            client_name:     booking.name,
+            client_email:    booking.email,
+            client_phone:    booking.phone   || "—",
+            client_company:  booking.company || "—",
+            studio_type:     booking.type    || "—",
+            booking_date:    dateStr,
+            booking_time:    timeStr,
+            booking_price:   booking.price,
+            booking_addons:  booking.addons,
+            booking_package: booking.monthlyPackage,
+            notes:           booking.notes   || "—",
+          }
+        );
+        console.log("✓ Kunden-Bestätigungs-E-Mail gesendet");
+      } catch (e2) {
+        console.warn("Kunden-E-Mail Fehler:", e2);
+      }
+
+    } catch (e) {
+      console.error("EmailJS Fehler:", e);
+      btn.disabled = false;
+      btn.textContent = "Anfrage absenden →";
+      alert("❌ E-Mail konnte nicht gesendet werden. Bitte versuche es erneut oder kontaktiere uns direkt unter info@zinlamor.de");
+      return;
+    }
+  } else {
+    console.warn("EmailJS nicht konfiguriert — Buchung nur lokal gespeichert.");
+    // Still proceed — booking is saved locally
   }
 
+  // ── Success
   btn.disabled = false;
   btn.textContent = "Anfrage absenden →";
-  document.getElementById("successOverlay").classList.add("show");
-  
-  // Reset
-  selectedSlot = null;
-  document.getElementById("fName").value = "";
-  document.getElementById("fEmail").value = "";
-  document.getElementById("fPhone").value = "";
-  document.getElementById("fCompany").value = "";
-  document.getElementById("fNotes").value = "";
+  document.getElementById("successOverlay")?.classList.add("show");
+
+  // ── Reset form fully
+  selectedSlot    = null;
+  selectedPackage = null;
+  agbAccepted     = false;
+  document.getElementById("agbWrap")?.classList.remove("checked");
+  if (typeof clearPackage === "function") clearPackage();
+  ["fName","fEmail","fPhone","fCompany","fNotes"].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = "";
+  });
+  const fType = document.getElementById("fType");
+  if (fType) fType.selectedIndex = 0;
+  const producerCheck = document.getElementById("producerCheck");
+  if (producerCheck) producerCheck.checked = false;
+  const mixCheck    = document.getElementById("mixCheck");
+  const masterCheck = document.getElementById("masterCheck");
+  const bundleCheck = document.getElementById("bundleCheck");
+  const reelsCheck  = document.getElementById("reelsCheck");
+  [mixCheck, masterCheck, bundleCheck, reelsCheck].forEach(el => { if (el) el.checked = false; });
+  if (typeof updateAddons === "function") updateAddons();
+  document.getElementById("priceDisplay")?.style.setProperty("display", "none");
+  document.getElementById("earlyBirdBox")?.classList.remove("show");
   document.getElementById("formWrap").style.display = "none";
   renderCalendar();
   renderBookings();
