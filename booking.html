@@ -1523,7 +1523,15 @@ const SUPABASE_KEY = "sb_publishable_wr627FBTkhEubmd0jclQmA_1JlrLGKw"; // ← Ei
 const DB_TABLE     = "bookings";
 
 async function dbFetch(method, path, body) {
-  const res = await fetch(SUPABASE_URL + "/rest/v1/" + path, {
+  const fullURL = SUPABASE_URL + "/rest/v1/" + path;
+  const payload = body ? JSON.stringify(body) : undefined;
+
+  if (method === "POST") {
+    console.log("Supabase POST →", fullURL);
+    console.log("Supabase payload:", body);
+  }
+
+  const res = await fetch(fullURL, {
     method,
     headers: {
       "apikey":        SUPABASE_KEY,
@@ -1531,13 +1539,24 @@ async function dbFetch(method, path, body) {
       "Content-Type":  "application/json",
       "Prefer":        method === "POST" ? "return=representation" : "return=minimal",
     },
-    body: body ? JSON.stringify(body) : undefined,
+    body: payload,
   });
-  if (!res.ok) { console.warn("DB error:", await res.text()); return null; }
-  return res.status === 204 ? null : res.json();
+
+  const responseText = await res.text();
+
+  if (!res.ok) {
+    console.error("Supabase error " + res.status + ":", responseText);
+    throw new Error("Supabase " + res.status + ": " + responseText);
+  }
+
+  if (method === "POST") {
+    console.log("Supabase response " + res.status + ":", responseText);
+  }
+
+  return res.status === 204 ? null : JSON.parse(responseText);
 }
 
-const SUPABASE_CONFIGURED = SUPABASE_URL !== "DEINE_SUPABASE_URL";
+const SUPABASE_CONFIGURED = typeof SUPABASE_URL === "string" && SUPABASE_URL.includes("supabase.co") && typeof SUPABASE_KEY === "string" && SUPABASE_KEY.length > 10;
 
 
 const EMAILJS_CONFIGURED =
@@ -1572,31 +1591,41 @@ async function saveBookings(b) {
 }
 
 async function saveBookingToDB(booking) {
-  if (!SUPABASE_CONFIGURED) return;
+  if (!SUPABASE_CONFIGURED) {
+    console.warn("Supabase nicht konfiguriert — skip DB save");
+    return;
+  }
+  console.log("Supabase: speichere Buchung", booking.id);
+  const data = {
+    id:          booking.id,
+    date:        booking.date,
+    start_time:  booking.start   ?? null,
+    end_time:    booking.end     ?? null,
+    slot_label:  booking.slotLabel || null,
+    duration:    booking.dur     ?? null,
+    name:        booking.name    || null,
+    email:       booking.email   || null,
+    phone:       booking.phone   || null,
+    company:     booking.company || null,
+    studio_type: booking.type    || null,
+    notes:       booking.notes   || null,
+    price:       booking.price   || null,
+    addons:      booking.addons  || null,
+    package:     booking.monthlyPackage || null,
+    status:      "pending",
+    created_at:  booking.createdAt,
+  };
   try {
-    await dbFetch("POST", DB_TABLE, {
-      id:          booking.id,
-      date:        booking.date,
-      start_time:  booking.start,
-      end_time:    booking.end,
-      slot_label:  booking.slotLabel,
-      duration:    booking.dur,
-      name:        booking.name,
-      email:       booking.email,
-      phone:       booking.phone,
-      company:     booking.company,
-      studio_type: booking.type,
-      notes:       booking.notes,
-      price:       booking.price,
-      addons:      booking.addons,
-      package:     booking.monthlyPackage,
-      status:      "pending",
-      created_at:  booking.createdAt,
-    });
-    console.log("✓ Buchung in Supabase gespeichert");
-  } catch(e) { console.warn("Supabase saveBooking error:", e); }
+    const result = await dbFetch("POST", DB_TABLE, data);
+    console.log("✓ Buchung in Supabase gespeichert:", result);
+  } catch(e) {
+    console.error("Supabase error:", e.message);
+    // Don't block user — EmailJS already sent
+  }
 }
 
+// Stub so old code doesn't break
+function _saveDB_stub() { /**/ }
 // ══ TIME SLOTS (08:00–22:00, min 3h) ══
 // 24/7 — all 24 start hours, min 3h, max 10h duration
 const ALL_SLOTS = [];
