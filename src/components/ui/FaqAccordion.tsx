@@ -15,7 +15,7 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
   const baseId = useId();
 
   return (
-    <div className="divide-y divide-sand/50 rounded-2xl border border-sand/50 bg-cream-soft">
+    <div className="divide-y divide-stone/50 rounded-2xl border border-stone/50 bg-paper-light">
       {items.map((item, i) => {
         const isOpen = open === i;
         const btnId = `${baseId}-btn-${i}`;
@@ -31,10 +31,10 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
                 onClick={() => setOpen(isOpen ? null : i)}
                 className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
               >
-                <span className="font-serif text-fluid-base font-semibold text-burgundy">{item.q}</span>
+                <span className="font-display text-fluid-base font-semibold text-ink">{item.q}</span>
                 <ChevronDown
                   className={cn(
-                    'h-5 w-5 flex-none text-terracotta transition-transform duration-300',
+                    'h-5 w-5 flex-none text-muted transition-transform duration-300',
                     isOpen && 'rotate-180'
                   )}
                   aria-hidden
@@ -46,7 +46,7 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
               role="region"
               aria-labelledby={btnId}
               hidden={!isOpen}
-              className="px-5 pb-5 text-fluid-base leading-relaxed text-charcoal/75"
+              className="px-5 pb-5 text-fluid-base leading-relaxed text-ink/75"
             >
               {item.a}
             </div>

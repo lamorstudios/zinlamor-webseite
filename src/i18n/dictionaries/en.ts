@@ -48,22 +48,21 @@ const en: Partial<Dictionary> = {
   'hours.restday': 'Closed',
   'hours.title': 'Opening hours',
 
-  'hero.headline': 'Spain begins at the table.',
-  'hero.subline':
-    'Authentic Spanish cuisine, lively evenings and the feeling of being somewhere else for a few hours.',
-  'hero.scroll': 'Discover more',
+  'hero.headline': 'Made for long nights.',
+  'hero.subline': 'Tapas, drinks and nights that run late. In Munich and Mallorca.',
+  'hero.scroll': 'Scroll',
 
-  'intro.eyebrow': 'Bar de Tapas & Restaurant',
-  'intro.headline': 'More than tapas.',
+  'intro.eyebrow': 'Bar de Tapas',
+  'intro.headline': 'Good food is shared.',
   'intro.text':
-    'La Tasca Flamenca is a place for long evenings, full tables and Spanish joie de vivre. Spanish food is made for sharing — small plates, long conversations and evenings that end later than planned.',
+    'Small plates, long conversations, nights that end later than planned. Spanish food without the clichés.',
 
-  'locations.eyebrow': 'Our locations',
-  'locations.headline': 'Four places, one feeling.',
+  'locations.eyebrow': 'Locations',
+  'locations.headline': 'Four places. One feeling.',
   'locations.subline': 'Munich and Mallorca — find the table nearest to you.',
 
-  'dishes.eyebrow': 'From the kitchen',
-  'dishes.headline': 'Small plates, long evenings.',
+  'dishes.eyebrow': 'Menu',
+  'dishes.headline': 'Small plates. Long nights.',
 
   'finalCta.headline': 'Your table is waiting.',
   'finalCta.text': 'Pick a location and reserve your evening.',

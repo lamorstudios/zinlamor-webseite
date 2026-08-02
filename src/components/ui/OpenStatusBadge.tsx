@@ -29,13 +29,13 @@ export function OpenStatusBadge({ location, light = false }: { location: Locatio
     <span
       className={cn(
         'inline-flex items-center gap-1.5 text-fluid-sm',
-        light ? 'text-cream/85' : 'text-charcoal/75'
+        light ? 'text-paper/85' : 'text-ink/75'
       )}
     >
       <span
         className={cn(
           'inline-block h-2 w-2 flex-none rounded-full',
-          status.isOpen ? 'bg-emerald-500' : 'bg-terracotta'
+          status.isOpen ? 'bg-emerald-500' : 'bg-muted'
         )}
         aria-hidden
       />

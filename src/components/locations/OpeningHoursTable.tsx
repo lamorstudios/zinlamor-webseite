@@ -32,19 +32,19 @@ export function OpeningHoursTable({ location }: { location: Location }) {
             <tr
               key={day}
               className={cn(
-                'border-b border-sand/40 last:border-0',
-                isToday && 'font-medium text-burgundy'
+                'border-b border-stone/40 last:border-0',
+                isToday && 'font-medium text-ink'
               )}
             >
               <th scope="row" className="py-2 text-left font-normal">
                 <span className={cn(isToday && 'font-semibold')}>
                   {WEEKDAY_LABELS[day][locale]}
-                  {isToday && <span className="ml-2 text-fluid-sm text-terracotta">· {t('hours.today')}</span>}
+                  {isToday && <span className="ml-2 text-fluid-sm text-muted">· {t('hours.today')}</span>}
                 </span>
               </th>
               <td className="py-2 text-right tabular-nums">
                 {closed ? (
-                  <span className="text-charcoal/50">{t('hours.restday')}</span>
+                  <span className="text-ink/50">{t('hours.restday')}</span>
                 ) : (
                   `${h!.open}–${h!.close}`
                 )}

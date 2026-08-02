@@ -36,7 +36,7 @@ export function LanguageSwitcher({ light = false }: { light?: boolean }) {
         aria-label={t('a11y.langSwitch')}
         className={cn(
           'inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-fluid-sm font-medium transition-colors',
-          light ? 'text-cream/90 hover:text-cream' : 'text-charcoal/80 hover:text-burgundy'
+          light ? 'text-paper/90 hover:text-paper' : 'text-ink/80 hover:text-ink'
         )}
       >
         <Globe className="h-4 w-4" strokeWidth={1.75} aria-hidden />
@@ -45,7 +45,7 @@ export function LanguageSwitcher({ light = false }: { light?: boolean }) {
       {open && (
         <ul
           role="listbox"
-          className="absolute right-0 top-full z-50 mt-2 min-w-[10rem] overflow-hidden rounded-xl border border-sand/50 bg-cream-soft py-1 shadow-soft"
+          className="absolute right-0 top-full z-50 mt-2 min-w-[10rem] overflow-hidden rounded-xl border border-stone/50 bg-paper-light py-1 shadow-soft"
         >
           {locales.map((l) => (
             <li key={l} role="option" aria-selected={l === locale}>
@@ -56,8 +56,8 @@ export function LanguageSwitcher({ light = false }: { light?: boolean }) {
                   setOpen(false);
                 }}
                 className={cn(
-                  'flex w-full items-center justify-between gap-3 px-4 py-2 text-left text-fluid-sm transition-colors hover:bg-sand/30',
-                  l === locale ? 'text-burgundy font-medium' : 'text-charcoal/80'
+                  'flex w-full items-center justify-between gap-3 px-4 py-2 text-left text-fluid-sm transition-colors hover:bg-stone/30',
+                  l === locale ? 'text-ink font-medium' : 'text-ink/80'
                 )}
               >
                 {localeNames[l]}

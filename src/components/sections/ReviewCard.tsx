@@ -16,9 +16,9 @@ export interface Review {
  */
 export function ReviewCard({ review }: { review: Review }) {
   return (
-    <figure className="flex h-full flex-col rounded-2xl border border-sand/50 bg-cream-soft p-6">
+    <figure className="flex h-full flex-col rounded-2xl border border-stone/50 bg-paper-light p-6">
       {typeof review.rating === 'number' && (
-        <div className="mb-3 flex gap-1 text-brass" aria-label={`${review.rating} von 5 Sternen`}>
+        <div className="mb-3 flex gap-1 text-muted" aria-label={`${review.rating} von 5 Sternen`}>
           {Array.from({ length: 5 }).map((_, i) => (
             <Star
               key={i}
@@ -28,23 +28,23 @@ export function ReviewCard({ review }: { review: Review }) {
           ))}
         </div>
       )}
-      <blockquote className="flex-1 text-fluid-base leading-relaxed text-charcoal/85">
+      <blockquote className="flex-1 text-fluid-base leading-relaxed text-ink/85">
         “{review.quote}”
       </blockquote>
       <figcaption className="mt-4 flex items-center justify-between gap-2 text-fluid-sm">
-        <span className="font-medium text-burgundy">{review.author}</span>
+        <span className="font-medium text-ink">{review.author}</span>
         {review.url ? (
           <a
             href={review.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-charcoal/55 hover:text-terracotta"
+            className="inline-flex items-center gap-1 text-ink/55 hover:text-muted"
           >
             {review.source}
             <ExternalLink className="h-3.5 w-3.5" aria-hidden />
           </a>
         ) : (
-          <span className="text-charcoal/55">{review.source}</span>
+          <span className="text-ink/55">{review.source}</span>
         )}
       </figcaption>
     </figure>

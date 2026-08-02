@@ -21,13 +21,13 @@ export default function CareersPage() {
           { label: 'Karriere', href: '/karriere' },
         ]}
       />
-      <section className="section bg-cream">
+      <section className="section bg-paper">
         <div className="container-content max-w-prose">
-          <p className="text-fluid-lg leading-relaxed text-charcoal/80">
+          <p className="text-fluid-lg leading-relaxed text-ink/80">
             Wir suchen Menschen, die spanische Gastfreundschaft leben – in Service, Küche und Bar, an
             allen unseren Standorten.
           </p>
-          <p className="mt-6 rounded-lg bg-brass/10 p-3 text-fluid-sm text-charcoal/70">
+          <p className="mt-6 rounded-lg bg-muted/10 p-3 text-fluid-sm text-ink/70">
             TODO: Konkrete offene Stellen und Bewerbungsweg durch Betreiber ergänzen.
           </p>
           <a href={`mailto:${siteConfig.contactEmail}?subject=Initiativbewerbung`} className="btn-primary mt-8">

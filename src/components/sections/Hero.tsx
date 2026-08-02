@@ -2,92 +2,84 @@
 
 import Link from 'next/link';
 import { motion, useReducedMotion } from 'framer-motion';
-import { ChevronDown, CalendarCheck, MapPin } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useT } from '@/i18n/LanguageProvider';
 
 /**
- * Startseiten-Hero. Großflächig, dunkles Overlay für Lesbarkeit.
+ * Startseiten-Hero — editorial, reduziert.
+ * Vollflächige Bild-/Video-Fläche (Soft-Black) mit kontrolliertem Overlay,
+ * übergroße Headline, minimaler Text, klare CTAs.
  *
- * VIDEO-HINTERGRUND (optional, später):
- *   - Datei nach /public/videos/hero.mp4 + Posterbild /public/images/hero/hero-poster.jpg
- *   - <video>-Block unten einkommentieren (autoPlay muted playsInline loop poster=…)
- *   - Bei prefers-reduced-motion NUR das Posterbild anzeigen (bereits berücksichtigt).
+ * VIDEO (optional, später): /public/videos/hero.mp4 + Poster; <video>-Block
+ * unten einkommentieren. Bei prefers-reduced-motion nur Poster zeigen.
  */
 export function Hero() {
   const t = useT();
   const reduce = useReducedMotion();
 
   return (
-    <section className="relative flex min-h-[100svh] items-end overflow-hidden bg-burgundy-deep text-cream-soft">
-      {/* Hintergrund-Medium (Platzhalter). TODO: echtes Hero-Bild/Video einsetzen. */}
+    <section className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden bg-ink-dark text-paper-light">
+      {/* Hintergrund-Medium (Platzhalter) */}
       <div aria-hidden className="absolute inset-0">
         {/* <video autoPlay muted loop playsInline poster="/images/hero/hero-poster.jpg"
                  className="h-full w-full object-cover"><source src="/videos/hero.mp4" type="video/mp4" /></video> */}
-        <div className="h-full w-full bg-gradient-to-br from-burgundy-deep via-burgundy-dark to-charcoal" />
-        <div
-          className="absolute inset-0 opacity-[0.15]"
-          style={{
-            backgroundImage:
-              'radial-gradient(circle at 25% 30%, #c9a24b 0.6px, transparent 1.2px), radial-gradient(circle at 75% 65%, #c26a49 0.6px, transparent 1.2px)',
-            backgroundSize: '34px 34px, 26px 26px',
-          }}
-        />
+        <div className="h-full w-full bg-ink-dark" />
+        <div className="absolute inset-0 bg-[radial-gradient(120%_120%_at_50%_-10%,rgba(255,255,255,0.06),transparent_55%)]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink-dark via-ink-dark/20 to-transparent" />
       </div>
-      {/* Overlay für Kontrast */}
-      <div
-        aria-hidden
-        className="absolute inset-0 bg-gradient-to-t from-burgundy-deep via-burgundy-deep/40 to-burgundy-deep/20"
-      />
 
-      <div className="container-content relative z-10 pb-24 pt-40 sm:pb-28 lg:pb-32">
-        <div className="max-w-3xl">
-          <motion.p
-            initial={{ opacity: 0, y: reduce ? 0 : 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="anim-reveal eyebrow text-brass-light before:bg-brass-light/60"
-          >
-            {t('intro.eyebrow')}
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: reduce ? 0 : 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-            className="anim-reveal mt-4 font-serif text-fluid-hero font-semibold leading-[0.98] tracking-tight"
-          >
-            {t('hero.headline')}
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: reduce ? 0 : 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
-            className="anim-reveal mt-6 max-w-xl text-fluid-lg leading-relaxed text-cream/85"
-          >
-            {t('hero.subline')}
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: reduce ? 0 : 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.28, ease: [0.16, 1, 0.3, 1] }}
-            className="anim-reveal mt-9 flex flex-col gap-3 sm:flex-row"
-          >
-            <Link href="/reservierung" className="btn-gold">
-              <CalendarCheck className="h-4 w-4" aria-hidden />
+      <div className="container-content relative z-10 pb-16 pt-40 sm:pb-20 lg:pb-24">
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="anim-reveal eyebrow text-muted-light"
+        >
+          {t('intro.eyebrow')}
+        </motion.p>
+
+        <h1 className="anim-reveal mt-5 max-w-[16ch] text-fluid-hero font-semibold leading-[0.92] tracking-tightest">
+          <span className="block overflow-hidden pb-[0.1em]">
+            <motion.span
+              className="block"
+              initial={{ y: reduce ? 0 : '110%' }}
+              animate={{ y: 0 }}
+              transition={{ duration: 1, delay: 0.15, ease: [0.65, 0.05, 0, 1] }}
+            >
+              {t('hero.headline')}
+            </motion.span>
+          </span>
+        </h1>
+
+        <motion.div
+          initial={{ opacity: 0, y: reduce ? 0 : 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="anim-reveal mt-10 flex flex-col gap-8 border-t border-line-light pt-8 sm:flex-row sm:items-center sm:justify-between"
+        >
+          <p className="max-w-md text-fluid-base text-paper/70">{t('hero.subline')}</p>
+          <div className="flex flex-none items-center gap-6">
+            <Link href="/reservierung" className="btn-gold group">
               {t('action.reserve')}
+              <ArrowRight
+                className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                aria-hidden
+              />
             </Link>
-            <Link href="/standorte" className="btn-outline-light">
-              <MapPin className="h-4 w-4" aria-hidden />
+            <Link
+              href="/standorte"
+              className="link-underline text-fluid-sm font-medium text-paper-light"
+            >
               {t('action.discoverLocation')}
             </Link>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
 
-      {/* Scroll-Anzeige */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-6 z-10 flex justify-center">
-        <span className="flex flex-col items-center gap-1 text-cream/60">
-          <span className="text-[0.65rem] uppercase tracking-[0.3em]">{t('hero.scroll')}</span>
-          <ChevronDown className="h-4 w-4 motion-safe:animate-scroll-hint" aria-hidden />
+      {/* Scroll-Anzeige (Desktop) */}
+      <div className="pointer-events-none absolute bottom-8 right-8 z-10 hidden lg:block">
+        <span className="text-[0.65rem] uppercase tracking-label text-paper/40">
+          {t('hero.scroll')}
         </span>
       </div>
     </section>

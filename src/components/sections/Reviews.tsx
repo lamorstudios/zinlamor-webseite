@@ -24,7 +24,7 @@ export function Reviews() {
   const hasReviews = realReviews.length > 0;
 
   return (
-    <section className="section bg-cream">
+    <section className="section bg-paper">
       <div className="container-content">
         <SectionHeading
           eyebrow={t('reviews.eyebrow')}
@@ -41,19 +41,19 @@ export function Reviews() {
             ))}
           </div>
         ) : (
-          <div className="mx-auto mt-10 max-w-2xl rounded-2xl border border-dashed border-sand/70 bg-cream-soft p-8 text-center">
-            <div className="mb-3 flex justify-center gap-1 text-brass" aria-hidden>
+          <div className="mx-auto mt-10 max-w-2xl rounded-2xl border border-dashed border-stone/70 bg-paper-light p-8 text-center">
+            <div className="mb-3 flex justify-center gap-1 text-muted" aria-hidden>
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star key={i} className="h-5 w-5 fill-current" />
               ))}
             </div>
-            <p className="text-fluid-base text-charcoal/70">{t('reviews.placeholder')}</p>
+            <p className="text-fluid-base text-ink/70">{t('reviews.placeholder')}</p>
             <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <a
                 href="https://www.google.com/maps/search/La+Tasca+Flamenca"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-outline text-charcoal/80"
+                className="btn-outline text-ink/80"
               >
                 {t('reviews.openGoogle')}
                 <ExternalLink className="h-4 w-4" aria-hidden />
@@ -62,7 +62,7 @@ export function Reviews() {
                 href={siteConfig.social.tripadvisor}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-outline text-charcoal/80"
+                className="btn-outline text-ink/80"
               >
                 {t('reviews.openTripadvisor')}
                 <ExternalLink className="h-4 w-4" aria-hidden />

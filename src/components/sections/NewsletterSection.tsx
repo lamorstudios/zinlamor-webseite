@@ -7,7 +7,7 @@ import { Reveal } from '@/components/motion/Reveal';
 export function NewsletterSection() {
   const t = useT();
   return (
-    <section className="relative overflow-hidden bg-burgundy text-cream-soft">
+    <section className="relative overflow-hidden bg-ink text-paper-light">
       <div
         aria-hidden
         className="absolute inset-0 opacity-[0.1]"
@@ -20,17 +20,17 @@ export function NewsletterSection() {
       <div className="container-content relative z-10 py-section">
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
-            <span className="eyebrow text-brass-light before:bg-brass-light/60">
+            <span className="eyebrow text-stone before:bg-stone/60">
               {t('newsletter.eyebrow')}
             </span>
           </Reveal>
           <Reveal delay={0.06}>
-            <h2 className="mt-4 font-serif text-fluid-2xl font-semibold text-cream-soft">
+            <h2 className="mt-4 font-display text-fluid-2xl font-semibold text-paper-light">
               {t('newsletter.headline')}
             </h2>
           </Reveal>
           <Reveal delay={0.12}>
-            <p className="mx-auto mt-3 max-w-md text-fluid-base text-cream/80">
+            <p className="mx-auto mt-3 max-w-md text-fluid-base text-paper/80">
               {t('newsletter.text')}
             </p>
           </Reveal>

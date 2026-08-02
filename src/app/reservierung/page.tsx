@@ -21,7 +21,7 @@ export default function ReservierungPage() {
           { label: 'Tisch reservieren', href: '/reservierung' },
         ]}
       />
-      <section className="section bg-cream">
+      <section className="section bg-paper">
         <div className="container-content">
           <LocationSelector mode="reserve" />
         </div>

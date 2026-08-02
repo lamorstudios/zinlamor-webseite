@@ -26,36 +26,36 @@ export default function KontaktPage() {
         ]}
       />
 
-      <section className="section bg-cream">
+      <section className="section bg-paper">
         <div className="container-content">
           <div className="mb-10 grid gap-4 sm:grid-cols-2">
             <a
               href={`mailto:${siteConfig.contactEmail}`}
-              className="flex items-center gap-4 rounded-2xl border border-sand/50 bg-cream-soft p-5 transition-colors hover:border-terracotta/50"
+              className="flex items-center gap-4 rounded-2xl border border-stone/50 bg-paper-light p-5 transition-colors hover:border-muted/50"
             >
-              <span className="flex h-11 w-11 flex-none items-center justify-center rounded-full bg-burgundy/10 text-burgundy">
+              <span className="flex h-11 w-11 flex-none items-center justify-center rounded-full bg-ink/10 text-ink">
                 <Mail className="h-5 w-5" aria-hidden />
               </span>
               <span>
-                <span className="block text-fluid-sm text-charcoal/55">Allgemeine Anfragen</span>
-                <span className="block font-medium text-burgundy">{siteConfig.contactEmail}</span>
+                <span className="block text-fluid-sm text-ink/55">Allgemeine Anfragen</span>
+                <span className="block font-medium text-ink">{siteConfig.contactEmail}</span>
               </span>
             </a>
             <a
               href={callHref(locations[0])}
-              className="flex items-center gap-4 rounded-2xl border border-sand/50 bg-cream-soft p-5 transition-colors hover:border-terracotta/50"
+              className="flex items-center gap-4 rounded-2xl border border-stone/50 bg-paper-light p-5 transition-colors hover:border-muted/50"
             >
-              <span className="flex h-11 w-11 flex-none items-center justify-center rounded-full bg-burgundy/10 text-burgundy">
+              <span className="flex h-11 w-11 flex-none items-center justify-center rounded-full bg-ink/10 text-ink">
                 <Phone className="h-5 w-5" aria-hidden />
               </span>
               <span>
-                <span className="block text-fluid-sm text-charcoal/55">{locations[0].shortName}</span>
-                <span className="block font-medium text-burgundy">{locations[0].phone}</span>
+                <span className="block text-fluid-sm text-ink/55">{locations[0].shortName}</span>
+                <span className="block font-medium text-ink">{locations[0].phone}</span>
               </span>
             </a>
           </div>
 
-          <h2 className="mb-6 font-serif text-fluid-xl font-semibold text-burgundy">Alle Standorte</h2>
+          <h2 className="mb-6 font-display text-fluid-xl font-semibold text-ink">Alle Standorte</h2>
           <LocationsGrid />
         </div>
       </section>

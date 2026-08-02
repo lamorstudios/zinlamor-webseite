@@ -3,36 +3,31 @@
 @tailwind utilities;
 
 /* =========================================================================
-   Design Tokens — La Tasca Flamenca
-   Farbwelt als CSS-Variablen (gespiegelt in tailwind.config.ts)
+   Design Tokens — La Tasca Flamenca (editorial redesign)
    ========================================================================= */
 :root {
-  --burgundy: #5c1524;
-  --burgundy-dark: #3f0e19;
-  --burgundy-deep: #2a0910;
-  --terracotta: #c26a49;
-  --cream: #f6efe3;
-  --cream-soft: #fbf7ef;
-  --sand: #e3d4b8;
-  --charcoal: #20191a;
-  --brass: #c9a24b;
+  --paper: #f4f2ed;
+  --paper-light: #faf8f3;
+  --paper-dark: #ece9e2;
+  --ink: #151515;
+  --ink-dark: #0d0d0d;
+  --stone: #dbd6cc;
+  --muted: #77736d;
+  --accent: #8d3b32;
+  --line: rgba(21, 21, 21, 0.12);
 
   color-scheme: light;
 }
 
 @layer base {
-  * {
-    @apply border-sand/40;
-  }
-
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
   }
 
   body {
-    @apply bg-cream text-charcoal font-sans antialiased;
-    font-feature-settings: 'kern', 'liga';
+    @apply bg-paper text-ink font-sans antialiased;
+    font-feature-settings: 'kern', 'ss01';
     overflow-x: hidden;
   }
 
@@ -40,7 +35,8 @@
   h2,
   h3,
   h4 {
-    @apply font-serif;
+    @apply font-display;
+    letter-spacing: -0.03em;
     text-wrap: balance;
   }
 
@@ -48,90 +44,92 @@
     text-wrap: pretty;
   }
 
-  /* Sichtbarer Fokus für Tastaturbedienung */
   :focus-visible {
-    outline: 2px solid var(--brass);
+    outline: 2px solid var(--ink);
     outline-offset: 3px;
-    border-radius: 2px;
+    border-radius: 1px;
   }
 
-  /* Auswahlfarbe */
   ::selection {
-    background: var(--terracotta);
-    color: var(--cream-soft);
+    background: var(--ink);
+    color: var(--paper-light);
   }
 }
 
 @layer components {
   .container-content {
-    @apply mx-auto w-full max-w-content px-5 sm:px-8 lg:px-12;
+    @apply mx-auto w-full max-w-content px-5 sm:px-8 lg:px-14;
   }
 
-  /* Editorial eyebrow / Kicker */
+  /* Kleines Label — Versalien, erhöhte Laufweite. Sparsam einsetzen. */
   .eyebrow {
-    @apply inline-flex items-center gap-2 text-fluid-sm font-sans font-medium uppercase tracking-[0.22em] text-terracotta;
+    @apply inline-block text-fluid-sm font-medium uppercase tracking-label text-muted;
   }
 
-  .eyebrow::before {
-    content: '';
-    @apply h-px w-8 bg-terracotta/60;
-  }
-
-  /* Buttons */
+  /* Buttons — rechteckig, kleiner Radius, reduziert. Keine Pills, keine Glows. */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-fluid-sm font-medium tracking-wide transition-all duration-300 ease-out-expo focus-visible:outline-offset-4;
-    min-height: 44px;
+    @apply inline-flex items-center justify-center gap-2 rounded-[4px] px-6 py-3.5 text-fluid-sm font-medium transition-all duration-300 ease-out-expo;
+    min-height: 48px;
   }
 
   .btn-primary {
-    @apply btn bg-burgundy text-cream-soft hover:bg-burgundy-dark hover:-translate-y-0.5 shadow-card;
+    @apply btn bg-ink text-paper-light hover:bg-ink-dark;
   }
 
+  /* Heller CTA für dunkle Flächen (ersetzt den früheren Gold-Button). */
   .btn-gold {
-    @apply btn bg-brass text-charcoal hover:bg-brass-dark hover:-translate-y-0.5;
+    @apply btn bg-paper-light text-ink hover:bg-paper;
   }
 
   .btn-outline {
-    @apply btn border border-charcoal/20 text-charcoal hover:bg-charcoal/5;
+    @apply btn border border-ink/20 text-ink hover:bg-ink/[0.04];
   }
 
   .btn-outline-light {
-    @apply btn border border-cream/40 text-cream-soft hover:bg-cream/10;
+    @apply btn border border-line-light text-paper-light hover:bg-paper/10;
   }
 
   .btn-ghost {
-    @apply btn px-4 text-charcoal hover:bg-charcoal/5;
+    @apply btn px-4 text-ink hover:bg-ink/5;
   }
 
-  /* Karten-Grundform */
   .card {
-    @apply relative overflow-hidden rounded-2xl bg-cream-soft;
+    @apply relative overflow-hidden rounded-md bg-paper-light;
   }
 
-  /* Abschnitts-Rhythmus */
   .section {
     @apply py-section;
   }
 
-  /* Bild-Reveal-Maske (ohne JS-Fallback: einfach sichtbar) */
   .img-cover {
     @apply h-full w-full object-cover;
   }
 
-  /* Link mit animierter Unterstreichung */
+  /* Editorial-Textlink mit animierter Unterstreichung */
   .link-underline {
     @apply relative inline-block;
   }
   .link-underline::after {
     content: '';
-    @apply absolute -bottom-0.5 left-0 h-px w-full origin-right scale-x-0 bg-current transition-transform duration-300 ease-out-expo;
+    @apply absolute -bottom-0.5 left-0 h-px w-full origin-right scale-x-0 bg-current transition-transform duration-500 ease-editorial;
   }
   .link-underline:hover::after {
     @apply origin-left scale-x-100;
   }
+
+  /* Feine, durchgehende Trennlinie */
+  .rule {
+    @apply border-0 border-t border-line;
+  }
 }
 
-/* Reduzierte Bewegung vollständig respektieren */
+/* Ohne JavaScript: alle Scroll-Reveals sofort sichtbar (Inhalt ohne JS lesbar). */
+.no-js .anim-reveal {
+  opacity: 1 !important;
+  transform: none !important;
+  clip-path: none !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -143,14 +141,6 @@
   }
 }
 
-/* Ohne JavaScript: alle Scroll-Reveals sofort sichtbar machen
-   (kritische Inhalte müssen ohne JS lesbar sein). */
-.no-js .anim-reveal {
-  opacity: 1 !important;
-  transform: none !important;
-}
-
-/* Utility: verstecke Scrollbar bei horizontalem Swipe-Layout */
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;

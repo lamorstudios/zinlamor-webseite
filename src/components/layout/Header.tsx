@@ -40,7 +40,7 @@ export function Header() {
           className={cn(
             'transition-all duration-500 ease-out-expo',
             solid
-              ? 'bg-cream-soft/85 shadow-[0_1px_0_rgba(92,21,36,0.08)] backdrop-blur-md supports-[backdrop-filter]:bg-cream-soft/75'
+              ? 'bg-paper-light/85 shadow-[0_1px_0_rgba(92,21,36,0.08)] backdrop-blur-md supports-[backdrop-filter]:bg-paper-light/75'
               : 'bg-transparent'
           )}
         >
@@ -61,7 +61,7 @@ export function Header() {
                       href={item.href}
                       className={cn(
                         'inline-flex items-center gap-1 rounded-full px-3.5 py-2 text-fluid-sm font-medium transition-colors',
-                        solid ? 'text-charcoal/80 hover:text-burgundy' : 'text-cream/90 hover:text-cream'
+                        solid ? 'text-ink/80 hover:text-ink' : 'text-paper/90 hover:text-paper'
                       )}
                       aria-expanded={locationsOpen}
                     >
@@ -79,7 +79,7 @@ export function Header() {
                     href={item.href}
                     className={cn(
                       'rounded-full px-3.5 py-2 text-fluid-sm font-medium transition-colors',
-                      solid ? 'text-charcoal/80 hover:text-burgundy' : 'text-cream/90 hover:text-cream'
+                      solid ? 'text-ink/80 hover:text-ink' : 'text-paper/90 hover:text-paper'
                     )}
                   >
                     {t(item.labelKey as TranslationKey)}
@@ -104,7 +104,7 @@ export function Header() {
                 aria-label={t('a11y.menuOpen')}
                 className={cn(
                   'inline-flex h-11 w-11 items-center justify-center rounded-full transition-colors lg:hidden',
-                  solid ? 'text-charcoal hover:bg-charcoal/5' : 'text-cream hover:bg-cream/10'
+                  solid ? 'text-ink hover:bg-ink/5' : 'text-paper hover:bg-paper/10'
                 )}
               >
                 <span className="sr-only">{t('a11y.menuOpen')}</span>

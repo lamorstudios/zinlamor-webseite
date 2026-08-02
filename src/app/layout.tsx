@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { fontSans, fontSerif } from './fonts';
+import { fontSans, fontDisplay } from './fonts';
 import './globals.css';
 import { siteConfig } from '@/data/site';
 import { Providers } from '@/components/providers/Providers';
@@ -55,7 +55,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="de" className={`no-js ${fontSerif.variable} ${fontSans.variable}`}>
+    <html lang="de" className={`no-js ${fontDisplay.variable} ${fontSans.variable}`}>
       <head>
         {/* Entfernt die no-js-Klasse, sobald JS läuft. Ohne JS bleiben alle
             Scroll-Reveals sichtbar (kritische Inhalte lesbar ohne JavaScript). */}

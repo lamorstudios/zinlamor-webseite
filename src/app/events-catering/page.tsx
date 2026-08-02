@@ -33,18 +33,18 @@ export default function EventsPage() {
         ]}
       />
 
-      <section className="section bg-cream">
+      <section className="section bg-paper">
         <div className="container-content">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {offers.map((o) => {
               const Icon = o.icon;
               return (
-                <div key={o.title} className="rounded-2xl border border-sand/50 bg-cream-soft p-6">
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-burgundy/10 text-burgundy">
+                <div key={o.title} className="rounded-2xl border border-stone/50 bg-paper-light p-6">
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-ink/10 text-ink">
                     <Icon className="h-5 w-5" aria-hidden />
                   </span>
-                  <h2 className="mt-4 font-serif text-fluid-lg font-semibold text-burgundy">{o.title}</h2>
-                  <p className="mt-2 text-fluid-base text-charcoal/70">{o.text}</p>
+                  <h2 className="mt-4 font-display text-fluid-lg font-semibold text-ink">{o.title}</h2>
+                  <p className="mt-2 text-fluid-base text-ink/70">{o.text}</p>
                 </div>
               );
             })}
@@ -52,18 +52,18 @@ export default function EventsPage() {
         </div>
       </section>
 
-      <section className="bg-cream-soft">
+      <section className="bg-paper-light">
         <div className="grid lg:grid-cols-2">
           <div className="relative min-h-[40vh] lg:min-h-full">
-            <Figure src="/images/events/celebration.jpg" alt="Feiern im La Tasca Flamenca" tone="burgundy" ratio="" rounded={false} className="absolute inset-0 h-full" label="Feiern & Events" />
+            <Figure src="/images/events/celebration.jpg" alt="Feiern im La Tasca Flamenca" tone="ink" ratio="" rounded={false} className="absolute inset-0 h-full" label="Feiern & Events" />
           </div>
           <div className="px-5 py-section sm:px-8 lg:px-12">
             <div className="mx-auto max-w-xl">
               <span className="eyebrow">Anfrage</span>
-              <h2 className="mt-4 font-serif text-fluid-2xl font-semibold text-burgundy">
+              <h2 className="mt-4 font-display text-fluid-2xl font-semibold text-ink">
                 Erzähl uns von deinem Anlass.
               </h2>
-              <p className="mt-3 text-fluid-base text-charcoal/70">
+              <p className="mt-3 text-fluid-base text-ink/70">
                 Wir melden uns so schnell wie möglich mit einem passenden Vorschlag.
               </p>
               <div className="mt-8">

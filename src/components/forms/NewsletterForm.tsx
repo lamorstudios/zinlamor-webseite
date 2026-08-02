@@ -37,8 +37,8 @@ export function NewsletterForm() {
 
   if (submitted) {
     return (
-      <div role="status" className="flex items-start gap-3 rounded-xl bg-cream-soft/10 p-4 text-cream/90">
-        <Info className="mt-0.5 h-5 w-5 flex-none text-brass-light" aria-hidden />
+      <div role="status" className="flex items-start gap-3 rounded-xl bg-paper-light/10 p-4 text-paper/90">
+        <Info className="mt-0.5 h-5 w-5 flex-none text-stone" aria-hidden />
         <p className="text-fluid-sm leading-snug">{t('newsletter.backendNote')}</p>
       </div>
     );
@@ -55,7 +55,7 @@ export function NewsletterForm() {
           name="firstName"
           type="text"
           placeholder={`${t('newsletter.firstName')} (${t('form.optional')})`}
-          className="w-full rounded-full border border-cream/25 bg-cream-soft/10 px-5 py-3 text-fluid-base text-cream-soft placeholder:text-cream/50 focus:border-brass-light focus:outline-none sm:w-40"
+          className="w-full rounded-full border border-paper/25 bg-paper-light/10 px-5 py-3 text-fluid-base text-paper-light placeholder:text-paper/50 focus:border-stone focus:outline-none sm:w-40"
         />
         <label className="sr-only" htmlFor="nl-email">
           {t('newsletter.email')}
@@ -68,8 +68,8 @@ export function NewsletterForm() {
           aria-invalid={Boolean(error)}
           placeholder={t('newsletter.email')}
           className={cn(
-            'w-full flex-1 rounded-full border bg-cream-soft/10 px-5 py-3 text-fluid-base text-cream-soft placeholder:text-cream/50 focus:outline-none',
-            error ? 'border-terracotta' : 'border-cream/25 focus:border-brass-light'
+            'w-full flex-1 rounded-full border bg-paper-light/10 px-5 py-3 text-fluid-base text-paper-light placeholder:text-paper/50 focus:outline-none',
+            error ? 'border-muted' : 'border-paper/25 focus:border-stone'
           )}
         />
         <button type="submit" className="btn-gold shrink-0">
@@ -77,17 +77,17 @@ export function NewsletterForm() {
           {t('newsletter.submit')}
         </button>
       </div>
-      <label className="flex items-start gap-2.5 text-fluid-sm text-cream/70">
-        <input type="checkbox" name="consent" className="mt-0.5 h-4 w-4 flex-none rounded accent-brass" />
+      <label className="flex items-start gap-2.5 text-fluid-sm text-paper/70">
+        <input type="checkbox" name="consent" className="mt-0.5 h-4 w-4 flex-none rounded accent-muted" />
         <span>
           {t('newsletter.consent')}{' '}
-          <Link href="/datenschutz" className="link-underline text-brass-light">
+          <Link href="/datenschutz" className="link-underline text-stone">
             {t('nav.privacy')}
           </Link>
         </span>
       </label>
       {error && (
-        <p role="alert" className="text-fluid-sm text-brass-light">
+        <p role="alert" className="text-fluid-sm text-stone">
           {error}
         </p>
       )}

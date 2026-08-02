@@ -2,33 +2,22 @@ import Link from 'next/link';
 import { cn } from '@/lib/cn';
 
 /**
- * Wortmarke. (Das alte Logo-Bild gehörte zu einem anderen Betrieb und wurde
- * nicht übernommen.)
- * TODO: Sobald ein finales Logo/SVG vorliegt, hier als <Image>/Inline-SVG einsetzen.
+ * Wortmarke — modern, kompakt. (Das alte Logo-Bild gehörte zu einem anderen
+ * Betrieb und wurde nicht übernommen.)
+ * TODO: Finales Logo/SVG hier einsetzen, sobald vorhanden.
  */
 export function Logo({ light = false, className }: { light?: boolean; className?: string }) {
   return (
     <Link
       href="/"
       aria-label="La Tasca Flamenca — Startseite"
-      className={cn('group inline-flex flex-col leading-none', className)}
+      className={cn(
+        'font-display text-[1.05rem] font-semibold leading-none tracking-tightest transition-colors sm:text-[1.15rem]',
+        light ? 'text-paper-light' : 'text-ink',
+        className
+      )}
     >
-      <span
-        className={cn(
-          'font-serif text-[1.35rem] font-semibold tracking-tight transition-colors sm:text-[1.55rem]',
-          light ? 'text-cream-soft' : 'text-burgundy'
-        )}
-      >
-        La Tasca Flamenca
-      </span>
-      <span
-        className={cn(
-          'text-[0.6rem] font-sans font-medium uppercase tracking-[0.35em] transition-colors',
-          light ? 'text-brass-light/90' : 'text-terracotta'
-        )}
-      >
-        Bar de Tapas
-      </span>
+      La&nbsp;Tasca&nbsp;Flamenca
     </Link>
   );
 }

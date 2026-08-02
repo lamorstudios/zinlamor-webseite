@@ -16,27 +16,27 @@ export default function DatenschutzPage() {
     <>
       <PageHero
         title="Datenschutzerklärung"
-        tone="charcoal"
+        tone="ink"
         crumbs={[{ label: 'Start', href: '/' }, { label: 'Datenschutz', href: '/datenschutz' }]}
       />
-      <section className="section bg-cream">
+      <section className="section bg-paper">
         <div className="container-content max-w-prose">
-          <div className="mb-8 flex items-start gap-3 rounded-xl border border-brass/40 bg-brass/10 p-4">
-            <AlertTriangle className="mt-0.5 h-5 w-5 flex-none text-brass-dark" aria-hidden />
-            <p className="text-fluid-sm text-charcoal/80">
+          <div className="mb-8 flex items-start gap-3 rounded-xl border border-muted/40 bg-muted/10 p-4">
+            <AlertTriangle className="mt-0.5 h-5 w-5 flex-none text-muted" aria-hidden />
+            <p className="text-fluid-sm text-ink/80">
               TODO: Rechtstexte vor Veröffentlichung anwaltlich bzw. datenschutzrechtlich prüfen lassen.
               Die folgende Fassung ist ein struktureller Platzhalter, der an die tatsächlich
               eingesetzten Dienste angepasst werden muss.
             </p>
           </div>
 
-          <div className="flex flex-col gap-6 text-fluid-base leading-relaxed text-charcoal/80">
+          <div className="flex flex-col gap-6 text-fluid-base leading-relaxed text-ink/80">
             <div>
-              <h2 className="font-serif text-fluid-lg font-semibold text-burgundy">1. Verantwortlicher</h2>
+              <h2 className="font-display text-fluid-lg font-semibold text-ink">1. Verantwortlicher</h2>
               <p className="mt-2">
                 Verantwortlich für die Datenverarbeitung auf dieser Website ist der Betreiber von{' '}
                 {siteConfig.name}. Die vollständigen Kontaktdaten findest du im{' '}
-                <Link href="/impressum" className="text-terracotta link-underline">
+                <Link href="/impressum" className="text-muted link-underline">
                   Impressum
                 </Link>
                 . (TODO: Verantwortlichen konkretisieren.)
@@ -44,7 +44,7 @@ export default function DatenschutzPage() {
             </div>
 
             <div>
-              <h2 className="font-serif text-fluid-lg font-semibold text-burgundy">
+              <h2 className="font-display text-fluid-lg font-semibold text-ink">
                 2. Hosting &amp; Server-Logfiles
               </h2>
               <p className="mt-2">
@@ -55,12 +55,12 @@ export default function DatenschutzPage() {
             </div>
 
             <div>
-              <h2 className="font-serif text-fluid-lg font-semibold text-burgundy">3. Cookies &amp; Einwilligung</h2>
+              <h2 className="font-display text-fluid-lg font-semibold text-ink">3. Cookies &amp; Einwilligung</h2>
               <p className="mt-2">
                 Wir setzen technisch notwendige Cookies ein. Einwilligungspflichtige Dienste (Statistik,
                 Marketing, externe Medien) werden erst nach deiner Zustimmung geladen. Deine Auswahl
                 kannst du jederzeit in den{' '}
-                <Link href="/cookie-einstellungen" className="text-terracotta link-underline">
+                <Link href="/cookie-einstellungen" className="text-muted link-underline">
                   Cookie-Einstellungen
                 </Link>{' '}
                 anpassen (Widerruf für die Zukunft).
@@ -68,7 +68,7 @@ export default function DatenschutzPage() {
             </div>
 
             <div>
-              <h2 className="font-serif text-fluid-lg font-semibold text-burgundy">4. Schriftarten</h2>
+              <h2 className="font-display text-fluid-lg font-semibold text-ink">4. Schriftarten</h2>
               <p className="mt-2">
                 Schriftarten werden lokal ausgeliefert (Self-Hosting via next/font). Es erfolgt kein
                 Verbindungsaufbau zu Google-Servern beim Laden der Website.
@@ -76,7 +76,7 @@ export default function DatenschutzPage() {
             </div>
 
             <div>
-              <h2 className="font-serif text-fluid-lg font-semibold text-burgundy">
+              <h2 className="font-display text-fluid-lg font-semibold text-ink">
                 5. Google Maps (externe Medien)
               </h2>
               <p className="mt-2">
@@ -88,7 +88,7 @@ export default function DatenschutzPage() {
             </div>
 
             <div>
-              <h2 className="font-serif text-fluid-lg font-semibold text-burgundy">
+              <h2 className="font-display text-fluid-lg font-semibold text-ink">
                 6. Social Media (Instagram, Facebook, TripAdvisor)
               </h2>
               <p className="mt-2">
@@ -99,7 +99,7 @@ export default function DatenschutzPage() {
             </div>
 
             <div>
-              <h2 className="font-serif text-fluid-lg font-semibold text-burgundy">
+              <h2 className="font-display text-fluid-lg font-semibold text-ink">
                 7. Kontakt- &amp; Anfrageformulare
               </h2>
               <p className="mt-2">
@@ -110,7 +110,7 @@ export default function DatenschutzPage() {
             </div>
 
             <div>
-              <h2 className="font-serif text-fluid-lg font-semibold text-burgundy">8. Newsletter</h2>
+              <h2 className="font-display text-fluid-lg font-semibold text-ink">8. Newsletter</h2>
               <p className="mt-2">
                 Für den Newsletter ist ein Double-Opt-in-Verfahren vorgesehen. (TODO: Newsletter-Dienst
                 und Verarbeitung ergänzen, sobald angebunden.)
@@ -118,7 +118,7 @@ export default function DatenschutzPage() {
             </div>
 
             <div>
-              <h2 className="font-serif text-fluid-lg font-semibold text-burgundy">9. Deine Rechte</h2>
+              <h2 className="font-display text-fluid-lg font-semibold text-ink">9. Deine Rechte</h2>
               <p className="mt-2">
                 Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung,
                 Datenübertragbarkeit und Widerspruch sowie ein Beschwerderecht bei einer

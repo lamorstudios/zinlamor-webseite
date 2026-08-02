@@ -19,18 +19,18 @@ export function InstagramConsent() {
   const { openSettings } = useConsent();
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-sand/50 bg-cream p-8 text-center">
-      <span className="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-burgundy/10 text-burgundy">
+    <div className="overflow-hidden rounded-2xl border border-stone/50 bg-paper p-8 text-center">
+      <span className="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-ink/10 text-ink">
         <Instagram className="h-6 w-6" aria-hidden />
       </span>
-      <h3 className="font-serif text-fluid-lg font-semibold text-burgundy">
+      <h3 className="font-display text-fluid-lg font-semibold text-ink">
         {t('social.instagramTitle')}
       </h3>
 
       {allowed ? (
         <div className="mt-4">
           {/* TODO: Hier echten Instagram-Feed einbetten (Consent liegt vor). */}
-          <p className="text-fluid-sm text-charcoal/60">
+          <p className="text-fluid-sm text-ink/60">
             TODO: Instagram-Feed-Einbindung ergänzen.
           </p>
           <a
@@ -45,7 +45,7 @@ export function InstagramConsent() {
         </div>
       ) : (
         <>
-          <p className="mx-auto mt-3 max-w-md text-fluid-sm text-charcoal/70">
+          <p className="mx-auto mt-3 max-w-md text-fluid-sm text-ink/70">
             {t('social.instagramText')}
           </p>
           <div className="mt-5 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -56,7 +56,7 @@ export function InstagramConsent() {
               href={siteConfig.social.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-outline text-charcoal/80"
+              className="btn-outline text-ink/80"
             >
               {t('social.openInstagram')}
               <ExternalLink className="h-4 w-4" aria-hidden />

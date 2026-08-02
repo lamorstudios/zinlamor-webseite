@@ -24,16 +24,18 @@ export function SectionHeading({
   return (
     <Reveal
       className={cn(
-        'flex flex-col gap-4',
+        'flex flex-col',
         align === 'center' && 'items-center text-center',
         className
       )}
     >
-      {eyebrow && <span className="eyebrow">{eyebrow}</span>}
+      {eyebrow && (
+        <span className={cn('eyebrow mb-5', light && 'text-muted-light')}>{eyebrow}</span>
+      )}
       <Heading
         className={cn(
-          'text-fluid-2xl font-semibold leading-[1.05] tracking-tight',
-          light ? 'text-cream-soft' : 'text-burgundy'
+          'text-fluid-2xl font-semibold leading-[1.0] tracking-tightest',
+          light ? 'text-paper-light' : 'text-ink'
         )}
       >
         {title}
@@ -41,9 +43,9 @@ export function SectionHeading({
       {subtitle && (
         <p
           className={cn(
-            'max-w-prose text-fluid-lg leading-relaxed',
+            'mt-5 max-w-prose text-fluid-lg leading-relaxed',
             align === 'center' && 'mx-auto',
-            light ? 'text-cream/80' : 'text-charcoal/75'
+            light ? 'text-paper/70' : 'text-muted'
           )}
         >
           {subtitle}

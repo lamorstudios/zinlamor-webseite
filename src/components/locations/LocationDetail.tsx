@@ -27,22 +27,22 @@ export function LocationDetail({ location }: { location: Location }) {
     { q: t('faq.parking.q'), a: t('faq.parking.a') },
   ];
 
-  const galleryTones = ['terracotta', 'burgundy', 'charcoal', 'sand'] as const;
+  const galleryTones = ['muted', 'ink', 'ink', 'stone'] as const;
 
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-burgundy-deep text-cream-soft">
+      <section className="relative overflow-hidden bg-ink-dark text-paper-light">
         <div aria-hidden className="absolute inset-0">
           <Figure
             src={location.image}
             alt={`${location.name}`}
-            tone="charcoal"
+            tone="ink"
             ratio=""
             rounded={false}
             className="absolute inset-0 h-full opacity-60"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-burgundy-deep via-burgundy-deep/70 to-burgundy-deep/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink-dark via-ink-dark/70 to-ink-dark/40" />
         </div>
         <div className="container-content relative z-10 pb-14 pt-32 sm:pt-36 lg:pb-20 lg:pt-40">
           <Breadcrumbs
@@ -54,13 +54,13 @@ export function LocationDetail({ location }: { location: Location }) {
               { label: location.shortName, href: `/standorte/${location.slug}` },
             ]}
           />
-          <p className="eyebrow text-brass-light before:bg-brass-light/60">{location.city}</p>
-          <h1 className="mt-3 font-serif text-fluid-3xl font-semibold leading-[1.02]">{location.shortName}</h1>
-          <p className="mt-3 max-w-2xl text-fluid-lg text-cream/85">{location.tagline}</p>
+          <p className="eyebrow text-stone before:bg-stone/60">{location.city}</p>
+          <h1 className="mt-3 font-display text-fluid-3xl font-semibold leading-[1.02]">{location.shortName}</h1>
+          <p className="mt-3 max-w-2xl text-fluid-lg text-paper/85">{location.tagline}</p>
 
-          <div className="mt-5 flex flex-col gap-3 text-cream/85 sm:flex-row sm:items-center sm:gap-6">
+          <div className="mt-5 flex flex-col gap-3 text-paper/85 sm:flex-row sm:items-center sm:gap-6">
             <span className="inline-flex items-center gap-2">
-              <MapPin className="h-4 w-4 text-terracotta" aria-hidden />
+              <MapPin className="h-4 w-4 text-muted" aria-hidden />
               {location.address}
             </span>
             <OpenStatusBadge location={location} light />
@@ -91,28 +91,28 @@ export function LocationDetail({ location }: { location: Location }) {
       </section>
 
       {/* Über + Öffnungszeiten */}
-      <section className="section bg-cream">
+      <section className="section bg-paper">
         <div className="container-content grid gap-12 lg:grid-cols-[1.6fr_1fr]">
           <div>
             <Reveal>
               <span className="eyebrow">{t('location.about')}</span>
-              <p className="mt-5 text-fluid-lg leading-relaxed text-charcoal/80">{location.description}</p>
+              <p className="mt-5 text-fluid-lg leading-relaxed text-ink/80">{location.description}</p>
             </Reveal>
 
             <Reveal className="mt-10">
-              <h2 className="font-serif text-fluid-xl font-semibold text-burgundy">
+              <h2 className="font-display text-fluid-xl font-semibold text-ink">
                 {t('location.highlights')}
               </h2>
               <ul className="mt-4 grid gap-3 sm:grid-cols-2">
                 {location.highlights.map((h) => (
-                  <li key={h} className="flex items-start gap-2.5 text-fluid-base text-charcoal/80">
-                    <Check className="mt-0.5 h-5 w-5 flex-none text-terracotta" aria-hidden />
+                  <li key={h} className="flex items-start gap-2.5 text-fluid-base text-ink/80">
+                    <Check className="mt-0.5 h-5 w-5 flex-none text-muted" aria-hidden />
                     {h}
                   </li>
                 ))}
               </ul>
               {location.franchise && (
-                <p className="mt-4 inline-flex rounded-full bg-brass/15 px-3 py-1 text-fluid-sm text-charcoal/70">
+                <p className="mt-4 inline-flex rounded-full bg-muted/15 px-3 py-1 text-fluid-sm text-ink/70">
                   {t('common.franchisePartner')}
                 </p>
               )}
@@ -121,24 +121,24 @@ export function LocationDetail({ location }: { location: Location }) {
 
           {/* Sidebar: Öffnungszeiten + Kontakt */}
           <aside className="lg:pl-4">
-            <div className="rounded-2xl border border-sand/50 bg-cream-soft p-6">
-              <h2 className="font-serif text-fluid-lg font-semibold text-burgundy">{t('hours.title')}</h2>
+            <div className="rounded-2xl border border-stone/50 bg-paper-light p-6">
+              <h2 className="font-display text-fluid-lg font-semibold text-ink">{t('hours.title')}</h2>
               <div className="mt-3">
                 <OpeningHoursTable location={location} />
               </div>
               {location.openingNote && (
-                <p className="mt-3 text-fluid-sm text-charcoal/50">{location.openingNote}</p>
+                <p className="mt-3 text-fluid-sm text-ink/50">{location.openingNote}</p>
               )}
-              <hr className="my-5 border-sand/50" />
+              <hr className="my-5 border-stone/50" />
               <dl className="flex flex-col gap-3 text-fluid-base">
                 <div>
-                  <dt className="text-fluid-sm text-charcoal/55">{t('common.address')}</dt>
-                  <dd className="text-charcoal/85">{location.address}</dd>
+                  <dt className="text-fluid-sm text-ink/55">{t('common.address')}</dt>
+                  <dd className="text-ink/85">{location.address}</dd>
                 </div>
                 <div>
-                  <dt className="text-fluid-sm text-charcoal/55">{t('common.phone')}</dt>
+                  <dt className="text-fluid-sm text-ink/55">{t('common.phone')}</dt>
                   <dd>
-                    <a href={callHref(location)} className="text-burgundy link-underline">
+                    <a href={callHref(location)} className="text-ink link-underline">
                       {location.phone}
                     </a>
                   </dd>
@@ -150,7 +150,7 @@ export function LocationDetail({ location }: { location: Location }) {
       </section>
 
       {/* Galerie */}
-      <section className="section bg-cream-soft">
+      <section className="section bg-paper-light">
         <div className="container-content">
           <SectionHeading eyebrow={t('gallery.eyebrow')} title={t('location.gallery')} className="max-w-2xl" />
           <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -170,14 +170,14 @@ export function LocationDetail({ location }: { location: Location }) {
       </section>
 
       {/* Speisekarte */}
-      <section id="speisekarte" className="section bg-cream scroll-mt-24">
+      <section id="speisekarte" className="section bg-paper scroll-mt-24">
         <div className="container-content">
-          <div className="flex flex-col items-start justify-between gap-6 rounded-2xl bg-burgundy p-8 text-cream-soft sm:flex-row sm:items-center lg:p-12">
+          <div className="flex flex-col items-start justify-between gap-6 rounded-2xl bg-ink p-8 text-paper-light sm:flex-row sm:items-center lg:p-12">
             <div className="max-w-xl">
-              <span className="eyebrow text-brass-light before:bg-brass-light/60">{t('location.menu')}</span>
-              <h2 className="mt-3 font-serif text-fluid-xl font-semibold">{t('location.menuText')}</h2>
+              <span className="eyebrow text-stone before:bg-stone/60">{t('location.menu')}</span>
+              <h2 className="mt-3 font-display text-fluid-xl font-semibold">{t('location.menuText')}</h2>
               {!menuIsExternal(location) && (
-                <p className="mt-3 text-fluid-sm text-cream/70">{t('location.menuTodo')}</p>
+                <p className="mt-3 text-fluid-sm text-paper/70">{t('location.menuTodo')}</p>
               )}
             </div>
             {menuIsExternal(location) ? (
@@ -196,13 +196,13 @@ export function LocationDetail({ location }: { location: Location }) {
       </section>
 
       {/* Reservierung + Anfahrt */}
-      <section id="reservieren" className="section bg-cream-soft scroll-mt-24">
+      <section id="reservieren" className="section bg-paper-light scroll-mt-24">
         <div className="container-content grid gap-10 lg:grid-cols-2">
           <div>
             <SectionHeading eyebrow={t('action.reserve')} title={t('location.reserveAt', { name: location.shortName })} />
-            <p className="mt-4 text-fluid-base text-charcoal/75">{t('location.reservationText')}</p>
+            <p className="mt-4 text-fluid-base text-ink/75">{t('location.reservationText')}</p>
             {!reservationIsExternal(location) && (
-              <p className="mt-3 rounded-lg bg-brass/10 p-3 text-fluid-sm text-charcoal/70">
+              <p className="mt-3 rounded-lg bg-muted/10 p-3 text-fluid-sm text-ink/70">
                 {t('location.reservationTodo')}
               </p>
             )}
@@ -227,7 +227,7 @@ export function LocationDetail({ location }: { location: Location }) {
       </section>
 
       {/* FAQ */}
-      <section className="section bg-cream">
+      <section className="section bg-paper">
         <div className="container-content max-w-3xl">
           <SectionHeading eyebrow={t('location.faq')} title={t('location.faq')} align="center" className="mx-auto" />
           <div className="mt-10">
@@ -237,7 +237,7 @@ export function LocationDetail({ location }: { location: Location }) {
       </section>
 
       {/* Weitere Standorte */}
-      <section className="section bg-cream-soft">
+      <section className="section bg-paper-light">
         <div className="container-content">
           <SectionHeading eyebrow={t('nav.locations')} title={t('location.otherLocations')} className="max-w-2xl" />
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -248,7 +248,7 @@ export function LocationDetail({ location }: { location: Location }) {
             ))}
           </div>
           <div className="mt-8">
-            <Link href="/standorte" className="inline-flex items-center gap-2 font-medium text-terracotta link-underline">
+            <Link href="/standorte" className="inline-flex items-center gap-2 font-medium text-muted link-underline">
               {t('action.allLocations')}
               <ArrowRight className="h-4 w-4" aria-hidden />
             </Link>

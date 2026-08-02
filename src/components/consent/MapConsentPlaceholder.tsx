@@ -17,7 +17,7 @@ export function MapConsentPlaceholder({ location }: { location: Location }) {
 
   if (allowed && location.mapsEmbedUrl) {
     return (
-      <div className="overflow-hidden rounded-2xl border border-sand/50">
+      <div className="overflow-hidden rounded-2xl border border-stone/50">
         <iframe
           src={location.mapsEmbedUrl}
           title={`Karte: ${location.name}`}
@@ -30,7 +30,7 @@ export function MapConsentPlaceholder({ location }: { location: Location }) {
   }
 
   return (
-    <div className="relative flex min-h-[280px] flex-col items-center justify-center gap-4 overflow-hidden rounded-2xl border border-sand/50 bg-gradient-to-br from-sand/40 to-cream-dark p-8 text-center">
+    <div className="relative flex min-h-[280px] flex-col items-center justify-center gap-4 overflow-hidden rounded-2xl border border-stone/50 bg-gradient-to-br from-stone/40 to-paper-dark p-8 text-center">
       <div
         aria-hidden
         className="absolute inset-0 opacity-30"
@@ -40,12 +40,12 @@ export function MapConsentPlaceholder({ location }: { location: Location }) {
           backgroundSize: '32px 32px',
         }}
       />
-      <span className="relative flex h-12 w-12 items-center justify-center rounded-full bg-burgundy text-cream-soft">
+      <span className="relative flex h-12 w-12 items-center justify-center rounded-full bg-ink text-paper-light">
         <MapPin className="h-6 w-6" aria-hidden />
       </span>
       <div className="relative max-w-sm">
-        <h3 className="font-serif text-fluid-base font-semibold text-burgundy">{t('map.title')}</h3>
-        <p className="mt-1.5 text-fluid-sm text-charcoal/70">{t('map.text')}</p>
+        <h3 className="font-display text-fluid-base font-semibold text-ink">{t('map.title')}</h3>
+        <p className="mt-1.5 text-fluid-sm text-ink/70">{t('map.text')}</p>
       </div>
       <div className="relative flex flex-col gap-2 sm:flex-row">
         <button
@@ -59,7 +59,7 @@ export function MapConsentPlaceholder({ location }: { location: Location }) {
           href={location.mapsUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-outline text-charcoal/80"
+          className="btn-outline text-ink/80"
         >
           {t('action.openRoute')}
           <ExternalLink className="h-4 w-4" aria-hidden />

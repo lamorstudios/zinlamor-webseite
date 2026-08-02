@@ -67,9 +67,9 @@ export function EventForm() {
         className="flex flex-col items-center gap-4 rounded-2xl border border-emerald-200 bg-emerald-50 p-8 text-center"
       >
         <CheckCircle2 className="h-10 w-10 text-emerald-600" aria-hidden />
-        <h3 className="font-serif text-fluid-lg font-semibold text-charcoal">{t('form.success.title')}</h3>
-        <p className="max-w-md text-fluid-base text-charcoal/75">{t('form.success.text')}</p>
-        <p className="text-fluid-sm text-charcoal/50">{t('form.backendNote')}</p>
+        <h3 className="font-display text-fluid-lg font-semibold text-ink">{t('form.success.title')}</h3>
+        <p className="max-w-md text-fluid-base text-ink/75">{t('form.success.text')}</p>
+        <p className="text-fluid-sm text-ink/50">{t('form.backendNote')}</p>
       </div>
     );
   }
@@ -103,35 +103,35 @@ export function EventForm() {
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="message" className="text-fluid-sm font-medium text-charcoal/80">
-          {t('form.message')} <span className="text-charcoal/40">({t('form.optional')})</span>
+        <label htmlFor="message" className="text-fluid-sm font-medium text-ink/80">
+          {t('form.message')} <span className="text-ink/40">({t('form.optional')})</span>
         </label>
         <textarea
           id="message"
           name="message"
           rows={4}
           placeholder={t('form.message.placeholder')}
-          className="rounded-xl border border-sand/60 bg-cream-soft px-4 py-3 text-fluid-base text-charcoal placeholder:text-charcoal/40 focus:border-burgundy focus:outline-none focus-visible:outline-none"
+          className="rounded-xl border border-stone/60 bg-paper-light px-4 py-3 text-fluid-base text-ink placeholder:text-ink/40 focus:border-ink focus:outline-none focus-visible:outline-none"
         />
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label className="flex items-start gap-3 text-fluid-sm text-charcoal/75">
+        <label className="flex items-start gap-3 text-fluid-sm text-ink/75">
           <input
             type="checkbox"
             name="consent"
-            className="mt-1 h-5 w-5 flex-none rounded border-sand accent-burgundy"
+            className="mt-1 h-5 w-5 flex-none rounded border-stone accent-ink"
             aria-invalid={Boolean(errors.consent)}
           />
           <span>
             {t('form.consent')}{' '}
-            <Link href="/datenschutz" className="link-underline text-terracotta">
+            <Link href="/datenschutz" className="link-underline text-muted">
               {t('nav.privacy')}
             </Link>
           </span>
         </label>
         {errors.consent && (
-          <p role="alert" className="ml-8 text-fluid-sm text-terracotta-dark">
+          <p role="alert" className="ml-8 text-fluid-sm text-ink">
             {errors.consent}
           </p>
         )}
@@ -141,7 +141,7 @@ export function EventForm() {
         {status === 'submitting' && <Loader2 className="h-4 w-4 animate-spin" aria-hidden />}
         {t('form.submit')}
       </button>
-      <p className="text-fluid-sm text-charcoal/50">{t('form.backendNote')}</p>
+      <p className="text-fluid-sm text-ink/50">{t('form.backendNote')}</p>
     </form>
   );
 }
@@ -167,14 +167,14 @@ function Field({
 }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label htmlFor={name} className="text-fluid-sm font-medium text-charcoal/80">
+      <label htmlFor={name} className="text-fluid-sm font-medium text-ink/80">
         {label}{' '}
         {required ? (
-          <span className="text-terracotta" aria-hidden>
+          <span className="text-muted" aria-hidden>
             *
           </span>
         ) : (
-          optional && <span className="text-charcoal/40">({optionalLabel})</span>
+          optional && <span className="text-ink/40">({optionalLabel})</span>
         )}
       </label>
       <input
@@ -187,12 +187,12 @@ function Field({
         aria-invalid={Boolean(error)}
         aria-describedby={error ? `${name}-error` : undefined}
         className={cn(
-          'rounded-xl border bg-cream-soft px-4 py-3 text-fluid-base text-charcoal placeholder:text-charcoal/40 focus:outline-none focus-visible:outline-none',
-          error ? 'border-terracotta' : 'border-sand/60 focus:border-burgundy'
+          'rounded-xl border bg-paper-light px-4 py-3 text-fluid-base text-ink placeholder:text-ink/40 focus:outline-none focus-visible:outline-none',
+          error ? 'border-muted' : 'border-stone/60 focus:border-ink'
         )}
       />
       {error && (
-        <p id={`${name}-error`} role="alert" className="text-fluid-sm text-terracotta-dark">
+        <p id={`${name}-error`} role="alert" className="text-fluid-sm text-ink">
           {error}
         </p>
       )}
@@ -221,14 +221,14 @@ function SelectField({
 }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label htmlFor={name} className="text-fluid-sm font-medium text-charcoal/80">
+      <label htmlFor={name} className="text-fluid-sm font-medium text-ink/80">
         {label}{' '}
         {required ? (
-          <span className="text-terracotta" aria-hidden>
+          <span className="text-muted" aria-hidden>
             *
           </span>
         ) : (
-          optional && <span className="text-charcoal/40">({optionalLabel})</span>
+          optional && <span className="text-ink/40">({optionalLabel})</span>
         )}
       </label>
       <select
@@ -240,8 +240,8 @@ function SelectField({
         aria-describedby={error ? `${name}-error` : undefined}
         defaultValue=""
         className={cn(
-          'rounded-xl border bg-cream-soft px-4 py-3 text-fluid-base text-charcoal focus:outline-none focus-visible:outline-none',
-          error ? 'border-terracotta' : 'border-sand/60 focus:border-burgundy'
+          'rounded-xl border bg-paper-light px-4 py-3 text-fluid-base text-ink focus:outline-none focus-visible:outline-none',
+          error ? 'border-muted' : 'border-stone/60 focus:border-ink'
         )}
       >
         <option value="" disabled>
@@ -254,7 +254,7 @@ function SelectField({
         ))}
       </select>
       {error && (
-        <p id={`${name}-error`} role="alert" className="text-fluid-sm text-terracotta-dark">
+        <p id={`${name}-error`} role="alert" className="text-fluid-sm text-ink">
           {error}
         </p>
       )}

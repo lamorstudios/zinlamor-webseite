@@ -42,7 +42,7 @@ export function Breadcrumbs({
           return (
             <li key={c.href} className="flex items-center gap-1.5">
               {last ? (
-                <span className={cn('font-medium', light ? 'text-cream/90' : 'text-charcoal/80')} aria-current="page">
+                <span className={cn('font-medium', light ? 'text-paper/90' : 'text-ink/80')} aria-current="page">
                   {c.label}
                 </span>
               ) : (
@@ -50,7 +50,7 @@ export function Breadcrumbs({
                   href={c.href}
                   className={cn(
                     'transition-colors',
-                    light ? 'text-cream/70 hover:text-cream' : 'text-charcoal/60 hover:text-burgundy'
+                    light ? 'text-paper/70 hover:text-paper' : 'text-ink/60 hover:text-ink'
                   )}
                 >
                   {c.label}
@@ -58,7 +58,7 @@ export function Breadcrumbs({
               )}
               {!last && (
                 <ChevronRight
-                  className={cn('h-3.5 w-3.5', light ? 'text-cream/50' : 'text-charcoal/40')}
+                  className={cn('h-3.5 w-3.5', light ? 'text-paper/50' : 'text-ink/40')}
                   aria-hidden
                 />
               )}

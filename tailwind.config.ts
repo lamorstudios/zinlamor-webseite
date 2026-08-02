@@ -1,88 +1,105 @@
 import type { Config } from 'tailwindcss';
 
 /**
- * Design system — La Tasca Flamenca
- * Warme, mediterrane Farbwelt: Burgunder, Terrakotta, Creme, Anthrazit, Messing.
- * Farben werden zusätzlich als CSS-Variablen in globals.css gespiegelt.
+ * Design system — La Tasca Flamenca (2026, editorial redesign)
+ * -------------------------------------------------------------------------
+ * Ruhige, hochwertige Neutral-Palette: warmes Off-White, Soft-Black, Graphit,
+ * Stone. Farbe wird sehr sparsam eingesetzt — ein einziger, entsättigter
+ * warmer Akzent (accent). Wirkung entsteht über Typografie, Weißraum, Raster
+ * und Komposition, nicht über Farbe, Verläufe oder Effekte.
  */
 const config: Config = {
   content: ['./src/**/*.{ts,tsx,mdx}'],
   theme: {
     extend: {
       colors: {
-        burgundy: {
-          DEFAULT: '#5c1524',
-          light: '#7a1e30',
-          dark: '#3f0e19',
-          deep: '#2a0910',
+        // Helle Flächen (warmes Off-White statt reinem Weiß)
+        paper: {
+          DEFAULT: '#F4F2ED',
+          light: '#FAF8F3',
+          dark: '#ECE9E2',
         },
-        wine: '#6b1f2a',
-        terracotta: {
-          DEFAULT: '#c26a49',
-          light: '#d68b6f',
-          dark: '#a3512f',
+        // Dunkle Flächen & Text (Soft-Black / Graphit)
+        ink: {
+          DEFAULT: '#151515',
+          dark: '#0D0D0D',
+          soft: '#242422',
+          light: '#3A3A38',
         },
-        cream: {
-          DEFAULT: '#f6efe3',
-          soft: '#fbf7ef',
-          dark: '#ece0cc',
+        // Neutrale Füllungen / feine Linien
+        stone: {
+          DEFAULT: '#DBD6CC',
+          dark: '#C6C0B4',
         },
-        sand: {
-          DEFAULT: '#e3d4b8',
-          dark: '#cbb992',
+        // Sekundärtext / Labels
+        muted: {
+          DEFAULT: '#77736D',
+          light: '#9C978F',
         },
-        charcoal: {
-          DEFAULT: '#20191a',
-          light: '#2c2325',
-          soft: '#382c2e',
+        // Einziger, sehr zurückhaltender Akzent (entsättigtes Warmrot)
+        accent: {
+          DEFAULT: '#8D3B32',
+          dark: '#6F2E27',
         },
-        brass: {
-          DEFAULT: '#c9a24b',
-          light: '#e0bd67',
-          dark: '#a5822f',
+        // Feine Trennlinien
+        line: {
+          DEFAULT: 'rgba(21, 21, 21, 0.12)',
+          light: 'rgba(244, 242, 237, 0.16)',
         },
       },
       fontFamily: {
-        serif: ['var(--font-serif)', 'Georgia', 'Cambria', 'serif'],
+        display: ['var(--font-display)', 'system-ui', 'sans-serif'],
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
       },
       fontSize: {
-        // Responsive Skala mit clamp()
-        'fluid-sm': 'clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem)',
-        'fluid-base': 'clamp(1rem, 0.96rem + 0.2vw, 1.125rem)',
-        'fluid-lg': 'clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem)',
-        'fluid-xl': 'clamp(1.5rem, 1.2rem + 1.5vw, 2.25rem)',
-        'fluid-2xl': 'clamp(2rem, 1.4rem + 3vw, 3.5rem)',
-        'fluid-3xl': 'clamp(2.5rem, 1.6rem + 4.5vw, 5rem)',
-        'fluid-hero': 'clamp(2.75rem, 1.5rem + 6vw, 6.5rem)',
+        'fluid-sm': 'clamp(0.8rem, 0.78rem + 0.1vw, 0.875rem)',
+        'fluid-base': 'clamp(1rem, 0.97rem + 0.15vw, 1.0625rem)',
+        'fluid-lg': 'clamp(1.15rem, 1.05rem + 0.5vw, 1.5rem)',
+        'fluid-xl': 'clamp(1.6rem, 1.3rem + 1.4vw, 2.5rem)',
+        'fluid-2xl': 'clamp(2.2rem, 1.5rem + 3.4vw, 4.25rem)',
+        'fluid-3xl': 'clamp(2.8rem, 1.6rem + 5.5vw, 6rem)',
+        'fluid-hero': 'clamp(3rem, 1.2rem + 9vw, 9.5rem)',
+      },
+      letterSpacing: {
+        tightest: '-0.04em',
+        label: '0.18em',
       },
       maxWidth: {
-        content: '1280px',
-        prose: '68ch',
+        content: '1360px',
+        prose: '62ch',
       },
       spacing: {
-        section: 'clamp(3.5rem, 2rem + 7vw, 8rem)',
+        section: 'clamp(4.5rem, 3rem + 8vw, 10rem)',
+      },
+      borderRadius: {
+        // Bewusst kleine Radien — keine SaaS-/KI-Optik
+        none: '0',
+        sm: '2px',
+        DEFAULT: '4px',
+        md: '6px',
+        lg: '8px',
+        xl: '10px',
+        '2xl': '12px',
+        '3xl': '14px',
+        full: '9999px',
       },
       boxShadow: {
-        soft: '0 20px 45px -25px rgba(42, 9, 16, 0.45)',
-        card: '0 12px 30px -18px rgba(42, 9, 16, 0.35)',
+        // dezent, fast unsichtbar — Tiefe entsteht über Linien/Flächen
+        soft: '0 24px 60px -40px rgba(13, 13, 13, 0.35)',
+        card: '0 12px 30px -24px rgba(13, 13, 13, 0.25)',
       },
       transitionTimingFunction: {
         'out-expo': 'cubic-bezier(0.16, 1, 0.3, 1)',
+        editorial: 'cubic-bezier(0.65, 0.05, 0, 1)',
       },
       keyframes: {
-        'fade-up': {
-          from: { opacity: '0', transform: 'translateY(20px)' },
-          to: { opacity: '1', transform: 'translateY(0)' },
-        },
         'scroll-hint': {
-          '0%, 100%': { transform: 'translateY(0)', opacity: '0.4' },
-          '50%': { transform: 'translateY(8px)', opacity: '1' },
+          '0%, 100%': { transform: 'translateY(0)', opacity: '0.35' },
+          '50%': { transform: 'translateY(6px)', opacity: '0.9' },
         },
       },
       animation: {
-        'fade-up': 'fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both',
-        'scroll-hint': 'scroll-hint 1.8s ease-in-out infinite',
+        'scroll-hint': 'scroll-hint 2.2s ease-in-out infinite',
       },
     },
   },

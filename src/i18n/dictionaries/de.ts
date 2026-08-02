@@ -51,29 +51,29 @@ const de = {
   'hours.title': 'Öffnungszeiten',
 
   // Hero
-  'hero.headline': 'Spanien beginnt am Tisch.',
+  'hero.headline': 'Für Abende, die bleiben.',
   'hero.subline':
-    'Authentische spanische Küche, lebendige Abende und das Gefühl, für ein paar Stunden woanders zu sein.',
-  'hero.scroll': 'Mehr entdecken',
+    'Tapas, Drinks und Nächte, die länger werden. In München und auf Mallorca.',
+  'hero.scroll': 'Scroll',
 
   // Marken-Intro
-  'intro.eyebrow': 'Bar de Tapas & Restaurant',
-  'intro.headline': 'Mehr als Tapas.',
+  'intro.eyebrow': 'Bar de Tapas',
+  'intro.headline': 'Gutes Essen wird geteilt.',
   'intro.text':
-    'La Tasca Flamenca ist ein Ort für lange Abende, volle Tische und spanische Lebensfreude. Spanische Küche lebt vom Teilen. Von kleinen Tellern, langen Gesprächen und Abenden, die später enden als geplant.',
+    'Kleine Teller, lange Gespräche, Abende, die später enden als geplant. Spanische Küche ohne Klischees – ehrlich, direkt, zum Teilen.',
   'intro.text2':
-    'Was in Neuhausen als eines der ersten spanischen Restaurants Münchens begann, ist heute an mehreren Orten zu Hause – und überall dasselbe geblieben: ehrlich, warm und mit einem Glas Wein in Reichweite.',
+    'Was in Neuhausen begann, ist heute an vier Orten zu Hause – und überall dasselbe geblieben.',
 
   // Standortübersicht
-  'locations.eyebrow': 'Unsere Standorte',
-  'locations.headline': 'Vier Orte, ein Gefühl.',
+  'locations.eyebrow': 'Standorte',
+  'locations.headline': 'Vier Orte. Ein Gefühl.',
   'locations.subline':
     'München und Mallorca – such dir den Tisch, der dir am nächsten ist.',
   'locations.detailsFor': 'Details zu {name}',
 
   // Signature Dishes
-  'dishes.eyebrow': 'Aus der Küche',
-  'dishes.headline': 'Kleine Teller, große Abende.',
+  'dishes.eyebrow': 'Karte',
+  'dishes.headline': 'Kleine Teller. Lange Abende.',
   'dishes.subline':
     'Von der ersten Tapa bis zur letzten Sangria – hier ein Vorgeschmack auf das, was auf den Tisch kommt.',
   'dishes.tapas.title': 'Tapas',
@@ -92,20 +92,20 @@ const de = {
     'Preise und Verfügbarkeit unterscheiden sich je nach Standort. Die aktuelle Karte findest du auf der jeweiligen Standortseite.',
 
   // Erlebnisbereich
-  'experience.eyebrow': 'Das Erlebnis',
-  'experience.headline': 'Hier werden aus kleinen Tellern lange Abende.',
+  'experience.eyebrow': 'Erlebnis',
+  'experience.headline': 'Komm zum Essen. Bleib für den Abend.',
   'experience.text':
-    'Volle Tische, geteilte Teller, Gespräche, die kein Ende finden wollen. La Tasca Flamenca ist kein Ort zum schnellen Essen – sondern zum Bleiben.',
+    'Volle Tische, geteilte Teller, Gespräche ohne Ende. Kein Ort zum schnellen Essen – ein Ort zum Bleiben.',
 
   // Events / Catering / Foodtruck
-  'events.eyebrow': 'Feiern & Genießen',
-  'events.headline': 'Für deine Anlässe.',
+  'events.eyebrow': 'Events',
+  'events.headline': 'Für private Abende.',
   'events.subline':
-    'Ob private Feier, Firmenevent oder Foodtruck vor der Tür – wir bringen Spanien zu deinem Anlass.',
+    'Feiern, Firmenevents, Catering und Foodtruck. Ein spanischer Abend für deinen Anlass.',
   'events.private.title': 'Private Feiern & Events',
   'events.private.text':
     'Geburtstage, Hochzeiten, Firmenfeiern. Exklusiv buchbare Bereiche und Menüs zum Teilen.',
-  'events.catering.title': 'Catering',
+  'events.catering.title': 'Catering & Foodtruck',
   'events.catering.text':
     'Spanische Küche bei dir – von der Tapas-Auswahl bis zur Paella für die große Runde.',
   'events.foodtruck.title': 'Foodtruck',

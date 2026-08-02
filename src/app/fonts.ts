@@ -1,22 +1,26 @@
-import { Fraunces, Inter } from 'next/font/google';
+import { Inter, Inter_Tight } from 'next/font/google';
 
 /**
- * Fonts werden über next/font selbst gehostet (kein Runtime-Request an Google,
- * datenschutzfreundlich, kein Layout-Shift dank `display: swap` + Fallback).
- * - Fraunces: ausdrucksstarke Serifenschrift für Headlines (editorial)
- * - Inter: klare, moderne Sans-Serif für Navigation, Fließtext, Buttons
+ * Typografie — modernes, reduziertes Schweizer/Neo-Grotesk-System.
+ * Selbst gehostet über next/font (kein Runtime-Request an Google, kein CLS).
+ *
+ * - Inter Tight: leicht kompakte Sans-Serif für Headlines & Display.
+ * - Inter: neutrale, sehr gut lesbare Sans-Serif für Fließtext, Navigation,
+ *   Buttons und Labels (Labels als Versalien mit erhöhter Laufweite).
+ *
+ * Bewusst KEINE Serifenschrift: der Auftritt soll clean, editorial und
+ * zeitlos wirken, nicht klassisch-rustikal.
  */
-export const fontSerif = Fraunces({
+export const fontDisplay = Inter_Tight({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-serif',
+  variable: '--font-display',
   weight: ['400', '500', '600', '700'],
-  style: ['normal', 'italic'],
 });
 
 export const fontSans = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-sans',
-  weight: ['400', '500', '600', '700'],
+  weight: ['400', '500', '600'],
 });

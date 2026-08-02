@@ -3,68 +3,65 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { useT } from '@/i18n/LanguageProvider';
-import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Figure } from '@/components/ui/Figure';
 import { Reveal } from '@/components/motion/Reveal';
+import { MaskReveal } from '@/components/motion/MaskReveal';
 
 /**
- * Signature Dishes — emotionale, asymmetrische Anordnung.
- * Keine Preise (werden bewusst nicht erfunden). Verweis auf Standort-Karten.
+ * Menü-Teaser — editorial, asymmetrisch. Keine Preise (bewusst nicht erfunden).
  */
+const dishes = [
+  { key: 'tapas', src: '/images/dishes/tapas.jpg', tone: 'muted' as const, ratio: 'aspect-[4/5]' },
+  { key: 'paella', src: '/images/dishes/paella.jpg', tone: 'ink' as const, ratio: 'aspect-[4/5]' },
+  { key: 'sangria', src: '/images/dishes/sangria.jpg', tone: 'stone' as const, ratio: 'aspect-[4/5]' },
+];
+
 export function SignatureDishes() {
   const t = useT();
 
-  const dishes = [
-    { key: 'tapas', src: '/images/dishes/tapas.jpg', tone: 'terracotta' as const, span: 'sm:col-span-3 sm:row-span-2', ratio: 'aspect-[4/5]' },
-    { key: 'paella', src: '/images/dishes/paella.jpg', tone: 'burgundy' as const, span: 'sm:col-span-3', ratio: 'aspect-[16/10]' },
-    { key: 'sangria', src: '/images/dishes/sangria.jpg', tone: 'charcoal' as const, span: 'sm:col-span-2', ratio: 'aspect-square' },
-    { key: 'dessert', src: '/images/dishes/dessert.jpg', tone: 'sand' as const, span: 'sm:col-span-1', ratio: 'aspect-square' },
-  ];
-
   return (
-    <section id="gerichte" className="section bg-cream">
+    <section id="gerichte" className="section bg-paper">
       <div className="container-content">
-        <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-          <SectionHeading
-            eyebrow={t('dishes.eyebrow')}
-            title={t('dishes.headline')}
-            subtitle={t('dishes.subline')}
-            className="max-w-2xl"
-          />
+        <div className="grid gap-8 border-b border-line pb-10 lg:grid-cols-[1fr_auto] lg:items-end">
           <Reveal>
-            <Link href="/speisekarte" className="btn-primary whitespace-nowrap">
+            <span className="eyebrow mb-5 block">{t('dishes.eyebrow')}</span>
+            <h2 className="max-w-[16ch] text-fluid-2xl font-semibold leading-none tracking-tightest text-ink">
+              {t('dishes.headline')}
+            </h2>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <Link href="/speisekarte" className="link-underline text-fluid-sm font-medium text-ink">
               {t('action.discoverMenu')}
-              <ArrowRight className="h-4 w-4" aria-hidden />
             </Link>
           </Reveal>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-6">
+        <div className="mt-12 grid gap-x-6 gap-y-10 sm:grid-cols-3">
           {dishes.map((d, i) => (
-            <Reveal key={d.key} delay={i * 0.06} className={d.span}>
-              <figure className="group relative h-full overflow-hidden rounded-2xl">
+            <div key={d.key} className={i === 1 ? 'sm:mt-16' : ''}>
+              <MaskReveal delay={i * 0.1}>
                 <Figure
                   src={d.src}
                   alt={t(`dishes.${d.key}.title` as never)}
                   tone={d.tone}
                   ratio={d.ratio}
-                  className="h-full transition-transform duration-700 ease-out-expo group-hover:scale-[1.04]"
+                  label={t(`dishes.${d.key}.title` as never)}
                 />
-                <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-charcoal/85 to-transparent p-5">
-                  <h3 className="font-serif text-fluid-lg font-semibold text-cream-soft">
-                    {t(`dishes.${d.key}.title` as never)}
-                  </h3>
-                  <p className="mt-1 text-fluid-sm leading-snug text-cream/80">
-                    {t(`dishes.${d.key}.text` as never)}
-                  </p>
-                </figcaption>
-              </figure>
-            </Reveal>
+              </MaskReveal>
+              <Reveal delay={0.1}>
+                <h3 className="mt-5 font-display text-fluid-lg font-semibold tracking-tightest text-ink">
+                  {t(`dishes.${d.key}.title` as never)}
+                </h3>
+                <p className="mt-2 max-w-xs text-fluid-base leading-relaxed text-muted">
+                  {t(`dishes.${d.key}.text` as never)}
+                </p>
+              </Reveal>
+            </div>
           ))}
         </div>
 
         <Reveal>
-          <p className="mt-6 max-w-prose text-fluid-sm text-charcoal/60">{t('dishes.note')}</p>
+          <p className="mt-12 max-w-prose text-fluid-sm text-muted">{t('dishes.note')}</p>
         </Reveal>
       </div>
     </section>

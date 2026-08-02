@@ -16,15 +16,15 @@ export default function SpeisekartePage() {
         eyebrow="Aus der Küche"
         title="Speisekarte"
         lead="Wähle deinen Standort – die Karten unterscheiden sich je nach Ort."
-        tone="terracotta"
+        tone="ink"
         crumbs={[
           { label: 'Start', href: '/' },
           { label: 'Speisekarte', href: '/speisekarte' },
         ]}
       />
-      <section className="section bg-cream">
+      <section className="section bg-paper">
         <div className="container-content">
-          <p className="mb-8 max-w-prose rounded-lg bg-brass/10 p-3 text-fluid-sm text-charcoal/70">
+          <p className="mb-8 max-w-prose rounded-lg bg-muted/10 p-3 text-fluid-sm text-ink/70">
             TODO: Speisekarten-Links (PDF) je Standort in <code>src/data/locations.ts</code> hinterlegen.
           </p>
           <LocationSelector mode="menu" />

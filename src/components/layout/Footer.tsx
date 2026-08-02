@@ -15,15 +15,15 @@ export function Footer() {
   const year = 2026; // statisch: Date.now() nicht nötig; jährlich pflegen
 
   return (
-    <footer className="bg-burgundy-deep text-cream/80">
+    <footer className="bg-ink-dark text-paper/80">
       <div className="container-content py-14 lg:py-16">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           {/* Marke */}
           <div className="lg:pr-6">
-            <span className="font-serif text-fluid-lg font-semibold text-cream-soft">
+            <span className="font-display text-fluid-lg font-semibold text-paper-light">
               La Tasca Flamenca
             </span>
-            <p className="mt-3 max-w-xs text-fluid-sm leading-relaxed text-cream/70">
+            <p className="mt-3 max-w-xs text-fluid-sm leading-relaxed text-paper/70">
               {t('footer.tagline')}
             </p>
             <div className="mt-5 flex gap-3">
@@ -32,7 +32,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-cream/10 text-cream transition-colors hover:bg-brass hover:text-charcoal"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-paper/10 text-paper transition-colors hover:bg-muted hover:text-ink"
               >
                 <Instagram className="h-5 w-5" aria-hidden />
               </a>
@@ -41,7 +41,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-cream/10 text-cream transition-colors hover:bg-brass hover:text-charcoal"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-paper/10 text-paper transition-colors hover:bg-muted hover:text-ink"
               >
                 <Facebook className="h-5 w-5" aria-hidden />
               </a>
@@ -50,7 +50,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="TripAdvisor"
-                className="inline-flex h-10 items-center justify-center rounded-full bg-cream/10 px-4 text-fluid-sm font-medium text-cream transition-colors hover:bg-brass hover:text-charcoal"
+                className="inline-flex h-10 items-center justify-center rounded-full bg-paper/10 px-4 text-fluid-sm font-medium text-paper transition-colors hover:bg-muted hover:text-ink"
               >
                 Tripadvisor
               </a>
@@ -59,7 +59,7 @@ export function Footer() {
 
           {/* Standorte */}
           <nav aria-label={t('footer.locations')}>
-            <h2 className="text-fluid-sm font-semibold uppercase tracking-[0.18em] text-brass-light">
+            <h2 className="text-fluid-sm font-semibold uppercase tracking-[0.18em] text-stone">
               {t('footer.locations')}
             </h2>
             <ul className="mt-4 flex flex-col gap-3">
@@ -67,12 +67,12 @@ export function Footer() {
                 <li key={l.slug}>
                   <Link
                     href={`/standorte/${l.slug}`}
-                    className="group flex items-start gap-2 text-fluid-sm text-cream/75 transition-colors hover:text-cream"
+                    className="group flex items-start gap-2 text-fluid-sm text-paper/75 transition-colors hover:text-paper"
                   >
-                    <MapPin className="mt-0.5 h-4 w-4 flex-none text-terracotta" aria-hidden />
+                    <MapPin className="mt-0.5 h-4 w-4 flex-none text-muted" aria-hidden />
                     <span>
                       {l.shortName}
-                      <span className="block text-cream/45">{l.city}</span>
+                      <span className="block text-paper/45">{l.city}</span>
                     </span>
                   </Link>
                 </li>
@@ -82,7 +82,7 @@ export function Footer() {
 
           {/* Entdecken */}
           <nav aria-label={t('footer.discover')}>
-            <h2 className="text-fluid-sm font-semibold uppercase tracking-[0.18em] text-brass-light">
+            <h2 className="text-fluid-sm font-semibold uppercase tracking-[0.18em] text-stone">
               {t('footer.discover')}
             </h2>
             <ul className="mt-4 flex flex-col gap-2.5">
@@ -90,7 +90,7 @@ export function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-fluid-sm text-cream/75 transition-colors hover:text-cream"
+                    className="text-fluid-sm text-paper/75 transition-colors hover:text-paper"
                   >
                     {t(item.labelKey as TranslationKey)}
                   </Link>
@@ -101,30 +101,30 @@ export function Footer() {
 
           {/* Kontakt & Rechtliches */}
           <div>
-            <h2 className="text-fluid-sm font-semibold uppercase tracking-[0.18em] text-brass-light">
+            <h2 className="text-fluid-sm font-semibold uppercase tracking-[0.18em] text-stone">
               {t('nav.contact')}
             </h2>
             <ul className="mt-4 flex flex-col gap-2.5">
               <li>
                 <a
                   href={callHref(locations[0])}
-                  className="inline-flex items-center gap-2 text-fluid-sm text-cream/75 transition-colors hover:text-cream"
+                  className="inline-flex items-center gap-2 text-fluid-sm text-paper/75 transition-colors hover:text-paper"
                 >
-                  <Phone className="h-4 w-4 text-terracotta" aria-hidden />
+                  <Phone className="h-4 w-4 text-muted" aria-hidden />
                   {locations[0].phone}
                 </a>
               </li>
               <li>
                 <a
                   href={`mailto:${siteConfig.contactEmail}`}
-                  className="text-fluid-sm text-cream/75 transition-colors hover:text-cream"
+                  className="text-fluid-sm text-paper/75 transition-colors hover:text-paper"
                 >
                   {siteConfig.contactEmail}
                 </a>
               </li>
             </ul>
 
-            <h2 className="mt-6 text-fluid-sm font-semibold uppercase tracking-[0.18em] text-brass-light">
+            <h2 className="mt-6 text-fluid-sm font-semibold uppercase tracking-[0.18em] text-stone">
               {t('footer.legal')}
             </h2>
             <ul className="mt-4 flex flex-col gap-2.5">
@@ -132,7 +132,7 @@ export function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-fluid-sm text-cream/75 transition-colors hover:text-cream"
+                    className="text-fluid-sm text-paper/75 transition-colors hover:text-paper"
                   >
                     {t(item.labelKey as TranslationKey)}
                   </Link>
@@ -142,7 +142,7 @@ export function Footer() {
                 <button
                   type="button"
                   onClick={openSettings}
-                  className="text-left text-fluid-sm text-cream/75 transition-colors hover:text-cream"
+                  className="text-left text-fluid-sm text-paper/75 transition-colors hover:text-paper"
                 >
                   {t('page.cookies.reopen')}
                 </button>
@@ -151,7 +151,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-cream/10 pt-6 text-fluid-sm text-cream/55 sm:flex-row">
+        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-paper/10 pt-6 text-fluid-sm text-paper/55 sm:flex-row">
           <p>
             © {year} {siteConfig.name}. {t('footer.rights')}
           </p>

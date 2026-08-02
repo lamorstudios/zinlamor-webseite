@@ -33,12 +33,12 @@ export function AnnouncementBar({ onVisibilityChange }: { onVisibilityChange?: (
   }
 
   return (
-    <div className="relative z-[60] bg-burgundy-deep text-cream">
+    <div className="relative z-[60] bg-ink-dark text-paper">
       <div className="container-content flex min-h-[40px] items-center justify-center gap-3 py-2 text-center text-fluid-sm">
         <p className="leading-snug">
           {t(announcement.messageKey as TranslationKey)}{' '}
           {announcement.href && (
-            <Link href={announcement.href} className="link-underline font-medium text-brass-light">
+            <Link href={announcement.href} className="link-underline font-medium text-stone">
               {t(announcement.linkKey as TranslationKey)}
             </Link>
           )}
@@ -47,7 +47,7 @@ export function AnnouncementBar({ onVisibilityChange }: { onVisibilityChange?: (
           type="button"
           onClick={close}
           aria-label="Hinweis schließen"
-          className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-1.5 text-cream/70 transition-colors hover:bg-cream/10 hover:text-cream"
+          className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-1.5 text-paper/70 transition-colors hover:bg-paper/10 hover:text-paper"
         >
           <X className="h-4 w-4" aria-hidden />
         </button>

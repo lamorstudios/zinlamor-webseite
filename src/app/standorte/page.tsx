@@ -22,7 +22,7 @@ export default function StandortePage() {
           { label: 'Standorte', href: '/standorte' },
         ]}
       />
-      <section className="section bg-cream">
+      <section className="section bg-paper">
         <div className="container-content">
           <LocationsGrid />
         </div>

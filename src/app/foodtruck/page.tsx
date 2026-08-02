@@ -18,21 +18,21 @@ export default function FoodtruckPage() {
         eyebrow="Spanien mobil"
         title="Foodtruck"
         lead="Paella und Tapas, frisch zubereitet – dort, wo dein Event stattfindet."
-        tone="terracotta"
+        tone="ink"
         crumbs={[
           { label: 'Start', href: '/' },
           { label: 'Foodtruck', href: '/foodtruck' },
         ]}
       />
-      <section className="section bg-cream">
+      <section className="section bg-paper">
         <div className="container-content grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <Figure src="/images/foodtruck/foodtruck.jpg" alt="La Tasca Flamenca Foodtruck" tone="charcoal" ratio="aspect-[4/3]" label="Foodtruck" />
+          <Figure src="/images/foodtruck/foodtruck.jpg" alt="La Tasca Flamenca Foodtruck" tone="ink" ratio="aspect-[4/3]" label="Foodtruck" />
           <div className="max-w-prose">
-            <p className="text-fluid-lg leading-relaxed text-charcoal/80">
+            <p className="text-fluid-lg leading-relaxed text-ink/80">
               Ob Firmenfeier, Markt, Hochzeit oder Straßenfest: Unser Foodtruck bringt das Spaniengefühl
               direkt zu dir. Erzähl uns von deinem Anlass, und wir machen dir ein Angebot.
             </p>
-            <p className="mt-4 text-fluid-sm text-charcoal/45">
+            <p className="mt-4 text-fluid-sm text-ink/45">
               TODO: Konkrete Foodtruck-Details (Verfügbarkeit, Regionen, Mindestbestellung) durch
               Betreiber ergänzen.
             </p>
