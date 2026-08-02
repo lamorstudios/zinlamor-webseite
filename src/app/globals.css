@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================================
+   Design Tokens — La Tasca Flamenca
+   Farbwelt als CSS-Variablen (gespiegelt in tailwind.config.ts)
+   ========================================================================= */
+:root {
+  --burgundy: #5c1524;
+  --burgundy-dark: #3f0e19;
+  --burgundy-deep: #2a0910;
+  --terracotta: #c26a49;
+  --cream: #f6efe3;
+  --cream-soft: #fbf7ef;
+  --sand: #e3d4b8;
+  --charcoal: #20191a;
+  --brass: #c9a24b;
+
+  color-scheme: light;
+}
+
+@layer base {
+  * {
+    @apply border-sand/40;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-cream text-charcoal font-sans antialiased;
+    font-feature-settings: 'kern', 'liga';
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-serif;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Sichtbarer Fokus für Tastaturbedienung */
+  :focus-visible {
+    outline: 2px solid var(--brass);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Auswahlfarbe */
+  ::selection {
+    background: var(--terracotta);
+    color: var(--cream-soft);
+  }
+}
+
+@layer components {
+  .container-content {
+    @apply mx-auto w-full max-w-content px-5 sm:px-8 lg:px-12;
+  }
+
+  /* Editorial eyebrow / Kicker */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-fluid-sm font-sans font-medium uppercase tracking-[0.22em] text-terracotta;
+  }
+
+  .eyebrow::before {
+    content: '';
+    @apply h-px w-8 bg-terracotta/60;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-fluid-sm font-medium tracking-wide transition-all duration-300 ease-out-expo focus-visible:outline-offset-4;
+    min-height: 44px;
+  }
+
+  .btn-primary {
+    @apply btn bg-burgundy text-cream-soft hover:bg-burgundy-dark hover:-translate-y-0.5 shadow-card;
+  }
+
+  .btn-gold {
+    @apply btn bg-brass text-charcoal hover:bg-brass-dark hover:-translate-y-0.5;
+  }
+
+  .btn-outline {
+    @apply btn border border-charcoal/20 text-charcoal hover:bg-charcoal/5;
+  }
+
+  .btn-outline-light {
+    @apply btn border border-cream/40 text-cream-soft hover:bg-cream/10;
+  }
+
+  .btn-ghost {
+    @apply btn px-4 text-charcoal hover:bg-charcoal/5;
+  }
+
+  /* Karten-Grundform */
+  .card {
+    @apply relative overflow-hidden rounded-2xl bg-cream-soft;
+  }
+
+  /* Abschnitts-Rhythmus */
+  .section {
+    @apply py-section;
+  }
+
+  /* Bild-Reveal-Maske (ohne JS-Fallback: einfach sichtbar) */
+  .img-cover {
+    @apply h-full w-full object-cover;
+  }
+
+  /* Link mit animierter Unterstreichung */
+  .link-underline {
+    @apply relative inline-block;
+  }
+  .link-underline::after {
+    content: '';
+    @apply absolute -bottom-0.5 left-0 h-px w-full origin-right scale-x-0 bg-current transition-transform duration-300 ease-out-expo;
+  }
+  .link-underline:hover::after {
+    @apply origin-left scale-x-100;
+  }
+}
+
+/* Reduzierte Bewegung vollständig respektieren */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Ohne JavaScript: alle Scroll-Reveals sofort sichtbar machen
+   (kritische Inhalte müssen ohne JS lesbar sein). */
+.no-js .anim-reveal {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Utility: verstecke Scrollbar bei horizontalem Swipe-Layout */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
