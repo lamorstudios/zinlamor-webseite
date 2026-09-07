@@ -1,0 +1,302 @@
+# ══════════════════════════════════════════════════════════════
+# ZINLAMOR Studios — netlify.toml
+# Bot-Blocking, Cache-Headers, Rate Limiting (Pro-Plan)
+# Zuletzt geprüft gegen Netlify-Dokumentation: Sep 2026
+# ══════════════════════════════════════════════════════════════
+
+[build]
+  publish = "."
+
+# ══════════════════════════════════════════════════════════════
+# REDIRECTS — Scanner/Bot-Pfade mit 404 abweisen
+# Reihenfolge: spezifische Pfade zuerst, SPA-Fallback am Ende
+# ══════════════════════════════════════════════════════════════
+
+# WordPress-Scans
+[[redirects]]
+  from = "/wp-admin*"
+  to   = "/404.html"
+  status = 404
+  force  = true
+
+[[redirects]]
+  from = "/wp-login*"
+  to   = "/404.html"
+  status = 404
+  force  = true
+
+[[redirects]]
+  from = "/wp-content/*"
+  to   = "/404.html"
+  status = 404
+  force  = true
+
+[[redirects]]
+  from = "/wp-includes/*"
+  to   = "/404.html"
+  status = 404
+  force  = true
+
+[[redirects]]
+  from = "/wordpress/*"
+  to   = "/404.html"
+  status = 404
+  force  = true
+
+[[redirects]]
+  from = "/xmlrpc.php"
+  to   = "/404.html"
+  status = 404
+  force  = true
+
+# PHP-Dateien (statische Site — keine legitimen .php-Routen)
+[[redirects]]
+  from = "/*.php"
+  to   = "/404.html"
+  status = 404
+  force  = true
+
+# Credential-/Config-Scans
+[[redirects]]
+  from = "/.env"
+  to   = "/404.html"
+  status = 404
+  force  = true
+
+[[redirects]]
+  from = "/.env*"
+  to   = "/404.html"
+  status = 404
+  force  = true
+
+[[redirects]]
+  from = "/.git/*"
+  to   = "/404.html"
+  status = 404
+  force  = true
+
+[[redirects]]
+  from = "/firebase-key.json"
+  to   = "/404.html"
+  status = 404
+  force  = true
+
+[[redirects]]
+  from = "/firebase-adminsdk.json"
+  to   = "/404.html"
+  status = 404
+  force  = true
+
+[[redirects]]
+  from = "/keyfile.json"
+  to   = "/404.html"
+  status = 404
+  force  = true
+
+[[redirects]]
+  from = "/key.json"
+  to   = "/404.html"
+  status = 404
+  force  = true
+
+[[redirects]]
+  from = "/credentials.json"
+  to   = "/404.html"
+  status = 404
+  force  = true
+
+[[redirects]]
+  from = "/service-account.json"
+  to   = "/404.html"
+  status = 404
+  force  = true
+
+[[redirects]]
+  from = "/application_default_credentials.json"
+  to   = "/404.html"
+  status = 404
+  force  = true
+
+[[redirects]]
+  from = "/google-services.json"
+  to   = "/404.html"
+  status = 404
+  force  = true
+
+# Datenbank-/Admin-Tools
+[[redirects]]
+  from = "/phpmyadmin/*"
+  to   = "/404.html"
+  status = 404
+  force  = true
+
+[[redirects]]
+  from = "/adminer*"
+  to   = "/404.html"
+  status = 404
+  force  = true
+
+[[redirects]]
+  from = "/pma/*"
+  to   = "/404.html"
+  status = 404
+  force  = true
+
+# PHP-Frameworks/Dependencies
+[[redirects]]
+  from = "/vendor/*"
+  to   = "/404.html"
+  status = 404
+  force  = true
+
+[[redirects]]
+  from = "/composer.json"
+  to   = "/404.html"
+  status = 404
+  force  = true
+
+[[redirects]]
+  from = "/composer.lock"
+  to   = "/404.html"
+  status = 404
+  force  = true
+
+# Backup-/Log-Dateiscans
+[[redirects]]
+  from = "/*.sql"
+  to   = "/404.html"
+  status = 404
+  force  = true
+
+[[redirects]]
+  from = "/*.bak"
+  to   = "/404.html"
+  status = 404
+  force  = true
+
+[[redirects]]
+  from = "/*.backup"
+  to   = "/404.html"
+  status = 404
+  force  = true
+
+[[redirects]]
+  from = "/*.log"
+  to   = "/404.html"
+  status = 404
+  force  = true
+
+# Andere CMS-Scans
+[[redirects]]
+  from = "/joomla/*"
+  to   = "/404.html"
+  status = 404
+  force  = true
+
+[[redirects]]
+  from = "/drupal/*"
+  to   = "/404.html"
+  status = 404
+  force  = true
+
+[[redirects]]
+  from = "/typo3/*"
+  to   = "/404.html"
+  status = 404
+  force  = true
+
+# ──────────────────────────────────────────────────────────────
+# SPA-FALLBACK mit Rate Limiting (Pro-Plan, 5 Regeln max.)
+#
+# Zweck: Fängt alle übrigen Requests ab.
+# Rate Limit: 200 Requests / 60 Sekunden pro IP.
+# Normale Besucher: laden typisch 10-30 Assets — nie betroffen.
+# Suchmaschinen: Googlebot crawlt sehr langsam (~1 Req/s) — nie betroffen.
+# Aggressive Scanner: senden hunderte Requests/Minute — werden gebremst.
+#
+# aggregate_by ["ip", "domain"]: Per-IP-Limit (Pro-Plan-Feature).
+# "domain"-only wäre Enterprise-only — daher nicht verwendet.
+#
+# Routing-Sicherheit: Diese Regel existierte bereits als SPA-Fallback.
+# Der einzige Unterschied ist das hinzugefügte [redirects.rate_limit].
+# Bestehende Bot-Blocking-Redirects (force=true) haben Vorrang.
+# ──────────────────────────────────────────────────────────────
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200
+
+  [redirects.rate_limit]
+    window_limit   = 200
+    window_size    = 60
+    aggregate_by   = ["ip", "domain"]
+
+# ══════════════════════════════════════════════════════════════
+# CACHE HEADERS
+# HTML: no-cache — Netlify invalidiert ETags bei Deploy automatisch.
+# Kein Stale-Content nach Deployment möglich.
+# Statische Assets: 1 Jahr immutable.
+# ══════════════════════════════════════════════════════════════
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control           = "public, no-cache"
+    X-Content-Type-Options  = "nosniff"
+    X-Frame-Options         = "SAMEORIGIN"
+    Referrer-Policy         = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.jpeg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.ico"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.woff2"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.woff"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/site.webmanifest"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
