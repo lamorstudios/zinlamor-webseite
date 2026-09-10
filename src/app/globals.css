@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================================
+   Design Tokens — La Tasca Flamenca (editorial redesign)
+   ========================================================================= */
+:root {
+  --paper: #f4f2ed;
+  --paper-light: #faf8f3;
+  --paper-dark: #ece9e2;
+  --ink: #151515;
+  --ink-dark: #0d0d0d;
+  --stone: #dbd6cc;
+  --muted: #77736d;
+  --accent: #8d3b32;
+  --line: rgba(21, 21, 21, 0.12);
+
+  color-scheme: light;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+    font-feature-settings: 'kern', 'ss01';
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 3px;
+    border-radius: 1px;
+  }
+
+  ::selection {
+    background: var(--ink);
+    color: var(--paper-light);
+  }
+}
+
+@layer components {
+  .container-content {
+    @apply mx-auto w-full max-w-content px-5 sm:px-8 lg:px-14;
+  }
+
+  /* Kleines Label — Versalien, erhöhte Laufweite. Sparsam einsetzen. */
+  .eyebrow {
+    @apply inline-block text-fluid-sm font-medium uppercase tracking-label text-muted;
+  }
+
+  /* Buttons — rechteckig, kleiner Radius, reduziert. Keine Pills, keine Glows. */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-[4px] px-6 py-3.5 text-fluid-sm font-medium transition-all duration-300 ease-out-expo;
+    min-height: 48px;
+  }
+
+  .btn-primary {
+    @apply btn bg-ink text-paper-light hover:bg-ink-dark;
+  }
+
+  /* Heller CTA für dunkle Flächen (ersetzt den früheren Gold-Button). */
+  .btn-gold {
+    @apply btn bg-paper-light text-ink hover:bg-paper;
+  }
+
+  .btn-outline {
+    @apply btn border border-ink/20 text-ink hover:bg-ink/[0.04];
+  }
+
+  .btn-outline-light {
+    @apply btn border border-line-light text-paper-light hover:bg-paper/10;
+  }
+
+  .btn-ghost {
+    @apply btn px-4 text-ink hover:bg-ink/5;
+  }
+
+  .card {
+    @apply relative overflow-hidden rounded-md bg-paper-light;
+  }
+
+  .section {
+    @apply py-section;
+  }
+
+  .img-cover {
+    @apply h-full w-full object-cover;
+  }
+
+  /* Editorial-Textlink mit animierter Unterstreichung */
+  .link-underline {
+    @apply relative inline-block;
+  }
+  .link-underline::after {
+    content: '';
+    @apply absolute -bottom-0.5 left-0 h-px w-full origin-right scale-x-0 bg-current transition-transform duration-500 ease-editorial;
+  }
+  .link-underline:hover::after {
+    @apply origin-left scale-x-100;
+  }
+
+  /* Feine, durchgehende Trennlinie */
+  .rule {
+    @apply border-0 border-t border-line;
+  }
+}
+
+/* Ohne JavaScript: alle Scroll-Reveals sofort sichtbar (Inhalt ohne JS lesbar). */
+.no-js .anim-reveal {
+  opacity: 1 !important;
+  transform: none !important;
+  clip-path: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
