@@ -217,10 +217,44 @@
 .hrs .opt small{font-size:.76rem}
 .hrs .opt .badge-s{justify-self:center}
 .hrs .opt[aria-pressed="true"]::after{top:6px;right:6px;width:16px;height:16px;background-size:10px}
-.packs{grid-template-columns:repeat(3,minmax(0,1fr))}
-.packs .opt{padding:10px;gap:2px}
-.packs .opt b{font-size:.86rem;padding-right:0}
-.packs .opt small{font-size:.72rem}
+.abo{margin-top:16px;border-radius:var(--r-lg);background:#0d0b0b;color:#b9b0af;padding:clamp(14px,2.4vw,22px);position:relative;overflow:hidden}
+.abo::before{content:"";position:absolute;inset:-40% -20% auto auto;width:70%;aspect-ratio:1;background:radial-gradient(circle,rgba(224,32,32,.35),transparent 65%);pointer-events:none}
+.abo-head{position:relative;display:grid;gap:6px;margin-bottom:14px}
+.abo-head .badge-s{justify-self:start}
+.abo-head b{font-family:var(--display);font-size:clamp(1.15rem,1vw + .9rem,1.5rem);font-weight:800;letter-spacing:-.03em;color:#fff;line-height:1.15}
+.abo-head small{font-size:.82rem;line-height:1.45}
+.packs{position:relative;grid-template-columns:1fr;gap:8px}
+@media(min-width:760px){.packs{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.packs .pk{background:#171414;border-color:#2a2626;color:#b9b0af;padding:14px;gap:6px}
+.packs .pk:hover{border-color:#5a4a49}
+.packs .pk[aria-pressed="true"]{border-color:#e02020;background:#1f1313;box-shadow:0 0 0 3px rgba(224,32,32,.18)}
+.packs .pk.rec{border-color:#7a2a2a}
+.pk .pk-tag{justify-self:start;padding:3px 9px;border-radius:var(--r-pill);font-size:.68rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:#2a2323;color:#f4f0ef}
+.pk.rec .pk-tag{background:#e02020;color:#fff}
+.pk b{color:#fff;font-size:1.05rem;padding-right:24px}
+.pk .pk-price{font-family:var(--display);font-size:1.7rem;font-weight:800;color:#fff;letter-spacing:-.03em;line-height:1}
+.pk .pk-price small{font-family:var(--body);font-size:.78rem;font-weight:500;color:#8a8180;letter-spacing:0}
+.pk .pk-ses{font-size:.82rem}
+.pk .pk-save{justify-self:start;padding:4px 9px;border-radius:8px;background:rgba(37,211,102,.12);color:#5fe08f;font-size:.76rem;font-weight:700}
+.dots{display:flex;flex-wrap:wrap;gap:4px}
+.dots i{width:22px;height:8px;border-radius:4px;background:#e02020}
+.dots i:nth-child(n+4){opacity:.85}
+.abo-info{position:relative;margin-top:12px;border-radius:var(--r-md);background:#171414;border:1px solid #2a2626;padding:clamp(14px,2.2vw,20px);display:grid;gap:12px;animation:fnIn .45s var(--ease)}
+.abo-info[hidden]{display:none}
+.abo-info h4{font-family:var(--display);font-size:1.1rem;color:#fff;letter-spacing:-.02em;line-height:1.2}
+.cmp{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;text-align:center}
+.cmp div{border-radius:12px;background:#0d0b0b;padding:10px 6px;display:grid;gap:2px;min-width:0}
+.cmp span{font-size:.7rem;line-height:1.3}
+.cmp b{font-family:var(--display);color:#fff;font-size:1.05rem;letter-spacing:-.02em}
+.cmp .old b{color:#8a8180;text-decoration:line-through}
+.cmp .win{background:rgba(37,211,102,.12)}
+.cmp .win b{color:#5fe08f}
+.abo-info ul{list-style:none;margin:0;padding:0;display:grid;gap:7px;font-size:.86rem}
+.abo-info li{display:flex;gap:9px;align-items:flex-start}
+.abo-info li::before{content:"";flex:0 0 10px;height:6px;margin-top:6px;border-left:2px solid #e02020;border-bottom:2px solid #e02020;transform:rotate(-45deg)}
+.abo-info li b{color:#fff}
+.abo-info .fine{font-size:.74rem;color:#8a8180}
+.abo-info .btn{justify-self:start}
 .fn-sub{margin:14px 0 8px;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text)}
 .nudge{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:12px;padding:10px 12px;border-radius:14px;background:rgba(224,32,32,.07);border:1px dashed rgba(224,32,32,.45);font-size:.86rem;color:var(--soft)}
 .nudge[hidden]{display:none}
@@ -358,10 +392,13 @@
         </div>
 
         <div class="fn-step" data-step="2">
-          <h3>Wie lange?</h3><p>Je länger, desto günstiger: bis zu <b style="color:#c21818">29 % Rabatt</b> auf die Stunde.</p>
+          <h3>Wie lange?</h3><p>Je länger, desto günstiger: bis zu <b style="color:#c21818">29 % Rabatt</b> auf die Stunde. Als Monatspaket sparst du noch mehr.</p>
           <div class="opts hrs" id="fnHours"></div>
-          <div class="fn-sub">Regelmäßig im Studio? Monatspakete</div>
-          <div class="opts packs" id="fnPacks"></div>
+          <div class="abo">
+            <div class="abo-head"><span class="badge-s">Stammkunden-Deal</span><b>Monatspaket: jeden Monat fest im Studio, bis zu 651 € sparen.</b><small>Feste Sessions à 5 Stunden, Equipment inklusive, monatlich kündbar.</small></div>
+            <div class="opts packs" id="fnPacks"></div>
+            <div class="abo-info" id="fnPackInfo" hidden></div>
+          </div>
         </div>
 
         <div class="fn-step" data-step="3">
@@ -410,7 +447,7 @@
         <div class="sum-rows" id="sumRows"><div><span>Noch nichts ausgewählt</span></div></div>
         <div class="sum-tot"><span>Geschätzt</span><b id="sumTot">0 €</b></div>
         <div class="sum-save" id="sumSave"></div>
-        <div class="perks"><div>Bis zu 29 % Rabatt bei langen Sessions</div><div>Early Bird −10 % ab 14 Tagen Vorlauf</div><div>Mix &amp; Master im Bundle 18,50 € günstiger</div><div>Equipment inklusive, 24/7 Zugang</div></div>
+        <div class="perks"><div>Monatspakete: bis zu 651 € pro Monat sparen</div><div>Bis zu 29 % Rabatt bei langen Sessions</div><div>Early Bird −10 % ab 14 Tagen Vorlauf</div><div>Mix &amp; Master im Bundle 18,50 € günstiger</div><div>Equipment inklusive, 24/7 Zugang</div></div>
         <small>Unverbindliche Schätzung. Der finale Preis steht in der Bestätigung. Monatspakete zzgl. MwSt.</small>
       </aside>
     </div>
@@ -646,7 +683,7 @@
   var $=function(s){return document.querySelector(s)}, $$=function(s){return Array.prototype.slice.call(document.querySelectorAll(s))};
   var form=$('#fn'); if(!form) return;
   var H=[3,4,6,8,10], R=[35,33,30,28,25], last=6, step=1;
-  var PACKS=[{v:'pro',t:'Pro Artist',h:15,p:249},{v:'business',t:'Business',h:25,p:449},{v:'label',t:'Label',h:40,p:749}];
+  var PACKS=[{v:'pro',t:'Pro Artist',h:15,p:249,s:3,tag:'Günstigster Stundenpreis',who:'Für Artists mit regelmäßigen Sessions'},{v:'business',t:'Business',h:25,p:449,s:5,tag:'Empfehlung',rec:1,who:'Für Creator, Podcasts und Teams'},{v:'label',t:'Label',h:40,p:749,s:8,tag:'Maximale Ersparnis',who:'Für Labels und Vollzeit-Artists'}];
   var EXTRAS={
     musik:[{v:'prod',t:'Produzent Nick Lamor',p:'+35 € / Std.'},{v:'mix',t:'Mix',p:'120 €',bd:'Bundle −18,50 €'},{v:'master',t:'Mastering',p:'65 €',bd:'Bundle −18,50 €'},{v:'onetake',t:'3 One-Takes Hochformat',p:'auf Anfrage'},
       {v:'beat',t:'Individueller Beat',p:'ab 350 €',from:350,more:1},{v:'songwriting',t:'Songwriting',p:'ab 750 €',from:750,more:1},{v:'musikvideo',t:'Musikvideo',p:'auf Anfrage',more:1},{v:'reels',t:'Social-Media-Reels',p:'auf Anfrage',more:1},{v:'vertrieb',t:'Vertrieb & Release',p:'auf Anfrage',more:1}],
@@ -660,7 +697,20 @@
   var eur=function(n){n=Math.round(n*100)/100;return n.toLocaleString('de-DE',{minimumFractionDigits:n%1?2:0,maximumFractionDigits:2})+' €'};
   function opt(k,v,b,s,badge,cls){return '<button type="button" class="opt" data-k="'+k+'" data-v="'+v+'" aria-pressed="false"><b>'+b+'</b><small>'+s+'</small>'+(badge?'<span class="badge-s '+(cls||'')+'">'+badge+'</span>':'')+'</button>'}
   $('#fnHours').innerHTML=H.map(function(h,i){var pct=Math.round((1-R[i]/35)*100);return opt('hours',i,h+' Std.',R[i]+' €/Std.',pct?'−'+pct+' %':'',i===4?'gold':(i===2?'':'soft'))}).join('');
-  $('#fnPacks').innerHTML=PACKS.map(function(p){return opt('pack',p.v,p.t,p.h+' Std. · '+p.p+' €','')}).join('');
+  function dots(n){var d='';for(var i=0;i<n;i++)d+='<i></i>';return '<span class="dots" aria-hidden="true">'+d+'</span>'}
+  $('#fnPacks').innerHTML=PACKS.map(function(p){return '<button type="button" class="opt pk'+(p.rec?' rec':'')+'" data-k="pack" data-v="'+p.v+'" aria-pressed="false"><span class="pk-tag">'+p.tag+'</span><b>'+p.t+'</b><span class="pk-price">'+eur(p.p)+' <small>/ Monat</small></span><span class="pk-ses">'+p.s+' Sessions à 5 Std. · '+p.h+' Std.</span>'+dots(p.s)+'<span class="pk-save">Du sparst '+eur(p.h*35-p.p)+' / Monat</span></button>'}).join('');
+  function packInfo(){var el=$('#fnPackInfo'),p=PACKS.filter(function(z){return z.v===st.pack})[0];if(!p){el.hidden=true;return}
+    var single=p.h*35,save=single-p.p,ph=p.p/p.h;
+    el.innerHTML='<h4>'+p.t+': '+p.s+' × 5 Stunden im Monat</h4>'+dots(p.s)
+      +'<div class="cmp"><div class="old"><span>Einzeln gebucht</span><b>'+eur(single)+'</b></div><div><span>Im Paket</span><b>'+eur(p.p)+'</b></div><div class="win"><span>Du sparst</span><b>'+eur(save)+'</b></div></div>'
+      +'<ul><li><span><b>'+p.s+' feste Sessions</b> à 5 Stunden pro Monat, insgesamt '+p.h+' Stunden</span></li>'
+      +'<li><span><b>Auch 2 Sessions am selben Tag</b> möglich, also bis zu 10 Stunden am Stück (nach Verfügbarkeit)</span></li>'
+      +'<li><span>Nur <b>'+eur(ph)+' pro Stunde</b> statt 35 € Einzelstundenpreis</span></li>'
+      +'<li><span>Equipment inklusive, <b>24/7-Zugang</b> per Code-Schloss</span></li>'
+      +'<li><span><b>Monatlich kündbar</b>, feste und planbare Kosten</span></li></ul>'
+      +'<p class="fine">'+p.who+'. Preise zzgl. MwSt. Nicht genutzte Stunden verfallen am Monatsende. Ersparnis gerechnet zum Einzelstundenpreis von 35 €.</p>'
+      +'<button type="button" class="btn btn-rec" data-go="3">Mit '+p.t+' weiter</button>';
+    el.hidden=false}
   var showMore=false;
   function exInfo(e){if(e.v==='onetake'&&st.extras.prod)return {p:'150 € statt 250 €',bd:'Nur mit Produzent',cls:''};return {p:e.p,bd:e.bd||'',cls:'soft'}}
   function drawExtras(reset){if(reset){st.extras={};showMore=false}var list=EXTRAS[st.purpose]||[],hasMore=list.some(function(e){return e.more});
@@ -674,13 +724,14 @@
       n.innerHTML='<span><b>'+h1+' Std.</b> = nur <b>'+R[j]+' €/Std.</b> (+'+(h1-h0)+' Std. für '+eur(extra)+')</span><button type="button" data-up="'+j+'">Auf '+h1+' Std.</button>';n.hidden=false}
     else n.hidden=true}
   form.addEventListener('click',function(e){
+    var gb=e.target.closest('[data-go]'); if(gb){go(+gb.dataset.go);return}
     var up=e.target.closest('[data-up]'); if(up){st.hours=+up.dataset.up;mark('hours',st.hours);nudge();calc();return}
     var tb=e.target.closest('#fnTimes button'); if(tb){$$('#fnTimes button').forEach(function(x){x.setAttribute('aria-pressed',x===tb)});st.time=tb.textContent;calc();return}
     var b=e.target.closest('.opt'); if(!b) return;
     var k=b.dataset.k, v=b.dataset.v;
     if(k==='purpose'){st.purpose=v;mark('purpose',v);drawExtras(true);setTimeout(function(){go(2)},180);return}
-    if(k==='hours'){st.hours=+v;st.pack='';mark('hours',v);mark('pack','');nudge();setTimeout(function(){go(3)},180);return}
-    if(k==='pack'){st.pack=v;st.hours=-1;mark('pack',v);mark('hours','');nudge();setTimeout(function(){go(3)},180);return}
+    if(k==='hours'){st.hours=+v;st.pack='';mark('hours',v);mark('pack','');packInfo();nudge();calc();setTimeout(function(){go(3)},180);return}
+    if(k==='pack'){st.pack=v;st.hours=-1;mark('pack',v);mark('hours','');nudge();packInfo();calc();var pi=$('#fnPackInfo');if(pi.getBoundingClientRect().bottom>innerHeight)pi.scrollIntoView({behavior:'smooth',block:'nearest'});return}
     if(k==='more'){showMore=true;drawExtras();return}
     if(k==='extra'){st.extras[v]=!st.extras[v];b.setAttribute('aria-pressed',!!st.extras[v]);if(v==='prod')drawExtras();calc()}
   });
@@ -690,7 +741,7 @@
     if(st.purpose) rows.push(['Zweck',NAMES[st.purpose]]);
     if(st.hours>=0){hrs=H[st.hours];var base=hrs*R[st.hours];save+=hrs*35-base;if(st.eb){save+=base*.1;base*=.9}
       rows.push(['Studio '+hrs+' Std.'+(st.eb?' (Early Bird)':''),eur(base)]);tot+=base}
-    if(st.pack){var p=PACKS.filter(function(z){return z.v===st.pack})[0];rows.push(['Paket '+p.t+' / Monat',eur(p.p)]);tot+=p.p}
+    if(st.pack){var p=PACKS.filter(function(z){return z.v===st.pack})[0];rows.push(['Paket '+p.t+' ('+p.s+' × 5 Std.) / Monat',eur(p.p)]);tot+=p.p;save+=p.h*35-p.p}
     if(x.prod){if(hrs){rows.push(['Produzent '+hrs+' Std.',eur(hrs*35)]);tot+=hrs*35}else rows.push(['Produzent','+35 € / Std.'])}
     if(x.mix&&x.master){rows.push(['Mix & Mastering (Bundle)',eur(166.5)]);tot+=166.5;save+=18.5}
     else{if(x.mix){rows.push(['Mix',eur(120)]);tot+=120}if(x.master){rows.push(['Mastering',eur(65)]);tot+=65}}
@@ -719,7 +770,7 @@
     $('#fnMsg').textContent=m;return !m}
   function summary(){calc();var L=[];st.rows.forEach(function(r){L.push(r[0]+': '+r[1])});L.push('Geschätzt: '+(st.from?'ab ':'')+eur(st.tot)+(st.save>0?' (Ersparnis '+eur(st.save)+')':''));return L.join('\n')}
   function fill(){var f=form.elements;
-    f.zweck.value=NAMES[st.purpose]||'';f.dauer.value=st.hours>=0?H[st.hours]+' Std. à '+R[st.hours]+' €':(st.pack?'Monatspaket '+st.pack:'');
+    f.zweck.value=NAMES[st.purpose]||'';f.dauer.value=st.hours>=0?H[st.hours]+' Std. à '+R[st.hours]+' €':(st.pack?(function(){var p=PACKS.filter(function(z){return z.v===st.pack})[0];return 'Monatspaket '+p.t+' ('+p.s+' × 5 Std., '+p.p+' € / Monat zzgl. MwSt.)'})():'');
     f.extras.value=(EXTRAS[st.purpose]||[]).filter(function(e){return st.extras[e.v]}).map(function(e){return e.t+' ('+exInfo(e).p+')'}).join(', ')||'keine';
     f.early_bird.value=st.eb?'ja':'nein';f.wunschtermin.value=($('#fnDate').value?$('#fnDate').value+', '+st.time:(st.time==='Flexibel'?'flexibel':'flexibel, '+st.time));
     f.preis_geschaetzt.value=(st.from?'ab ':'')+eur(st.tot);f.ersparnis.value=eur(st.save||0);f.zusammenfassung.value=summary()}
