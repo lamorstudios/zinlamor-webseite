@@ -1,0 +1,28 @@
+name: fetch-video
+on:
+  push:
+    branches: [tmp-video-fetch]
+    paths: [".github/workflows/fetch.yml"]
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tools
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null && pip install -q gdown
+      - name: Download
+        run: gdown --fuzzy "https://drive.google.com/file/d/1zRgh_IgIS6JD5OdO3Grz_MdVMcOmUXYJ/view" -O src.mp4 && ls -la src.mp4
+      - name: Inspect + compress
+        run: |
+          mkdir -p out
+          ffprobe -v error -show_entries format=duration,size,bit_rate -show_entries stream=codec_name,width,height,r_frame_rate -of compact src.mp4 | tee out/info.txt
+          ffmpeg -v error -y -i src.mp4 -vf "scale='if(gt(iw,ih),min(1280,iw),-2)':'if(gt(iw,ih),-2,min(1280,ih))':flags=lanczos" -an -c:v libx264 -preset veryfast -crf 26 -pix_fmt yuv420p -movflags +faststart out/zinlamor-image.mp4
+          D=$(ffprobe -v error -show_entries format=duration -of csv=p=0 src.mp4)
+          for i in 1 2 3 4 5 6 7 8; do ffmpeg -v error -y -ss $(python3 -c "print($D*$i/9)") -i src.mp4 -frames:v 1 -vf scale=480:-2 out/f$i.jpg; done
+          ls -la out
+      - name: Commit
+        run: |
+          git config user.name "github-actions"; git config user.email "actions@github.com"
+          git add out && git commit -m "video output" && git push
