@@ -206,7 +206,7 @@
   force  = true
 
 # ──────────────────────────────────────────────────────────────
-# SPA-FALLBACK mit Rate Limiting (Pro-Plan, 5 Regeln max.)
+# FALLBACK (echte 404) mit Rate Limiting (Pro-Plan, 5 Regeln max.)
 #
 # Zweck: Fängt alle übrigen Requests ab.
 # Rate Limit: 200 Requests / 60 Sekunden pro IP.
@@ -223,8 +223,8 @@
 # ──────────────────────────────────────────────────────────────
 [[redirects]]
   from   = "/*"
-  to     = "/index.html"
-  status = 200
+  to     = "/404.html"
+  status = 404
 
   [redirects.rate_limit]
     window_limit   = 200

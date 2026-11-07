@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# KI-Trainings-Crawler ohne Nutzen für die Sichtbarkeit
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+Sitemap: https://zinlamor.de/sitemap.xml
