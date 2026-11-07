@@ -22,7 +22,7 @@
 <link rel="preload" href="assets/fonts/interdisplay-800.woff" as="font" type="font/woff" crossorigin/>
 <link rel="preload" href="assets/fonts/inter-400.woff" as="font" type="font/woff" crossorigin/>
 <link rel="stylesheet" href="assets/site.css?v=20261107"/>
-<link rel="preload" href="recording-blue.webp" as="image" type="image/webp" fetchpriority="high"/>
+<link rel="preload" href="assets/media/zinlamor-imagevideo-poster.webp" as="image" type="image/webp" fetchpriority="high"/>
 <meta name="geo.region" content="DE-BY"/>
 <meta name="geo.placename" content="München"/>
 <style>
@@ -35,8 +35,8 @@
 .hero-copy{display:grid;gap:28px;min-width:0}
 .hero-lead{max-width:40ch;font-size:clamp(1.05rem,.4vw + 1rem,1.25rem);color:#b9b0af}
 .row{display:flex;flex-wrap:wrap;gap:12px}
-.hero-media{position:relative;margin:0;border-radius:var(--r-xl);overflow:hidden;aspect-ratio:4/5;max-height:620px;max-width:100%;border:1px solid var(--line)}
-.hero-media img{width:100%;height:112%;object-fit:cover;object-position:center 35%;will-change:transform}
+.hero-media{position:relative;margin:0;border-radius:var(--r-xl);overflow:hidden;aspect-ratio:4/5;max-height:660px;max-width:100%;border:1px solid var(--line)}
+.hero-media video{width:100%;height:112%;object-fit:cover;object-position:center 40%;will-change:transform;display:block;background:#0d0c0c}
 .hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(7,7,7,.7))}
 .hero-media .chip{position:absolute;left:18px;bottom:18px;z-index:2}
 .js .hero-media{animation:clipIn 1.5s cubic-bezier(.16,1,.3,1) both .15s}
@@ -212,7 +212,7 @@
           <a class="btn btn-ghost magnet" href="#preise">Preis berechnen</a>
         </div>
       </div>
-      <figure class="hero-media"><img id="heroImg" src="recording-blue.webp" alt="ZINLAMOR Recording Booth mit Mikrofon und blauem LED-Licht" fetchpriority="high" width="1024" height="1536"><span class="chip"><span class="label" style="color:#fff"><i></i>Booth bereit</span></span></figure>
+      <figure class="hero-media"><video id="heroImg" autoplay muted loop playsinline preload="auto" poster="assets/media/zinlamor-imagevideo-poster.webp" aria-label="Imagevideo: das ZINLAMOR Studio in München"><source src="assets/media/zinlamor-imagevideo.mp4" type="video/mp4"></video><span class="chip"><span class="label" style="color:#fff"><i></i>Live aus dem Studio</span></span></figure>
     </div>
     <div class="specs">
       <div class="spec" data-r><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12V3h9l9 9-9 9z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span><div><b>ab 35 €</b><span>pro Stunde</span></div></div>
