@@ -47,6 +47,9 @@
 .spec b{display:block;font-family:var(--display);color:var(--head);font-size:clamp(1.25rem,1.3vw + .8rem,1.8rem);font-weight:800;letter-spacing:-.02em;line-height:1.1}
 .spec span{font-size:.84rem}
 .spec .ico{width:42px;height:42px;border-radius:12px}
+.spec>div{min-width:0}
+.spec span{display:block;overflow-wrap:break-word;hyphens:auto}
+@media(max-width:560px){.spec{flex-direction:column;align-items:flex-start;gap:12px;padding:16px}.spec b{font-size:1.3rem}.spec span{font-size:.8rem}}
 #wave{position:absolute;left:0;right:0;bottom:0;width:100%;height:42%;pointer-events:none;opacity:.5;z-index:-1}
 
 /* Galerie */
@@ -76,6 +79,8 @@
 .k:hover{transform:translateY(-4px);box-shadow:0 24px 50px -30px rgba(0,0,0,.3)}
 .k h3{font-size:clamp(1rem,.6vw + .85rem,1.2rem)}
 .k small{display:block;margin-top:4px;font-size:.85rem;color:var(--text)}
+.k>div{min-width:0}.k h3,.k small{overflow-wrap:break-word;hyphens:auto}
+@media(max-width:400px){.k{padding:16px;min-height:0}.kit{gap:8px}.chart{gap:4px}.cb .k2,.cb .v{font-size:.68rem}}
 .uses{margin-top:clamp(36px,5vw,56px);display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .uses .label{margin-right:8px}
 .uses .pill svg{width:16px;height:16px;fill:none;stroke:var(--rec);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
@@ -156,7 +161,7 @@
 .map{position:relative;aspect-ratio:16/10;max-width:100%;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line);background:repeating-linear-gradient(0deg,transparent 0 39px,#1b1818 39px 40px),repeating-linear-gradient(90deg,transparent 0 39px,#1b1818 39px 40px),#0f0d0d}
 .map svg.roads{position:absolute;inset:0;width:100%;height:100%}
 .map .pin{position:absolute;left:56%;top:46%;transform:translate(-50%,-50%);width:18px;height:18px;border-radius:50%;background:#e02020;box-shadow:0 0 0 10px rgba(224,32,32,.18),0 0 0 22px rgba(224,32,32,.08),0 0 34px #e02020}
-.map .pl{position:absolute;left:56%;top:46%;transform:translate(14px,-140%);padding:8px 12px;border-radius:12px;background:#fff;color:#0b0a0a;font-size:.8rem;font-weight:600;white-space:nowrap}
+.map .pl{position:absolute;left:56%;top:46%;transform:translate(-50%,-190%);padding:8px 12px;border-radius:12px;background:#fff;color:#0b0a0a;font-size:.8rem;font-weight:600;white-space:nowrap}
 .cl{display:grid;gap:8px}
 .cl div{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:var(--r-md);border:1px solid var(--line);min-width:0}
 .cl .lic{width:18px;height:18px;color:var(--rec);flex:0 0 auto}
