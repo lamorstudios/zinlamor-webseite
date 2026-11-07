@@ -182,59 +182,107 @@
 .film-pts .ico{width:42px;height:42px;border-radius:12px}
 
 /* Anfrage-Funnel */
-.fn{display:grid;gap:16px}
-@media(min-width:1000px){.fn{grid-template-columns:minmax(0,1fr) 340px;align-items:start}}
-.fn-box{border-radius:var(--r-xl);border:1px solid var(--line);background:var(--panel);padding:clamp(20px,3.4vw,40px);min-width:0;box-shadow:0 30px 70px -50px rgba(0,0,0,.35)}
-.fn-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px;font-size:.86rem}
-.fn-bar{height:6px;border-radius:6px;background:var(--line);overflow:hidden;margin-bottom:clamp(24px,3vw,34px)}
-.fn-bar i{display:block;height:100%;width:var(--p,16%);background:linear-gradient(90deg,#ff4a4a,#e02020);border-radius:6px;transition:width .6s var(--ease)}
+.fn{display:grid;gap:16px;align-items:start}
+@media(min-width:1000px){.fn{grid-template-columns:minmax(0,1fr) 330px}}
+.fn-box{position:relative;border-radius:var(--r-xl);border:1px solid var(--line);background:var(--panel);padding:clamp(16px,3vw,36px);min-width:0;box-shadow:0 30px 70px -50px rgba(0,0,0,.35)}
+.fn-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px;font-size:.8rem;font-weight:600}
+.fn-top span:last-child{color:var(--rec)}
+.fn-bar{height:5px;border-radius:5px;background:var(--line);overflow:hidden;margin-bottom:clamp(16px,2.4vw,26px)}
+.fn-bar i{display:block;height:100%;width:var(--p,16%);background:linear-gradient(90deg,#ff4a4a,#e02020);border-radius:5px;transition:width .6s var(--ease)}
 .fn-step{display:none}
-.fn-step.on{display:block;animation:fnIn .55s var(--ease)}
-@keyframes fnIn{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
-.fn-step h3{font-size:clamp(1.35rem,1.4vw + 1rem,1.9rem);letter-spacing:-.03em;margin-bottom:6px}
-.fn-step>p{margin-bottom:22px}
-.opts{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr))}
-.opt{position:relative;display:grid;gap:10px;align-content:start;text-align:left;padding:18px;border-radius:var(--r-md);border:1.5px solid var(--line);background:var(--paper);color:var(--text);font:inherit;cursor:pointer;transition:border-color .25s,background .25s,transform .35s var(--ease);min-width:0}
-.t-light .opt{background:#fff}
+.fn-step.on{display:block;animation:fnIn .5s var(--ease)}
+@keyframes fnIn{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:none}}
+.fn-step h3{font-size:clamp(1.2rem,1.2vw + .95rem,1.7rem);letter-spacing:-.03em;margin-bottom:4px}
+.fn-step>p{margin-bottom:14px;font-size:.92rem}
+.opts{display:grid;gap:8px;grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(min-width:760px){.opts.four{grid-template-columns:repeat(4,minmax(0,1fr))}.opts.three{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.opt{position:relative;display:grid;gap:6px;align-content:start;text-align:left;padding:14px;border-radius:var(--r-md);border:1.5px solid var(--line);background:#fff;color:var(--text);font:inherit;cursor:pointer;transition:border-color .25s,background .25s,transform .35s var(--ease);min-width:0}
 .opt:hover{transform:translateY(-2px);border-color:#cdbfbe}
 .opt[aria-pressed="true"]{border-color:var(--rec);background:rgba(224,32,32,.05)}
-.opt[aria-pressed="true"]::after{content:"";position:absolute;top:14px;right:14px;width:22px;height:22px;border-radius:50%;background:var(--rec) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/14px no-repeat}
-.opt b{color:var(--head);font-family:var(--display);font-weight:700;font-size:1.05rem;letter-spacing:-.01em;padding-right:26px}
-.opt small{font-size:.85rem;line-height:1.45}
-.opt .ico{width:42px;height:42px;border-radius:12px}
-.opt .tag{justify-self:start;padding:4px 10px;border-radius:var(--r-pill);background:rgba(224,32,32,.1);color:#c21818;font-size:.74rem;font-weight:600}
-.opts.hrs{grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr))}
-.opts.hrs .opt b{font-size:1.5rem;letter-spacing:-.03em}
-.fn-sub{margin:26px 0 12px;font-family:var(--body);font-size:.74rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text)}
-.fn-row{display:grid;gap:12px}
-@media(min-width:640px){.fn-row.two{grid-template-columns:1fr 1fr}}
-.fld{display:grid;gap:6px;min-width:0}
-.fld span{font-size:.84rem;font-weight:600;color:var(--soft)}
-.fld input,.fld textarea,.fld select{width:100%;font:inherit;font-size:1rem;color:var(--head);background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:13px 14px;outline:none;transition:border-color .2s;min-width:0}
-.fld textarea{min-height:96px;resize:vertical}
+.opt[aria-pressed="true"]::after{content:"";position:absolute;top:10px;right:10px;width:20px;height:20px;border-radius:50%;background:var(--rec) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/12px no-repeat}
+.opt b{color:var(--head);font-family:var(--display);font-weight:700;font-size:.98rem;letter-spacing:-.01em;line-height:1.2;padding-right:22px}
+.opt small{font-size:.8rem;line-height:1.4}
+.opt .ico{width:36px;height:36px;border-radius:10px}
+.opt .ico svg{width:19px;height:19px}
+@media(max-width:560px){.opts.four .opt small{display:none}}
+.badge-s{justify-self:start;padding:3px 8px;border-radius:var(--r-pill);background:#e02020;color:#fff;font-size:.7rem;font-weight:700;letter-spacing:.02em}
+.badge-s.soft{background:rgba(224,32,32,.1);color:#c21818}
+.badge-s.gold{background:#0c0b0b;color:#fff}
+.hrs{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(min-width:760px){.hrs{grid-template-columns:repeat(5,minmax(0,1fr))}}
+.hrs .opt{padding:12px 10px;gap:4px;text-align:center;justify-items:center}
+.hrs .opt b{font-size:1.25rem;padding:0;letter-spacing:-.03em}
+.hrs .opt small{font-size:.76rem}
+.hrs .opt .badge-s{justify-self:center}
+.hrs .opt[aria-pressed="true"]::after{top:6px;right:6px;width:16px;height:16px;background-size:10px}
+.packs{grid-template-columns:repeat(3,minmax(0,1fr))}
+.packs .opt{padding:10px;gap:2px}
+.packs .opt b{font-size:.86rem;padding-right:0}
+.packs .opt small{font-size:.72rem}
+.fn-sub{margin:14px 0 8px;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text)}
+.nudge{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:12px;padding:10px 12px;border-radius:14px;background:rgba(224,32,32,.07);border:1px dashed rgba(224,32,32,.45);font-size:.86rem;color:var(--soft)}
+.nudge[hidden]{display:none}
+.nudge b{color:#c21818}
+.nudge button{font:inherit;font-size:.8rem;font-weight:600;padding:7px 12px;border-radius:var(--r-pill);border:0;background:#e02020;color:#fff;cursor:pointer;white-space:nowrap}
+.eb{display:flex;align-items:center;gap:12px;margin-top:10px;padding:12px 14px;border-radius:var(--r-md);border:1.5px solid var(--line);background:#fff;cursor:pointer;font-size:.88rem}
+.eb input{width:20px;height:20px;accent-color:#e02020;flex:0 0 auto}
+.eb b{color:var(--head)}
+.fn-row{display:grid;gap:8px}
+.fn-row.two{grid-template-columns:1fr 1fr}
+.fld{display:grid;gap:4px;min-width:0}
+.fld span{font-size:.78rem;font-weight:600;color:var(--soft)}
+.fld input,.fld textarea,.fld select{width:100%;font:inherit;font-size:16px;color:var(--head);background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:11px 12px;outline:none;transition:border-color .2s;min-width:0}
+.fld textarea{min-height:64px;resize:vertical}
 .fld input:focus,.fld textarea:focus,.fld select:focus{border-color:var(--rec)}
 .fld.err input{border-color:#e02020}
-.chk{display:flex;gap:12px;align-items:flex-start;font-size:.9rem;margin-top:16px;cursor:pointer}
-.chk input{width:20px;height:20px;margin-top:2px;accent-color:#e02020;flex:0 0 auto}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips button{font:inherit;font-size:.84rem;padding:8px 12px;border-radius:var(--r-pill);border:1.5px solid var(--line);background:#fff;color:var(--soft);cursor:pointer}
+.chips button[aria-pressed="true"]{border-color:var(--rec);color:#c21818;background:rgba(224,32,32,.05)}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:.8rem;line-height:1.45;margin-top:10px;cursor:pointer}
+.chk input{width:18px;height:18px;margin-top:1px;accent-color:#e02020;flex:0 0 auto}
 .chk a{color:var(--head)}
-.fn-msg{min-height:1.4em;margin-top:12px;color:#c21818;font-size:.88rem;font-weight:600}
-.fn-nav{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;margin-top:22px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.fn-msg{min-height:1.2em;margin-top:8px;color:#c21818;font-size:.84rem;font-weight:600}
+.fn-nav{display:flex;gap:8px;margin-top:10px}
+.fn-nav .btn{padding:13px 20px}
 .fn-nav .btn[hidden]{display:none}
+#fnNext{margin-left:auto}
 .t-light .btn-ghost{background:#fff}
-.sum{position:sticky;top:96px;border-radius:var(--r-xl);background:#0d0b0b;color:#b9b0af;padding:26px;display:grid;gap:14px;min-width:0}
-.sum h4{font-family:var(--body);font-size:.74rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#f4f0ef}
-.sum-rows{display:grid;gap:8px;font-size:.92rem;font-variant-numeric:tabular-nums}
+.fn-cal{}
+.mini{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:12px;padding:12px 14px;border-radius:16px;background:#0d0b0b;color:#b9b0af;font-size:.82rem;font-variant-numeric:tabular-nums}
+.mini b{font-family:var(--display);font-size:1.25rem;color:#fff;letter-spacing:-.02em;white-space:nowrap}
+.mini em{font-style:normal;color:#ff6b6b;font-weight:600}
+@media(min-width:1000px){.mini{display:none}}
+.sum{position:sticky;top:96px;border-radius:var(--r-xl);background:#0d0b0b;color:#b9b0af;padding:24px;display:none;gap:12px;min-width:0}
+@media(min-width:1000px){.sum{display:grid}}
+.sum h4{font-family:var(--body);font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#f4f0ef}
+.sum-rows{display:grid;gap:7px;font-size:.9rem;font-variant-numeric:tabular-nums}
 .sum-rows div{display:flex;justify-content:space-between;gap:10px}
 .sum-rows span{min-width:0;overflow-wrap:anywhere}
 .sum-rows b{color:#f4f0ef;font-weight:600;white-space:nowrap}
-.sum-tot{border-top:1px solid #2a2626;padding-top:14px;display:flex;justify-content:space-between;align-items:baseline;gap:10px}
-.sum-tot b{font-family:var(--display);font-size:2rem;font-weight:800;color:#fff;letter-spacing:-.03em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.sum-tot{border-top:1px solid #2a2626;padding-top:12px;display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.sum-tot b{font-family:var(--display);font-size:1.9rem;font-weight:800;color:#fff;letter-spacing:-.03em;font-variant-numeric:tabular-nums;white-space:nowrap}
 .sum-save{color:#ff6b6b;font-size:.86rem;font-weight:600;min-height:1.2em}
-.sum small{font-size:.78rem;line-height:1.5;color:#8a8180}
-.done{display:grid;gap:12px}
-.done .btn{width:100%}
+.sum small{font-size:.76rem;line-height:1.5;color:#8a8180}
+.perks{display:grid;gap:6px;font-size:.8rem;color:#b9b0af;border-top:1px solid #2a2626;padding-top:12px}
+.perks div{display:flex;gap:8px}
+.perks div::before{content:"";flex:0 0 10px;height:6px;margin-top:6px;border-left:2px solid #e02020;border-bottom:2px solid #e02020;transform:rotate(-45deg)}
+.review{display:grid;gap:6px;font-size:.9rem;padding:12px 14px;border-radius:16px;border:1px solid var(--line);background:#fff;margin-bottom:10px}
+.review div{display:flex;justify-content:space-between;gap:10px}
+.review b{color:var(--head);white-space:nowrap}
+.done-ok{display:grid;justify-items:center;text-align:center;gap:10px;padding:18px 0}
+.done-ok .ring{width:72px;height:72px;border-radius:50%;background:#e02020;display:grid;place-items:center;box-shadow:0 18px 40px -16px rgba(224,32,32,.8)}
+.done-ok .ring svg{width:34px;height:34px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
 .btn-wa{background:#25d366;color:#06200f}
-.btn-wa:hover{background:#2fe072}
+#fnExtras .opt{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:12px 14px}
+#fnExtras .opt b{padding-right:0}
+#fnExtras .opt small{margin-left:auto;padding-right:26px;white-space:nowrap}
+#fnExtras .opt .badge-s{order:3}
+#fnExtras{grid-template-columns:1fr}
+@media(min-width:760px){#fnExtras{grid-template-columns:1fr 1fr}}
+.nudge{padding:8px 8px 8px 12px;font-size:.82rem}
+.eb{padding:10px 12px;font-size:.82rem;line-height:1.4}
+.wa.away{transform:translateY(140%);opacity:0;pointer-events:none}
 
 </style>
 <script type="application/ld+json">
@@ -251,12 +299,12 @@
     <nav class="nav" aria-label="Hauptnavigation"><a href="index.html#studio">Studio</a><a href="index.html#preise">Preise</a><a href="musikproduzent-muenchen.html">Produzent</a><a href="blog.html">Magazin</a><a href="faq.html">FAQ</a></nav>
     <div class="bar-r">
       <span class="tc" aria-hidden="true"><i></i><span id="tc">00:00:00:00</span></span>
-      <a class="btn btn-rec magnet" href="https://zinlamor.de/booking.html">Studio buchen</a>
+      <a class="btn btn-rec magnet" href="#anfrage">Studio buchen</a>
       <button class="burger" id="burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="menu"><span></span></button>
     </div>
   </div>
 </header>
-<nav class="menu" id="menu" aria-label="Menü"><a href="index.html#studio">Studio</a><a href="index.html#preise">Preise</a><a href="musikproduzent-muenchen.html">Produzent</a><a href="blog.html">Magazin</a><a href="faq.html">FAQ</a><a class="btn btn-rec" href="https://zinlamor.de/booking.html">Freien Termin finden</a></nav>
+<nav class="menu" id="menu" aria-label="Menü"><a href="index.html#studio">Studio</a><a href="index.html#preise">Preise</a><a href="musikproduzent-muenchen.html">Produzent</a><a href="blog.html">Magazin</a><a href="faq.html">FAQ</a><a class="btn btn-rec" href="#anfrage">Session anfragen</a></nav>
 <main>
 <section class="hero">
   <canvas id="wave" aria-hidden="true"></canvas>
@@ -267,7 +315,7 @@
         <h1 data-r="h"><span class="mask"><span>Dein Musikstudio</span></span><span class="mask"><span>in <em>München.</em></span></span></h1>
         <p class="hero-lead">Profi-Studio in Giesing mieten. Equipment inklusive, 24/7 buchbar, mit oder ohne Produzent.</p>
         <div class="row">
-          <a class="btn btn-rec magnet" href="https://zinlamor.de/booking.html">Freien Termin finden <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-rec magnet" href="#anfrage">Session anfragen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           <a class="btn btn-ghost magnet" href="#preise">Preis berechnen</a>
         </div>
       </div>
@@ -330,7 +378,7 @@
         <div><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16.5" rx="3"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4M8 14h3M8 17.5h6"/></svg></span>Ab 3 Stunden, 24/7 buchbar</div>
         <div><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span>Mit oder ohne Produzent</div>
       </div>
-      <div class="row" data-r><a class="btn btn-rec magnet" href="https://zinlamor.de/booking.html">Studio buchen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn-ghost magnet" href="#preise">Preis berechnen</a></div>
+      <div class="row" data-r><a class="btn btn-rec magnet" href="#anfrage">Studio buchen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn-ghost magnet" href="#preise">Preis berechnen</a></div>
     </div>
   </div>
 </section>
@@ -360,7 +408,7 @@
         <div class="fader"><input type="range" id="hours" min="0" max="4" step="1" value="0" aria-label="Session-Länge" aria-valuetext="3 Stunden"></div>
         <div class="ctrl">
           <label class="toggle" for="eb"><span><b>Early Bird −10 %</b><small>14 Tage oder früher gebucht</small></span><input type="checkbox" id="eb"><span class="sw" aria-hidden="true"></span></label>
-          <a class="btn btn-rec magnet" href="https://zinlamor.de/booking.html">Termin finden <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-rec magnet" href="#anfrage">Jetzt anfragen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
       <div class="rack">
@@ -387,65 +435,67 @@
 
 <section class="sec t-light" id="anfrage">
   <div class="wrap">
-    <div class="head" data-r><span class="label"><i></i>Anfrage in 60 Sekunden</span><h2><span class="mask"><span>Stell dir deine</span></span><span class="mask"><span>Session zusammen.</span></span></h2><p>Ein paar Klicks, du siehst sofort deinen Preis und schickst uns die Anfrage direkt per WhatsApp.</p></div>
+    <div class="head" data-r><span class="label"><i></i>Studio buchen</span><h2><span class="mask"><span>Deine Session</span></span><span class="mask"><span>in 60 Sekunden.</span></span></h2><p>Ein paar Klicks, du siehst sofort deinen Preis und deine Ersparnis. Wir bestätigen dir den Termin schnellstmöglich.</p></div>
     <div class="fn">
-      <form class="fn-box" id="fn" novalidate data-r>
-        <div class="fn-top"><span id="fnCount">Schritt 1 von 5</span><span id="fnName">Wofür?</span></div>
+      <form class="fn-box" id="fn" name="anfrage" method="POST" data-netlify="true" netlify-honeypot="firma_web" novalidate data-r>
+        <input type="hidden" name="form-name" value="anfrage">
+        <p class="hp"><label>Nicht ausfüllen <input name="firma_web" tabindex="-1" autocomplete="off"></label></p>
+        <input type="hidden" name="zweck"><input type="hidden" name="dauer"><input type="hidden" name="extras"><input type="hidden" name="early_bird"><input type="hidden" name="wunschtermin"><input type="hidden" name="preis_geschaetzt"><input type="hidden" name="ersparnis"><input type="hidden" name="zusammenfassung">
+        <div class="fn-top"><span id="fnCount">Schritt 1 von 5</span><span id="fnHint">Wofür?</span></div>
         <div class="fn-bar" aria-hidden="true"><i id="fnBar"></i></div>
 
-        <div class="fn-step on" data-step="1" data-title="Wofür?">
-          <h3>Wofür brauchst du das Studio?</h3><p>Wähl das, was am besten passt.</p>
-          <div class="opts"><button type="button" class="opt" data-k="purpose" data-v="musik" aria-pressed="false"><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2.5" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3.5M8.5 21.5h7"/></svg></span><b>Musik & Recording</b><small>Songs, Vocals, Beats, Mix & Master</small></button><button type="button" class="opt" data-k="purpose" data-v="podcast" aria-pressed="false"><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11V8.5A2.5 2.5 0 0 1 6.5 6h11A2.5 2.5 0 0 1 20 8.5V11"/><path d="M2.5 13a2 2 0 0 1 4 0v1.5h11V13a2 2 0 0 1 4 0v4.5h-19ZM5 17.5v2M19 17.5v2"/></svg></span><b>Podcast & Talk</b><small>Aufnahmen, Interviews, Livestream</small></button><button type="button" class="opt" data-k="purpose" data-v="content" aria-pressed="false"><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 4h-5L7.5 6.5H4a1.5 1.5 0 0 0-1.5 1.5v10A1.5 1.5 0 0 0 4 19.5h16a1.5 1.5 0 0 0 1.5-1.5V8A1.5 1.5 0 0 0 20 6.5h-3.5Z"/><circle cx="12" cy="12.5" r="3.5"/></svg></span><b>Foto & Video</b><small>Shootings, Reels, Social Media</small></button><button type="button" class="opt" data-k="purpose" data-v="miete" aria-pressed="false"><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10.5" width="16" height="11" rx="2.5"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5M12 14.5v3"/></svg></span><b>Nur Studio mieten</b><small>Für dein eigenes Projekt</small></button></div>
+        <div class="fn-step on" data-step="1">
+          <h3>Wofür brauchst du das Studio?</h3><p>Tipp einfach an, es geht automatisch weiter.</p>
+          <div class="opts four"><button type="button" class="opt" data-k="purpose" data-v="musik" aria-pressed="false"><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2.5" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3.5M8.5 21.5h7"/></svg></span><b>Musik & Recording</b><small>Songs, Vocals, Beats</small></button><button type="button" class="opt" data-k="purpose" data-v="podcast" aria-pressed="false"><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11V8.5A2.5 2.5 0 0 1 6.5 6h11A2.5 2.5 0 0 1 20 8.5V11"/><path d="M2.5 13a2 2 0 0 1 4 0v1.5h11V13a2 2 0 0 1 4 0v4.5h-19ZM5 17.5v2M19 17.5v2"/></svg></span><b>Podcast & Talk</b><small>Aufnahmen, Interviews</small></button><button type="button" class="opt" data-k="purpose" data-v="content" aria-pressed="false"><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 4h-5L7.5 6.5H4a1.5 1.5 0 0 0-1.5 1.5v10A1.5 1.5 0 0 0 4 19.5h16a1.5 1.5 0 0 0 1.5-1.5V8A1.5 1.5 0 0 0 20 6.5h-3.5Z"/><circle cx="12" cy="12.5" r="3.5"/></svg></span><b>Foto & Video</b><small>Shootings, Reels</small></button><button type="button" class="opt" data-k="purpose" data-v="miete" aria-pressed="false"><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10.5" width="16" height="11" rx="2.5"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5M12 14.5v3"/></svg></span><b>Nur mieten</b><small>Für dein Projekt</small></button></div>
         </div>
 
-        <div class="fn-step" data-step="2" data-title="Dauer">
-          <h3>Wie lange willst du buchen?</h3><p>Je länger die Session, desto günstiger die Stunde.</p>
+        <div class="fn-step" data-step="2">
+          <h3>Wie lange?</h3><p>Je länger, desto günstiger: bis zu <b style="color:#c21818">29 % Rabatt</b> auf die Stunde.</p>
           <div class="opts hrs" id="fnHours"></div>
-          <div class="fn-sub">Oder regelmäßig</div>
-          <div class="opts" id="fnPacks"></div>
+          <div class="fn-sub">Regelmäßig im Studio? Monatspakete</div>
+          <div class="opts packs" id="fnPacks"></div>
         </div>
 
-        <div class="fn-step" data-step="3" data-title="Extras">
-          <h3>Willst du etwas dazubuchen?</h3><p>Alles optional, du kannst auch einfach weiter.</p>
+        <div class="fn-step" data-step="3">
+          <div class="nudge" id="fnNudge" hidden></div>
+          <h3>Etwas dazu?</h3><p>Alles optional, „Weiter“ geht auch ohne.</p>
           <div class="opts" id="fnExtras"></div>
-          <label class="chk"><input type="checkbox" id="fnEb"><span><b style="color:var(--head)">Early Bird −10 %</b> auf die Studiomiete, wenn dein Termin 14 Tage oder später ist</span></label>
+          <label class="eb"><input type="checkbox" id="fnEb"><span><b>Early Bird −10 %</b> auf die Studiomiete, wenn dein Termin mind. 14 Tage entfernt ist</span></label>
         </div>
 
-        <div class="fn-step" data-step="4" data-title="Termin">
+        <div class="fn-step" data-step="4">
           <h3>Wann passt es dir?</h3><p>Grober Wunsch reicht, wir melden uns mit freien Zeiten.</p>
-          <div class="fn-row two">
+          <div class="fn-row">
             <label class="fld"><span>Wunschdatum</span><input type="date" id="fnDate"></label>
-            <label class="fld"><span>Tageszeit</span><select id="fnTime"><option value="">egal</option><option>Vormittag</option><option>Nachmittag</option><option>Abend</option><option>Nacht</option></select></label>
+            <div class="fld"><span>Tageszeit</span><div class="chips" id="fnTimes"><button type="button" aria-pressed="false">Vormittag</button><button type="button" aria-pressed="false">Nachmittag</button><button type="button" aria-pressed="false">Abend</button><button type="button" aria-pressed="false">Nacht</button><button type="button" aria-pressed="true">Flexibel</button></div></div>
           </div>
         </div>
 
-        <div class="fn-step" data-step="5" data-title="Kontakt">
-          <h3>Wie erreichen wir dich?</h3><p>Name und Telefon oder E-Mail genügen.</p>
-          <div class="fn-row two">
-            <label class="fld" id="fName"><span>Name *</span><input type="text" id="fnN" autocomplete="name"></label>
-            <label class="fld" id="fPhone"><span>Telefon / WhatsApp</span><input type="tel" id="fnP" autocomplete="tel"></label>
+        <div class="fn-step" data-step="5">
+          <h3>Fast geschafft.</h3><p>Wie erreichen wir dich?</p>
+          <div class="fn-row">
+            <label class="fld" id="fName"><span>Name *</span><input type="text" id="fnN" name="name" autocomplete="name"></label>
+            <div class="fn-row two">
+              <label class="fld" id="fPhone"><span>Telefon / WhatsApp</span><input type="tel" id="fnP" name="telefon" autocomplete="tel"></label>
+              <label class="fld" id="fMail"><span>E-Mail</span><input type="email" id="fnE" name="email" autocomplete="email"></label>
+            </div>
+            <label class="fld"><span>Nachricht (optional)</span><textarea id="fnM" name="nachricht" rows="2" placeholder="z. B. Genre, Personen, Wünsche"></textarea></label>
           </div>
-          <div class="fn-row" style="margin-top:12px">
-            <label class="fld" id="fMail"><span>E-Mail</span><input type="email" id="fnE" autocomplete="email"></label>
-            <label class="fld"><span>Nachricht (optional)</span><textarea id="fnM" placeholder="z. B. Genre, Anzahl Personen, besondere Wünsche"></textarea></label>
-          </div>
-          <label class="chk"><input type="checkbox" id="fnC"><span>Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen und bin einverstanden, dass meine Angaben zur Bearbeitung der Anfrage verwendet werden. *</span></label>
+          <label class="chk"><input type="checkbox" id="fnC" name="datenschutz" value="ja"><span>Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen und bin einverstanden, dass meine Angaben zur Bearbeitung der Anfrage verwendet werden. *</span></label>
         </div>
 
-        <div class="fn-step" data-step="6" data-title="Fertig">
-          <h3>Deine Anfrage ist bereit.</h3><p>Schick sie uns per WhatsApp. Wir antworten schnell und bestätigen dir den Termin.</p>
-          <div class="done">
-            <a class="btn btn-wa magnet" id="fnWa" href="#" target="_blank" rel="noopener">Per WhatsApp senden <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-            <a class="btn btn-ghost" href="https://zinlamor.de/booking.html">Lieber direkt im Kalender buchen</a>
-            <button type="button" class="btn btn-ghost" id="fnCopy">Zusammenfassung kopieren</button>
-          </div>
+        <div class="fn-step" data-step="6">
+          <div class="done-ok"><span class="ring"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><h3>Anfrage ist raus!</h3><p id="fnDoneTxt">Wir melden uns schnellstmöglich per Telefon, WhatsApp oder E-Mail und bestätigen dir den Termin.</p></div>
+          <div class="fn-nav" style="justify-content:center;flex-wrap:wrap"><a class="btn btn-wa" id="fnWa" href="https://wa.me/491785624699" target="_blank" rel="noopener">Zusätzlich per WhatsApp schreiben</a></div>
         </div>
 
         <p class="fn-msg" id="fnMsg" role="alert"></p>
-        <div class="fn-nav">
+        <div class="fn-nav" id="fnNav">
           <button type="button" class="btn btn-ghost" id="fnBack" hidden>Zurück</button>
-          <button type="button" class="btn btn-rec" id="fnNext" style="margin-left:auto">Weiter <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <button type="button" class="btn btn-rec" id="fnNext">Weiter <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
         </div>
+        <div class="mini" id="fnMini"><span>Geschätzt<br><em id="miniSave"></em></span><b id="miniTot">0 €</b></div>
+        <p style="margin-top:10px;text-align:center;font-size:.8rem"><a href="booking.html" style="color:var(--soft)">Lieber selbst im Kalender buchen</a></p>
       </form>
 
       <aside class="sum" aria-live="polite" data-r>
@@ -453,6 +503,7 @@
         <div class="sum-rows" id="sumRows"><div><span>Noch nichts ausgewählt</span></div></div>
         <div class="sum-tot"><span>Geschätzt</span><b id="sumTot">0 €</b></div>
         <div class="sum-save" id="sumSave"></div>
+        <div class="perks"><div>Bis zu 29 % Rabatt bei langen Sessions</div><div>Early Bird −10 % ab 14 Tagen Vorlauf</div><div>Mix &amp; Master im Bundle 18,50 € günstiger</div><div>Equipment inklusive, 24/7 Zugang</div></div>
         <small>Unverbindliche Schätzung. Der finale Preis steht in der Bestätigung. Monatspakete zzgl. MwSt.</small>
       </aside>
     </div>
@@ -489,7 +540,7 @@
     <span class="label" style="justify-content:center"><i></i>Bereit für die nächste Session?</span>
     <h2 style="margin-top:22px"><span class="mask"><span>Let’s</span></span><span class="mask"><span><em>Create.</em></span></span></h2>
     <p>Freie Termine siehst du direkt im Kalender. Ab 3 Stunden, rund um die Uhr.</p>
-    <div class="row"><a class="btn btn-rec magnet" href="https://zinlamor.de/booking.html">Studio buchen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn-ghost" href="faq.html">Häufige Fragen</a><a class="btn btn-ghost" href="blog.html">Magazin</a></div>
+    <div class="row"><a class="btn btn-rec magnet" href="#anfrage">Studio buchen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn-ghost" href="faq.html">Häufige Fragen</a><a class="btn btn-ghost" href="blog.html">Magazin</a></div>
   </div>
 </section>
 </main>
@@ -497,7 +548,7 @@
   <div class="wrap">
     <div class="f-grid">
       <div><a class="logo" href="index.html" aria-label="ZINLAMOR Studios Startseite" style="padding:0;margin-bottom:14px"><img src="logo-zinlamor.webp" alt="ZINLAMOR Studios" width="1600" height="1200" loading="lazy"></a><p>Musikstudio, Podcast- und Content-Studio in München-Giesing.</p><p style="margin-top:10px">Weißenseestraße 101<br>81539 München</p></div>
-      <div><h4>Studio</h4><a href="musikstudio-mieten-muenchen.html">Musikstudio mieten</a><a href="musikproduzent-muenchen.html">Musikproduzent</a><a href="full-service-musikproduktion-muenchen.html">Full-Service-Produktion</a><a href="https://zinlamor.de/booking.html">Online buchen</a></div>
+      <div><h4>Studio</h4><a href="musikstudio-mieten-muenchen.html">Musikstudio mieten</a><a href="musikproduzent-muenchen.html">Musikproduzent</a><a href="full-service-musikproduktion-muenchen.html">Full-Service-Produktion</a><a href="#anfrage">Studio buchen</a><a href="booking.html">Kalender</a></div>
       <div><h4>Wissen</h4><a href="blog.html">Magazin</a><a href="faq.html">Häufige Fragen</a><a href="blog-mixing-mastering-muenchen.html">Mix &amp; Mastering</a><a href="blog-musikstudio-mieten.html">Was kostet ein Studio?</a></div>
       <div><h4>Kontakt</h4><a href="https://wa.me/491785624699" target="_blank" rel="noopener">WhatsApp</a><a href="https://www.instagram.com/zinlamor.studios/" target="_blank" rel="noopener noreferrer">Instagram</a><span style="display:block;padding:4px 0">+49 178 5624699</span><span style="display:block;padding:4px 0">info@zinlamor.de</span></div>
     </div>
@@ -585,102 +636,98 @@
 (function(){
   var $=function(s){return document.querySelector(s)}, $$=function(s){return Array.prototype.slice.call(document.querySelectorAll(s))};
   var form=$('#fn'); if(!form) return;
-  var H=[3,4,6,8,10], R=[35,33,30,28,25];
-  var PACKS=[{v:'pro',t:'Pro Artist',h:15,p:249,s:'15 Std. / Monat, Mo–Do'},{v:'business',t:'Business',h:25,p:449,s:'25 Std. / Monat, Mo–Fr + 1 Wochenende'},{v:'label',t:'Label / Fulltime',h:40,p:749,s:'40 Std. / Monat, Mo–So 24/7'}];
+  var H=[3,4,6,8,10], R=[35,33,30,28,25], last=6, step=1;
+  var PACKS=[{v:'pro',t:'Pro Artist',h:15,p:249},{v:'business',t:'Business',h:25,p:449},{v:'label',t:'Label',h:40,p:749}];
   var EXTRAS={
-    musik:[{v:'prod',t:'Produzent Nick Lamor',s:'Beat, Arrangement & Recording',p:'+35 € / Std.'},{v:'mix',t:'Mix',s:'Pro Song',p:'120 €'},{v:'master',t:'Mastering',s:'Pro Song',p:'65 €'}],
-    podcast:[{v:'schnitt',t:'Schnitt & Clips',s:'Fertige Folge und Social-Clips',p:'auf Anfrage'},{v:'video',t:'Videoaufzeichnung',s:'Mehrere Kameras',p:'auf Anfrage'}],
-    content:[{v:'fotograf',t:'Fotograf',s:'Shooting mit Fotograf',p:'auf Anfrage'},{v:'videograf',t:'Videograf',s:'Dreh und Schnitt',p:'auf Anfrage'},{v:'creator',t:'Content Creator',s:'Reels & Social Media',p:'auf Anfrage'}],
+    musik:[{v:'prod',t:'Produzent Nick Lamor',s:'Beat & Recording',p:'+35 € / Std.'},{v:'mix',t:'Mix',s:'pro Song',p:'120 €'},{v:'master',t:'Mastering',s:'pro Song',p:'65 €'}],
+    podcast:[{v:'schnitt',t:'Schnitt & Clips',s:'Folge + Social-Clips',p:'auf Anfrage'},{v:'video',t:'Videoaufzeichnung',s:'mehrere Kameras',p:'auf Anfrage'}],
+    content:[{v:'fotograf',t:'Fotograf',s:'Shooting',p:'auf Anfrage'},{v:'videograf',t:'Videograf',s:'Dreh & Schnitt',p:'auf Anfrage'},{v:'creator',t:'Content Creator',s:'Reels',p:'auf Anfrage'}],
     miete:[{v:'technik',t:'Tonbetreuung',s:'Technik vor Ort',p:'auf Anfrage'}]
   };
   var NAMES={musik:'Musik & Recording',podcast:'Podcast & Talk',content:'Foto & Video',miete:'Nur Studio mieten'};
-  var st={purpose:'',hours:-1,pack:'',extras:{},eb:false}, step=1, last=6;
-  var eur=function(n){var d=Math.round(n*100)%100?2:0;return n.toLocaleString('de-DE',{minimumFractionDigits:d,maximumFractionDigits:2})+' €'};
-
-  function opt(k,v,b,s,tag,ico){return '<button type="button" class="opt" data-k="'+k+'" data-v="'+v+'" aria-pressed="false">'+(ico||'')+'<b>'+b+'</b><small>'+s+'</small>'+(tag?'<span class="tag">'+tag+'</span>':'')+'</button>'}
-  $('#fnHours').innerHTML=H.map(function(h,i){var save=h*(35-R[i]);return opt('hours',i,h+' Std.',R[i]+' € / Std. · '+eur(h*R[i]),save?'Du sparst '+eur(save):'')}).join('');
-  $('#fnPacks').innerHTML=PACKS.map(function(p){return opt('pack',p.v,p.t+' · '+p.p+' €',p.s,'')}).join('');
+  var HINT=['','Wofür?','Dauer','Extras','Termin','Kontakt','Fertig'];
+  var st={purpose:'',hours:-1,pack:'',extras:{},eb:false,time:'Flexibel'};
+  var eur=function(n){n=Math.round(n*100)/100;return n.toLocaleString('de-DE',{minimumFractionDigits:n%1?2:0,maximumFractionDigits:2})+' €'};
+  function opt(k,v,b,s,badge,cls){return '<button type="button" class="opt" data-k="'+k+'" data-v="'+v+'" aria-pressed="false"><b>'+b+'</b><small>'+s+'</small>'+(badge?'<span class="badge-s '+(cls||'')+'">'+badge+'</span>':'')+'</button>'}
+  $('#fnHours').innerHTML=H.map(function(h,i){var pct=Math.round((1-R[i]/35)*100);return opt('hours',i,h+' Std.',R[i]+' €/Std.',pct?'−'+pct+' %':'',i===4?'gold':(i===2?'':'soft'))}).join('');
+  $('#fnPacks').innerHTML=PACKS.map(function(p){return opt('pack',p.v,p.t,p.h+' Std. · '+p.p+' €','')}).join('');
   function drawExtras(){var list=EXTRAS[st.purpose]||[];st.extras={};
-    $('#fnExtras').innerHTML=list.map(function(e){return opt('extra',e.v,e.t,e.s,e.p)}).join('')+'<button type="button" class="opt" data-k="none" data-v="1" aria-pressed="false"><b>Nichts dazu</b><small>Nur das Studio</small></button>';}
-
+    $('#fnExtras').innerHTML=list.map(function(e){return opt('extra',e.v,e.t,e.p,e.v==='mix'||e.v==='master'?'Bundle −18,50 €':'', 'soft')}).join('');}
+  function mark(k,v){$$('.opt[data-k='+k+']').forEach(function(x){x.setAttribute('aria-pressed',x.dataset.v===String(v))})}
+  function nudge(){var n=$('#fnNudge');
+    if(st.hours>=0&&st.hours<4){var j=st.hours<2?2:st.hours+1,h0=H[st.hours],h1=H[j],extra=(h1*R[j])-(h0*R[st.hours]);
+      n.innerHTML='<span><b>'+h1+' Std.</b> = nur <b>'+R[j]+' €/Std.</b> (+'+(h1-h0)+' Std. für '+eur(extra)+')</span><button type="button" data-up="'+j+'">Auf '+h1+' Std.</button>';n.hidden=false}
+    else n.hidden=true}
   form.addEventListener('click',function(e){
+    var up=e.target.closest('[data-up]'); if(up){st.hours=+up.dataset.up;mark('hours',st.hours);nudge();calc();return}
+    var tb=e.target.closest('#fnTimes button'); if(tb){$$('#fnTimes button').forEach(function(x){x.setAttribute('aria-pressed',x===tb)});st.time=tb.textContent;calc();return}
     var b=e.target.closest('.opt'); if(!b) return;
     var k=b.dataset.k, v=b.dataset.v;
-    if(k==='purpose'){st.purpose=v;mark('purpose',v);drawExtras();go(step+1);return}
-    if(k==='hours'){st.hours=+v;st.pack='';mark('hours',v);mark('pack','');go(step+1);return}
-    if(k==='pack'){st.pack=v;st.hours=-1;mark('pack',v);mark('hours','');go(step+1);return}
-    if(k==='extra'){st.extras[v]=!st.extras[v];b.setAttribute('aria-pressed',!!st.extras[v]);var n=form.querySelector('.opt[data-k=none]');if(n)n.setAttribute('aria-pressed','false');calc();return}
-    if(k==='none'){st.extras={};$$('#fnExtras .opt').forEach(function(x){x.setAttribute('aria-pressed',x===b)});calc();return}
+    if(k==='purpose'){st.purpose=v;mark('purpose',v);drawExtras();setTimeout(function(){go(2)},180);return}
+    if(k==='hours'){st.hours=+v;st.pack='';mark('hours',v);mark('pack','');nudge();setTimeout(function(){go(3)},180);return}
+    if(k==='pack'){st.pack=v;st.hours=-1;mark('pack',v);mark('hours','');nudge();setTimeout(function(){go(3)},180);return}
+    if(k==='extra'){st.extras[v]=!st.extras[v];b.setAttribute('aria-pressed',!!st.extras[v]);calc()}
   });
-  function mark(k,v){$$('.opt[data-k='+k+']').forEach(function(x){x.setAttribute('aria-pressed',x.dataset.v===String(v))})}
   $('#fnEb').addEventListener('change',function(){st.eb=this.checked;calc()});
-
   function calc(){
-    var rows=[],tot=0,save=0,hrs=0;
+    var rows=[],tot=0,save=0,hrs=0,x=st.extras;
     if(st.purpose) rows.push(['Zweck',NAMES[st.purpose]]);
-    if(st.hours>=0){hrs=H[st.hours];var base=hrs*R[st.hours];save+=hrs*35-base;
-      if(st.eb){save+=base*.1;base*=.9}
+    if(st.hours>=0){hrs=H[st.hours];var base=hrs*R[st.hours];save+=hrs*35-base;if(st.eb){save+=base*.1;base*=.9}
       rows.push(['Studio '+hrs+' Std.'+(st.eb?' (Early Bird)':''),eur(base)]);tot+=base}
-    if(st.pack){var p=PACKS.filter(function(x){return x.v===st.pack})[0];rows.push([p.t+' (Monat)',eur(p.p)]);tot+=p.p}
-    var x=st.extras;
+    if(st.pack){var p=PACKS.filter(function(z){return z.v===st.pack})[0];rows.push(['Paket '+p.t+' / Monat',eur(p.p)]);tot+=p.p}
     if(x.prod){if(hrs){rows.push(['Produzent '+hrs+' Std.',eur(hrs*35)]);tot+=hrs*35}else rows.push(['Produzent','+35 € / Std.'])}
     if(x.mix&&x.master){rows.push(['Mix & Mastering (Bundle)',eur(166.5)]);tot+=166.5;save+=18.5}
-    else{if(x.mix){rows.push(['Mix',eur(120)]);tot+=120} if(x.master){rows.push(['Mastering',eur(65)]);tot+=65}}
+    else{if(x.mix){rows.push(['Mix',eur(120)]);tot+=120}if(x.master){rows.push(['Mastering',eur(65)]);tot+=65}}
     Object.keys(x).forEach(function(k){if(x[k]&&['prod','mix','master'].indexOf(k)<0){var e=(EXTRAS[st.purpose]||[]).filter(function(z){return z.v===k})[0];if(e)rows.push([e.t,'auf Anfrage'])}});
-    var d=$('#fnDate').value, t=$('#fnTime').value;
-    if(d||t) rows.push(['Wunschtermin',(d?new Date(d+'T12:00').toLocaleDateString('de-DE',{weekday:'short',day:'2-digit',month:'2-digit'}):'flexibel')+(t?', '+t:'')]);
-    $('#sumRows').innerHTML=rows.length?rows.map(function(r){return '<div><span>'+r[0]+'</span><b>'+r[1]+'</b></div>'}).join(''):'<div><span>Noch nichts ausgewählt</span></div>';
-    $('#sumTot').textContent=eur(Math.round(tot*100)/100);
-    $('#sumSave').textContent=save>0?'Du sparst '+eur(Math.round(save*100)/100)+' gegenüber dem Einzelpreis':'';
-    st.rows=rows;st.tot=tot;return rows;
+    var d=$('#fnDate').value;
+    if(d||st.time!=='Flexibel') rows.push(['Wunschtermin',(d?new Date(d+'T12:00').toLocaleDateString('de-DE',{weekday:'short',day:'2-digit',month:'2-digit'}):'flexibel')+(st.time&&st.time!=='Flexibel'?', '+st.time:'')]);
+    var html=rows.length?rows.map(function(r){return '<div><span>'+r[0]+'</span><b>'+r[1]+'</b></div>'}).join(''):'<div><span>Noch nichts ausgewählt</span></div>';
+    $('#sumRows').innerHTML=html;
+    $('#sumTot').textContent=eur(tot);$('#miniTot').textContent=eur(tot);
+    var s=save>0?'Du sparst '+eur(save):'';$('#sumSave').textContent=s?s+' gegenüber dem Einzelpreis':'';$('#miniSave').textContent=s;
+    st.rows=rows;st.tot=tot;st.save=save;return rows;
   }
-  ['#fnDate','#fnTime'].forEach(function(s){$(s).addEventListener('change',calc)});
-
-  function valid(){
-    var m='';
-    if(step===1&&!st.purpose) m='Bitte wähl aus, wofür du das Studio brauchst.';
-    if(step===2&&st.hours<0&&!st.pack) m='Bitte wähl eine Dauer oder ein Monatspaket.';
-    if(step===5){var n=$('#fnN').value.trim(),p=$('#fnP').value.trim(),e=$('#fnE').value.trim();
-      $('#fName').classList.toggle('err',!n);
-      if(!n) m='Bitte gib deinen Namen an.';
-      else if(!p&&!e) m='Bitte gib Telefon oder E-Mail an.';
-      else if(e&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e)) m='Bitte prüf deine E-Mail-Adresse.';
-      else if(!$('#fnC').checked) m='Bitte bestätige die Datenschutzerklärung.';}
-    $('#fnMsg').textContent=m;return !m;
+  $('#fnDate').addEventListener('change',function(){var d=new Date(this.value+'T12:00'),days=(d-new Date())/864e5;if(days>=14&&!st.eb){$('#fnEb').checked=true;st.eb=true}calc()});
+  $('#fnDate').min=new Date().toISOString().slice(0,10);
+  function valid(){var m='';
+    if(step===1&&!st.purpose)m='Bitte wähl aus, wofür du das Studio brauchst.';
+    if(step===2&&st.hours<0&&!st.pack)m='Bitte wähl eine Dauer oder ein Monatspaket.';
+    if(step===5){var n=$('#fnN').value.trim(),p=$('#fnP').value.trim(),e=$('#fnE').value.trim();$('#fName').classList.toggle('err',!n);
+      if(!n)m='Bitte gib deinen Namen an.';else if(!p&&!e)m='Bitte gib Telefon oder E-Mail an.';
+      else if(e&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e))m='Bitte prüf deine E-Mail-Adresse.';else if(!$('#fnC').checked)m='Bitte bestätige die Datenschutzerklärung.'}
+    $('#fnMsg').textContent=m;return !m}
+  function summary(){calc();var L=[];st.rows.forEach(function(r){L.push(r[0]+': '+r[1])});L.push('Geschätzt: '+eur(st.tot)+(st.save>0?' (Ersparnis '+eur(st.save)+')':''));return L.join('\n')}
+  function fill(){var f=form.elements;
+    f.zweck.value=NAMES[st.purpose]||'';f.dauer.value=st.hours>=0?H[st.hours]+' Std. à '+R[st.hours]+' €':(st.pack?'Monatspaket '+st.pack:'');
+    f.extras.value=Object.keys(st.extras).filter(function(k){return st.extras[k]}).join(', ')||'keine';
+    f.early_bird.value=st.eb?'ja':'nein';f.wunschtermin.value=($('#fnDate').value||'flexibel')+', '+st.time;
+    f.preis_geschaetzt.value=eur(st.tot);f.ersparnis.value=eur(st.save||0);f.zusammenfassung.value=summary()}
+  function send(){
+    var btn=$('#fnNext');btn.disabled=true;btn.firstChild.textContent='Wird gesendet… ';fill();
+    var data=new URLSearchParams(new FormData(form)).toString();
+    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:data})
+      .then(function(r){if(!r.ok)throw new Error(r.status);done()})
+      .catch(function(){btn.disabled=false;btn.firstChild.textContent='Anfrage senden ';
+        $('#fnMsg').innerHTML='Senden hat nicht geklappt. Schreib uns bitte per WhatsApp an +49 178 5624699 oder an info@zinlamor.de.'});
   }
-  function text(){
-    calc();var L=['Hallo ZINLAMOR, ich möchte eine Session anfragen:',''];
-    st.rows.forEach(function(r){L.push(r[0]+': '+r[1])});
-    L.push('Geschätzt: '+eur(Math.round(st.tot*100)/100),'');
-    L.push('Name: '+$('#fnN').value.trim());
-    if($('#fnP').value.trim())L.push('Telefon: '+$('#fnP').value.trim());
-    if($('#fnE').value.trim())L.push('E-Mail: '+$('#fnE').value.trim());
-    if($('#fnM').value.trim())L.push('','Nachricht: '+$('#fnM').value.trim());
-    return L.join('\n');
-  }
-  function go(n,init){
-    if(n>step&&!valid())return;
+  function done(){$('#fnWa').href='https://wa.me/491785624699?text='+encodeURIComponent('Hallo ZINLAMOR, ich habe gerade eine Anfrage geschickt:\n'+summary()+'\nName: '+$('#fnN').value.trim());go(6,false,true)}
+  function go(n,init,force){
+    if(!force&&n>step&&!valid())return;
     step=Math.max(1,Math.min(last,n));
     $$('.fn-step').forEach(function(s){s.classList.toggle('on',+s.dataset.step===step)});
-    var cur=$('.fn-step.on');
-    $('#fnCount').textContent=step<last?'Schritt '+step+' von '+(last-1):'Fertig';
-    $('#fnName').textContent=cur.dataset.title;
+    $('#fnCount').textContent=step<last?'Schritt '+step+' von 5':'Gesendet';
+    $('#fnHint').textContent=step===2?'Bis zu −29 %':HINT[step];
     $('#fnBar').style.setProperty('--p',(step/last*100)+'%');
-    $('#fnBack').hidden=step===1;
-    $('#fnNext').hidden=step===last;
-    $('#fnNext').firstChild.textContent=step===last-1?'Anfrage fertigstellen ':'Weiter ';
-    $('#fnMsg').textContent='';
-    if(step===last){$('#fnWa').href='https://wa.me/491785624699?text='+encodeURIComponent(text())}
-    calc();
-    var top=form.getBoundingClientRect().top;if(!init&&(top<0||top>innerHeight*.6))form.scrollIntoView({behavior:'smooth',block:'start'});
+    $('#fnBack').hidden=step===1||step===last;$('#fnNav').hidden=step===last;$('#fnMini').hidden=step===last;
+    $('#fnNext').firstChild.textContent=step===5?'Anfrage senden ':'Weiter ';
+    $('#fnMsg').textContent='';calc();
+    if(!init){var top=form.getBoundingClientRect().top;if(top<60||top>innerHeight*.5)window.scrollTo({top:scrollY+top-90,behavior:'smooth'})}
   }
-  $('#fnNext').addEventListener('click',function(){go(step+1)});
+  $('#fnNext').addEventListener('click',function(){if(step===5){if(valid())send();return}go(step+1)});
   $('#fnBack').addEventListener('click',function(){go(step-1)});
   form.addEventListener('submit',function(e){e.preventDefault()});
-  $('#fnCopy').addEventListener('click',function(){var b=this,t=text();
-    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){b.textContent='Kopiert';setTimeout(function(){b.textContent='Zusammenfassung kopieren'},1500)},function(){})}});
-  var dIn=$('#fnDate'), today=new Date(); dIn.min=today.toISOString().slice(0,10);
-  dIn.addEventListener('change',function(){var d=new Date(this.value+'T12:00'),days=(d-today)/864e5;if(days>=14&&!st.eb){$('#fnEb').checked=true;st.eb=true;calc()}});
+  var wa=document.querySelector('.wa'), sec=document.getElementById('anfrage');
+  if(wa&&sec&&'IntersectionObserver' in window&&matchMedia('(max-width:999px)').matches){new IntersectionObserver(function(es){wa.classList.toggle('away',es[0].isIntersecting)},{threshold:.15}).observe(sec)}
   go(1,true);
 })();
 </script>
