@@ -167,6 +167,16 @@
 .cl .lic{width:18px;height:18px;color:var(--rec);flex:0 0 auto}
 .cl span{flex:1;min-width:0;color:var(--soft);overflow-wrap:anywhere;user-select:all}
 .cl button,.cl a.s{flex:0 0 auto;font:inherit;font-size:.8rem;font-weight:600;padding:7px 12px;border-radius:var(--r-pill);border:1px solid var(--line);background:transparent;color:var(--head);cursor:pointer;text-decoration:none}
+/* Erklärfilm */
+.film{display:grid;gap:clamp(36px,6vw,80px);align-items:center}
+@media(min-width:900px){.film{grid-template-columns:minmax(0,360px) minmax(0,560px);justify-content:center;gap:clamp(48px,7vw,110px)}}
+.phone{position:relative;width:min(100%,340px);aspect-ratio:9/16;max-width:100%;margin:0 auto;border-radius:44px;padding:10px;background:linear-gradient(160deg,#2a2626,#0f0e0e);box-shadow:0 40px 90px -40px rgba(224,32,32,.55),0 0 0 1px rgba(255,255,255,.06)}
+.phone video{width:100%;height:100%;object-fit:cover;border-radius:34px;background:#000;display:block}
+.snd{position:absolute;right:22px;bottom:22px;display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:var(--r-pill);border:0;background:rgba(7,7,7,.65);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;font:inherit;font-size:.82rem;font-weight:600;cursor:pointer}
+.snd svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.film-pts{display:grid;gap:12px;margin:28px 0 32px}
+.film-pts div{display:flex;align-items:center;gap:14px;color:var(--soft)}
+.film-pts .ico{width:42px;height:42px;border-radius:12px}
 </style>
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "LocalBusiness", "@id": "https://zinlamor.de/#studio", "name": "ZINLAMOR Studios", "alternateName": "ZINLAMOR Musikstudio München", "description": "Musikstudio in München mieten – Recording, Musikproduktion, Mix & Mastering, Podcast, Foto und Video. Profi-Equipment inklusive, 24/7 buchbar, auf Wunsch mit Produzent.", "url": "https://zinlamor.de/", "image": ["https://zinlamor.de/og-image.jpg", "https://zinlamor.de/studio-overview.webp", "https://zinlamor.de/recording-blue.webp"], "logo": "https://zinlamor.de/logo-zinlamor.webp", "telephone": "+491785624699", "email": "info@zinlamor.de", "address": {"@type": "PostalAddress", "streetAddress": "Weißenseestraße 101", "postalCode": "81539", "addressLocality": "München", "addressRegion": "Bayern", "addressCountry": "DE"}, "hasMap": "https://www.google.com/maps/search/?api=1&query=Wei%C3%9Fenseestra%C3%9Fe+101+81539+M%C3%BCnchen", "areaServed": {"@type": "City", "name": "München"}, "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "opens": "00:00", "closes": "23:59"}], "priceRange": "ab 35 € / Stunde", "currenciesAccepted": "EUR", "parentOrganization": {"@type": "Organization", "name": "Lamor Studios"}, "makesOffer": [{"@type": "Offer", "name": "Musikstudio mieten – 3 Stunden", "price": "105", "priceCurrency": "EUR", "url": "https://zinlamor.de/booking.html"}, {"@type": "Offer", "name": "Musikstudio mieten – Ganztag 10 Stunden", "price": "250", "priceCurrency": "EUR", "url": "https://zinlamor.de/booking.html"}, {"@type": "Offer", "name": "Monatspaket Pro Artist – 15 Stunden", "price": "249", "priceCurrency": "EUR", "url": "https://zinlamor.de/booking.html"}], "sameAs": ["https://www.instagram.com/zinlamorstudios/"], "founder": {"@type": "Person", "name": "Nick Lamor", "jobTitle": "Musikproduzent"}}
@@ -243,6 +253,26 @@
       <div class="k" data-r><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10.5" width="16" height="11" rx="2.5"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5M12 14.5v3"/></svg></span><div><h3>24/7 Zugang</h3><small>App-Code-Schloss</small></div></div>
     </div>
     <div class="uses" data-r><span class="label">Perfekt für</span><span class="pill"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h2M7 8v8M11 5v14M15 9v6M19 7v10M21 12h0"/></svg>Musik</span><span class="pill"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2.5" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3.5M8.5 21.5h7"/></svg>Podcast</span><span class="pill"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 4h-5L7.5 6.5H4a1.5 1.5 0 0 0-1.5 1.5v10A1.5 1.5 0 0 0 4 19.5h16a1.5 1.5 0 0 0 1.5-1.5V8A1.5 1.5 0 0 0 20 6.5h-3.5Z"/><circle cx="12" cy="12.5" r="3.5"/></svg>Foto</span><span class="pill"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M11 9.5v5l4-2.5Z"/></svg>Social Media</span><span class="pill"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8a6 6 0 0 1 0 8.4M7.8 16.2a6 6 0 0 1 0-8.4M19 5a10 10 0 0 1 0 14M5 19A10 10 0 0 1 5 5"/></svg>Livestream</span><span class="pill"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.5a8.5 8.5 0 0 1-12.6 7.4L3.5 20.5l1.6-4.3A8.5 8.5 0 1 1 20.5 11.5Z"/></svg>Interviews</span></div>
+  </div>
+</section>
+
+<section class="sec" id="erklaerfilm">
+  <div class="wrap film">
+    <div class="phone" data-r>
+      <video id="film" muted loop playsinline preload="metadata" poster="assets/media/zinlamor-erklaerfilm-poster.webp" aria-label="Erklärfilm: ZINLAMOR Studios in 38 Sekunden">
+        <source src="assets/media/zinlamor-erklaerfilm.mp4" type="video/mp4">
+      </video>
+      <button type="button" class="snd" id="snd" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="m22 9-6 6M16 9l6 6"/></svg><span>Ton an</span></button>
+    </div>
+    <div>
+      <div class="head" style="margin-bottom:0" data-r><span class="label"><i></i>Erklärfilm</span><h2><span class="mask"><span>Das Studio</span></span><span class="mask"><span>in 38 Sekunden.</span></span></h2></div>
+      <div class="film-pts" data-r>
+        <div><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2.5" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3.5M8.5 21.5h7"/></svg></span>Recording, Produktion, Mix &amp; Master</div>
+        <div><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16.5" rx="3"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4M8 14h3M8 17.5h6"/></svg></span>Ab 3 Stunden, 24/7 buchbar</div>
+        <div><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span>Mit oder ohne Produzent</div>
+      </div>
+      <div class="row" data-r><a class="btn btn-rec magnet" href="https://zinlamor.de/booking.html">Studio buchen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn-ghost magnet" href="#preise">Preis berechnen</a></div>
+    </div>
   </div>
 </section>
 
@@ -406,6 +436,15 @@
   addEventListener('load',function(){setupGal();frame()});
   var step=function(d){track.scrollBy({left:d*Math.min(innerWidth*.8,420),behavior:reduce?'auto':'smooth'})};
   $('#gPrev').addEventListener('click',function(){step(-1)}); $('#gNext').addEventListener('click',function(){step(1)});
+  /* Erklärfilm: läuft stumm, sobald er in die Nähe kommt; Ton per Button */
+  var fv=$('#film'), snd=$('#snd');
+  if(fv){
+    var tryPlay=function(){var p=fv.play();if(p&&p.catch)p.catch(function(){})};
+    if('IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){if(fv.preload!=='auto')fv.preload='auto';tryPlay()}else if(!fv.muted){}else fv.pause()})},{rootMargin:'400px 0px'}).observe(fv)}else tryPlay();
+    snd.addEventListener('click',function(){fv.muted=!fv.muted;if(!fv.muted){fv.currentTime=0;tryPlay()}snd.setAttribute('aria-pressed',!fv.muted);
+      snd.querySelector('span').textContent=fv.muted?'Ton an':'Ton aus';
+      snd.querySelector('svg').innerHTML=fv.muted?'<path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="m22 9-6 6M16 9l6 6"/>':'<path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/>'});
+  }
 })();
 </script>
 </body>
