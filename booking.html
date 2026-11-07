@@ -16,6 +16,9 @@
 
 <!-- EmailJS -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<link rel="preload" href="assets/fonts/interdisplay-800.woff" as="font" type="font/woff" crossorigin/>
+<link rel="preload" href="assets/fonts/inter-400.woff" as="font" type="font/woff" crossorigin/>
+<link rel="stylesheet" href="assets/site.css?v=20261107"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
@@ -30,11 +33,11 @@ html{scroll-behavior:smooth;}
 body{background:var(--black);color:var(--body);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh;}
 
 /* NAV */
-nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:66px;background:rgba(6,6,6,0.88);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);border-bottom:1px solid rgba(255,255,255,0.06);}
+.nav-old{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:66px;background:rgba(6,6,6,0.88);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);border-bottom:1px solid rgba(255,255,255,0.06);}
 .nav-logo img{height:46px;width:auto;object-fit:contain;}
 .nav-back{font-size:13px;color:var(--soft);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;letter-spacing:.02em;}
 .nav-back:hover{color:var(--white);}
-@media(max-width:600px){nav{padding:0 20px;}}
+@media(max-width:600px){.nav-old{padding:0 20px;}}
 
 /* PAGE */
 .page{max-width:1140px;margin:0 auto;padding:52px 40px 100px;}
@@ -1207,13 +1210,31 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 }
 
 </style>
+<style>
+/* Neuer ZINLAMOR-Look (nur Optik, Buchungslogik unverändert) */
+body{font-family:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;background:#070707}
+.bar,.menu,footer,.wa{--body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;font-family:var(--body)}
+.page{padding-top:clamp(120px,14vw,160px)}
+.page-title{font-family:var(--display);font-weight:800;letter-spacing:-.045em;font-size:clamp(2.6rem,6vw,4.6rem);line-height:.95}
+.page-ey{font-family:var(--body);letter-spacing:.14em}
+.cal-month-label,.slot-title{font-family:var(--display)}
+button,input,select,textarea{font-family:inherit}
+</style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-logo"><img src="logo-zinlamor.webp" alt="ZINLAMOR Studios"></a>
-  <a href="index.html" class="nav-back">← Zurück zur Website</a>
-</nav>
+<header class="bar" id="bar">
+  <div class="bar-in">
+    <a class="logo" href="index.html" aria-label="ZINLAMOR Studios Startseite"><img src="logo-zinlamor.webp" alt="ZINLAMOR Studios" width="1600" height="1200"></a>
+    <nav class="nav" aria-label="Hauptnavigation"><a href="index.html#studio">Studio</a><a href="index.html#preise">Preise</a><a href="musikproduzent-muenchen.html">Produzent</a><a href="blog.html">Magazin</a><a href="faq.html">FAQ</a></nav>
+    <div class="bar-r">
+      <span class="tc" aria-hidden="true"><i></i><span id="tc">00:00:00:00</span></span>
+      <a class="btn btn-rec magnet" href="https://zinlamor.de/booking.html">Studio buchen</a>
+      <button class="burger" id="burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="menu"><span></span></button>
+    </div>
+  </div>
+</header>
+<nav class="menu" id="menu" aria-label="Menü"><a href="index.html#studio">Studio</a><a href="index.html#preise">Preise</a><a href="musikproduzent-muenchen.html">Produzent</a><a href="blog.html">Magazin</a><a href="faq.html">FAQ</a><a class="btn btn-rec" href="https://zinlamor.de/booking.html">Freien Termin finden</a></nav>
 
 <div class="page">
   <!-- SETUP NOTICE — shown until EmailJS is configured -->
@@ -2474,7 +2495,19 @@ function applyEarlyBird(total) {
 
 </script>
 
-<div style="width:100%;text-align:center;padding:12px;background:#060606;border-top:1px solid #111;font-size:11px;color:rgba(255,255,255,0.25);">Website made by <a href="https://lamoragency.de" target="_blank" style="color:rgba(255,255,255,0.4);text-decoration:none;font-weight:600;transition:color .2s;" onmouseover="this.style.color='#e02020'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">LAMORAGENCY</a></div>
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div><a class="logo" href="index.html" aria-label="ZINLAMOR Studios Startseite" style="padding:0;margin-bottom:14px"><img src="logo-zinlamor.webp" alt="ZINLAMOR Studios" width="1600" height="1200" loading="lazy"></a><p>Musikstudio, Podcast- und Content-Studio in München-Giesing.</p><p style="margin-top:10px">Weißenseestraße 101<br>81539 München</p></div>
+      <div><h4>Studio</h4><a href="musikstudio-mieten-muenchen.html">Musikstudio mieten</a><a href="musikproduzent-muenchen.html">Musikproduzent</a><a href="full-service-musikproduktion-muenchen.html">Full-Service-Produktion</a><a href="https://zinlamor.de/booking.html">Online buchen</a></div>
+      <div><h4>Wissen</h4><a href="blog.html">Magazin</a><a href="faq.html">Häufige Fragen</a><a href="blog-mixing-mastering-muenchen.html">Mix &amp; Mastering</a><a href="blog-musikstudio-mieten.html">Was kostet ein Studio?</a></div>
+      <div><h4>Kontakt</h4><a href="https://wa.me/491785624699" target="_blank" rel="noopener">WhatsApp</a><a href="https://www.instagram.com/zinlamor.studios/" target="_blank" rel="noopener noreferrer">Instagram</a><span style="display:block;padding:4px 0">+49 178 5624699</span><span style="display:block;padding:4px 0">info@zinlamor.de</span></div>
+    </div>
+    <div class="f-bottom"><span>© 2026 ZINLAMOR Studios</span><span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · <a href="agb.html">AGB</a></span><span>Website by <a href="https://lamoragency.de" target="_blank" rel="noopener">Lamor Agency</a></span></div>
+  </div>
+</footer>
+<a class="wa" href="https://wa.me/491785624699?text=Hallo%20ZINLAMOR%2C%20ich%20habe%20eine%20Frage%20zum%20Studio%3A%20" target="_blank" rel="noopener" aria-label="Per WhatsApp schreiben"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3.2A12.7 12.7 0 0 0 5.1 22.4L3.3 28.8l6.6-1.7A12.7 12.7 0 1 0 16 3.2Zm0 23.2c-2 0-3.9-.5-5.6-1.5l-.4-.2-3.9 1 1-3.8-.3-.4a10.5 10.5 0 1 1 9.2 4.9Zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.3-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6.3-.5c.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.7 5 .8.4 1.4.6 1.9.7.8.3 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.3Z"/></svg><span>WhatsApp</span></a>
+<script src="assets/site.js?v=20261107" defer></script>
 
 <script>
 var agbAccepted = false;

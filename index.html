@@ -180,9 +180,65 @@
 .film-pts{display:grid;gap:12px;margin:28px 0 32px}
 .film-pts div{display:flex;align-items:center;gap:14px;color:var(--soft)}
 .film-pts .ico{width:42px;height:42px;border-radius:12px}
+
+/* Anfrage-Funnel */
+.fn{display:grid;gap:16px}
+@media(min-width:1000px){.fn{grid-template-columns:minmax(0,1fr) 340px;align-items:start}}
+.fn-box{border-radius:var(--r-xl);border:1px solid var(--line);background:var(--panel);padding:clamp(20px,3.4vw,40px);min-width:0;box-shadow:0 30px 70px -50px rgba(0,0,0,.35)}
+.fn-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px;font-size:.86rem}
+.fn-bar{height:6px;border-radius:6px;background:var(--line);overflow:hidden;margin-bottom:clamp(24px,3vw,34px)}
+.fn-bar i{display:block;height:100%;width:var(--p,16%);background:linear-gradient(90deg,#ff4a4a,#e02020);border-radius:6px;transition:width .6s var(--ease)}
+.fn-step{display:none}
+.fn-step.on{display:block;animation:fnIn .55s var(--ease)}
+@keyframes fnIn{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+.fn-step h3{font-size:clamp(1.35rem,1.4vw + 1rem,1.9rem);letter-spacing:-.03em;margin-bottom:6px}
+.fn-step>p{margin-bottom:22px}
+.opts{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr))}
+.opt{position:relative;display:grid;gap:10px;align-content:start;text-align:left;padding:18px;border-radius:var(--r-md);border:1.5px solid var(--line);background:var(--paper);color:var(--text);font:inherit;cursor:pointer;transition:border-color .25s,background .25s,transform .35s var(--ease);min-width:0}
+.t-light .opt{background:#fff}
+.opt:hover{transform:translateY(-2px);border-color:#cdbfbe}
+.opt[aria-pressed="true"]{border-color:var(--rec);background:rgba(224,32,32,.05)}
+.opt[aria-pressed="true"]::after{content:"";position:absolute;top:14px;right:14px;width:22px;height:22px;border-radius:50%;background:var(--rec) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/14px no-repeat}
+.opt b{color:var(--head);font-family:var(--display);font-weight:700;font-size:1.05rem;letter-spacing:-.01em;padding-right:26px}
+.opt small{font-size:.85rem;line-height:1.45}
+.opt .ico{width:42px;height:42px;border-radius:12px}
+.opt .tag{justify-self:start;padding:4px 10px;border-radius:var(--r-pill);background:rgba(224,32,32,.1);color:#c21818;font-size:.74rem;font-weight:600}
+.opts.hrs{grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr))}
+.opts.hrs .opt b{font-size:1.5rem;letter-spacing:-.03em}
+.fn-sub{margin:26px 0 12px;font-family:var(--body);font-size:.74rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text)}
+.fn-row{display:grid;gap:12px}
+@media(min-width:640px){.fn-row.two{grid-template-columns:1fr 1fr}}
+.fld{display:grid;gap:6px;min-width:0}
+.fld span{font-size:.84rem;font-weight:600;color:var(--soft)}
+.fld input,.fld textarea,.fld select{width:100%;font:inherit;font-size:1rem;color:var(--head);background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:13px 14px;outline:none;transition:border-color .2s;min-width:0}
+.fld textarea{min-height:96px;resize:vertical}
+.fld input:focus,.fld textarea:focus,.fld select:focus{border-color:var(--rec)}
+.fld.err input{border-color:#e02020}
+.chk{display:flex;gap:12px;align-items:flex-start;font-size:.9rem;margin-top:16px;cursor:pointer}
+.chk input{width:20px;height:20px;margin-top:2px;accent-color:#e02020;flex:0 0 auto}
+.chk a{color:var(--head)}
+.fn-msg{min-height:1.4em;margin-top:12px;color:#c21818;font-size:.88rem;font-weight:600}
+.fn-nav{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;margin-top:22px}
+.fn-nav .btn[hidden]{display:none}
+.t-light .btn-ghost{background:#fff}
+.sum{position:sticky;top:96px;border-radius:var(--r-xl);background:#0d0b0b;color:#b9b0af;padding:26px;display:grid;gap:14px;min-width:0}
+.sum h4{font-family:var(--body);font-size:.74rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#f4f0ef}
+.sum-rows{display:grid;gap:8px;font-size:.92rem;font-variant-numeric:tabular-nums}
+.sum-rows div{display:flex;justify-content:space-between;gap:10px}
+.sum-rows span{min-width:0;overflow-wrap:anywhere}
+.sum-rows b{color:#f4f0ef;font-weight:600;white-space:nowrap}
+.sum-tot{border-top:1px solid #2a2626;padding-top:14px;display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.sum-tot b{font-family:var(--display);font-size:2rem;font-weight:800;color:#fff;letter-spacing:-.03em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.sum-save{color:#ff6b6b;font-size:.86rem;font-weight:600;min-height:1.2em}
+.sum small{font-size:.78rem;line-height:1.5;color:#8a8180}
+.done{display:grid;gap:12px}
+.done .btn{width:100%}
+.btn-wa{background:#25d366;color:#06200f}
+.btn-wa:hover{background:#2fe072}
+
 </style>
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "LocalBusiness", "@id": "https://zinlamor.de/#studio", "name": "ZINLAMOR Studios", "alternateName": "ZINLAMOR Musikstudio München", "description": "Musikstudio in München mieten – Recording, Musikproduktion, Mix & Mastering, Podcast, Foto und Video. Profi-Equipment inklusive, 24/7 buchbar, auf Wunsch mit Produzent.", "url": "https://zinlamor.de/", "image": ["https://zinlamor.de/og-image.jpg", "https://zinlamor.de/studio-overview.webp", "https://zinlamor.de/recording-blue.webp"], "logo": "https://zinlamor.de/logo-zinlamor.webp", "telephone": "+491785624699", "email": "info@zinlamor.de", "address": {"@type": "PostalAddress", "streetAddress": "Weißenseestraße 101", "postalCode": "81539", "addressLocality": "München", "addressRegion": "Bayern", "addressCountry": "DE"}, "hasMap": "https://www.google.com/maps/search/?api=1&query=Wei%C3%9Fenseestra%C3%9Fe+101+81539+M%C3%BCnchen", "areaServed": {"@type": "City", "name": "München"}, "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "opens": "00:00", "closes": "23:59"}], "priceRange": "ab 35 € / Stunde", "currenciesAccepted": "EUR", "parentOrganization": {"@type": "Organization", "name": "Lamor Studios"}, "makesOffer": [{"@type": "Offer", "name": "Musikstudio mieten – 3 Stunden", "price": "105", "priceCurrency": "EUR", "url": "https://zinlamor.de/booking.html"}, {"@type": "Offer", "name": "Musikstudio mieten – Ganztag 10 Stunden", "price": "250", "priceCurrency": "EUR", "url": "https://zinlamor.de/booking.html"}, {"@type": "Offer", "name": "Monatspaket Pro Artist – 15 Stunden", "price": "249", "priceCurrency": "EUR", "url": "https://zinlamor.de/booking.html"}], "sameAs": ["https://www.instagram.com/zinlamorstudios/"], "founder": {"@type": "Person", "name": "Nick Lamor", "jobTitle": "Musikproduzent"}}
+{"@context": "https://schema.org", "@type": "LocalBusiness", "@id": "https://zinlamor.de/#studio", "name": "ZINLAMOR Studios", "alternateName": "ZINLAMOR Musikstudio München", "description": "Musikstudio in München mieten – Recording, Musikproduktion, Mix & Mastering, Podcast, Foto und Video. Profi-Equipment inklusive, 24/7 buchbar, auf Wunsch mit Produzent.", "url": "https://zinlamor.de/", "image": ["https://zinlamor.de/og-image.jpg", "https://zinlamor.de/studio-overview.webp", "https://zinlamor.de/recording-blue.webp"], "logo": "https://zinlamor.de/logo-zinlamor.webp", "telephone": "+491785624699", "email": "info@zinlamor.de", "address": {"@type": "PostalAddress", "streetAddress": "Weißenseestraße 101", "postalCode": "81539", "addressLocality": "München", "addressRegion": "Bayern", "addressCountry": "DE"}, "hasMap": "https://www.google.com/maps/search/?api=1&query=Wei%C3%9Fenseestra%C3%9Fe+101+81539+M%C3%BCnchen", "areaServed": {"@type": "City", "name": "München"}, "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "opens": "00:00", "closes": "23:59"}], "priceRange": "ab 35 € / Stunde", "currenciesAccepted": "EUR", "parentOrganization": {"@type": "Organization", "name": "Lamor Studios"}, "makesOffer": [{"@type": "Offer", "name": "Musikstudio mieten – 3 Stunden", "price": "105", "priceCurrency": "EUR", "url": "https://zinlamor.de/booking.html"}, {"@type": "Offer", "name": "Musikstudio mieten – Ganztag 10 Stunden", "price": "250", "priceCurrency": "EUR", "url": "https://zinlamor.de/booking.html"}, {"@type": "Offer", "name": "Monatspaket Pro Artist – 15 Stunden", "price": "249", "priceCurrency": "EUR", "url": "https://zinlamor.de/booking.html"}], "sameAs": ["https://www.instagram.com/zinlamor.studios/"], "founder": {"@type": "Person", "name": "Nick Lamor", "jobTitle": "Musikproduzent"}}
 </script>
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "WebSite", "name": "ZINLAMOR Studios", "url": "https://zinlamor.de/", "inLanguage": "de-DE"}
@@ -279,6 +335,18 @@
   </div>
 </section>
 
+<section class="sec t-light" id="ablauf">
+  <div class="wrap">
+    <div class="head" data-r><span class="label"><i></i>So läuft’s</span><h2><span class="mask"><span>Drei Schritte</span></span><span class="mask"><span>ins Studio.</span></span></h2></div>
+    <div class="flow" id="flow">
+      <div class="flow-line" aria-hidden="true"><i></i></div>
+      <div class="st"><div class="node"><svg class="x" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16.5" rx="3"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4M8 14h3M8 17.5h6"/></svg><em>1</em></div><div><h3>Termin wählen</h3><p>Im Kalender, ab 3 Std.</p></div></div>
+      <div class="st"><div class="node"><svg class="x" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.5 11V8a3 3 0 0 0-3-3h-13a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3H12"/><path d="m3.5 7 8.5 6 8.5-6M15 18l2 2 4-4.5"/></svg><em>2</em></div><div><h3>Bestätigung</h3><p>Per Mail oder WhatsApp</p></div></div>
+      <div class="st"><div class="node"><svg class="x" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2.5" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3.5M8.5 21.5h7"/></svg><em>3</em></div><div><h3>Aufnehmen</h3><p>Code rein, alles bereit</p></div></div>
+    </div>
+  </div>
+</section>
+
 <section class="sec t-glow" id="preise">
   <div class="wrap">
     <div class="head" data-r><span class="label"><i></i>Preisrechner</span><h2><span class="mask"><span>Je länger,</span></span><span class="mask"><span>desto günstiger.</span></span></h2></div>
@@ -317,14 +385,76 @@
   </div>
 </section>
 
-<section class="sec t-light" id="ablauf">
+<section class="sec t-light" id="anfrage">
   <div class="wrap">
-    <div class="head" data-r><span class="label"><i></i>So läuft’s</span><h2><span class="mask"><span>Drei Schritte</span></span><span class="mask"><span>ins Studio.</span></span></h2></div>
-    <div class="flow" id="flow">
-      <div class="flow-line" aria-hidden="true"><i></i></div>
-      <div class="st"><div class="node"><svg class="x" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16.5" rx="3"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4M8 14h3M8 17.5h6"/></svg><em>1</em></div><div><h3>Termin wählen</h3><p>Im Kalender, ab 3 Std.</p></div></div>
-      <div class="st"><div class="node"><svg class="x" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.5 11V8a3 3 0 0 0-3-3h-13a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3H12"/><path d="m3.5 7 8.5 6 8.5-6M15 18l2 2 4-4.5"/></svg><em>2</em></div><div><h3>Bestätigung</h3><p>Per Mail oder WhatsApp</p></div></div>
-      <div class="st"><div class="node"><svg class="x" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2.5" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3.5M8.5 21.5h7"/></svg><em>3</em></div><div><h3>Aufnehmen</h3><p>Code rein, alles bereit</p></div></div>
+    <div class="head" data-r><span class="label"><i></i>Anfrage in 60 Sekunden</span><h2><span class="mask"><span>Stell dir deine</span></span><span class="mask"><span>Session zusammen.</span></span></h2><p>Ein paar Klicks, du siehst sofort deinen Preis und schickst uns die Anfrage direkt per WhatsApp.</p></div>
+    <div class="fn">
+      <form class="fn-box" id="fn" novalidate data-r>
+        <div class="fn-top"><span id="fnCount">Schritt 1 von 5</span><span id="fnName">Wofür?</span></div>
+        <div class="fn-bar" aria-hidden="true"><i id="fnBar"></i></div>
+
+        <div class="fn-step on" data-step="1" data-title="Wofür?">
+          <h3>Wofür brauchst du das Studio?</h3><p>Wähl das, was am besten passt.</p>
+          <div class="opts"><button type="button" class="opt" data-k="purpose" data-v="musik" aria-pressed="false"><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2.5" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3.5M8.5 21.5h7"/></svg></span><b>Musik & Recording</b><small>Songs, Vocals, Beats, Mix & Master</small></button><button type="button" class="opt" data-k="purpose" data-v="podcast" aria-pressed="false"><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11V8.5A2.5 2.5 0 0 1 6.5 6h11A2.5 2.5 0 0 1 20 8.5V11"/><path d="M2.5 13a2 2 0 0 1 4 0v1.5h11V13a2 2 0 0 1 4 0v4.5h-19ZM5 17.5v2M19 17.5v2"/></svg></span><b>Podcast & Talk</b><small>Aufnahmen, Interviews, Livestream</small></button><button type="button" class="opt" data-k="purpose" data-v="content" aria-pressed="false"><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 4h-5L7.5 6.5H4a1.5 1.5 0 0 0-1.5 1.5v10A1.5 1.5 0 0 0 4 19.5h16a1.5 1.5 0 0 0 1.5-1.5V8A1.5 1.5 0 0 0 20 6.5h-3.5Z"/><circle cx="12" cy="12.5" r="3.5"/></svg></span><b>Foto & Video</b><small>Shootings, Reels, Social Media</small></button><button type="button" class="opt" data-k="purpose" data-v="miete" aria-pressed="false"><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10.5" width="16" height="11" rx="2.5"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5M12 14.5v3"/></svg></span><b>Nur Studio mieten</b><small>Für dein eigenes Projekt</small></button></div>
+        </div>
+
+        <div class="fn-step" data-step="2" data-title="Dauer">
+          <h3>Wie lange willst du buchen?</h3><p>Je länger die Session, desto günstiger die Stunde.</p>
+          <div class="opts hrs" id="fnHours"></div>
+          <div class="fn-sub">Oder regelmäßig</div>
+          <div class="opts" id="fnPacks"></div>
+        </div>
+
+        <div class="fn-step" data-step="3" data-title="Extras">
+          <h3>Willst du etwas dazubuchen?</h3><p>Alles optional, du kannst auch einfach weiter.</p>
+          <div class="opts" id="fnExtras"></div>
+          <label class="chk"><input type="checkbox" id="fnEb"><span><b style="color:var(--head)">Early Bird −10 %</b> auf die Studiomiete, wenn dein Termin 14 Tage oder später ist</span></label>
+        </div>
+
+        <div class="fn-step" data-step="4" data-title="Termin">
+          <h3>Wann passt es dir?</h3><p>Grober Wunsch reicht, wir melden uns mit freien Zeiten.</p>
+          <div class="fn-row two">
+            <label class="fld"><span>Wunschdatum</span><input type="date" id="fnDate"></label>
+            <label class="fld"><span>Tageszeit</span><select id="fnTime"><option value="">egal</option><option>Vormittag</option><option>Nachmittag</option><option>Abend</option><option>Nacht</option></select></label>
+          </div>
+        </div>
+
+        <div class="fn-step" data-step="5" data-title="Kontakt">
+          <h3>Wie erreichen wir dich?</h3><p>Name und Telefon oder E-Mail genügen.</p>
+          <div class="fn-row two">
+            <label class="fld" id="fName"><span>Name *</span><input type="text" id="fnN" autocomplete="name"></label>
+            <label class="fld" id="fPhone"><span>Telefon / WhatsApp</span><input type="tel" id="fnP" autocomplete="tel"></label>
+          </div>
+          <div class="fn-row" style="margin-top:12px">
+            <label class="fld" id="fMail"><span>E-Mail</span><input type="email" id="fnE" autocomplete="email"></label>
+            <label class="fld"><span>Nachricht (optional)</span><textarea id="fnM" placeholder="z. B. Genre, Anzahl Personen, besondere Wünsche"></textarea></label>
+          </div>
+          <label class="chk"><input type="checkbox" id="fnC"><span>Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen und bin einverstanden, dass meine Angaben zur Bearbeitung der Anfrage verwendet werden. *</span></label>
+        </div>
+
+        <div class="fn-step" data-step="6" data-title="Fertig">
+          <h3>Deine Anfrage ist bereit.</h3><p>Schick sie uns per WhatsApp. Wir antworten schnell und bestätigen dir den Termin.</p>
+          <div class="done">
+            <a class="btn btn-wa magnet" id="fnWa" href="#" target="_blank" rel="noopener">Per WhatsApp senden <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="btn btn-ghost" href="https://zinlamor.de/booking.html">Lieber direkt im Kalender buchen</a>
+            <button type="button" class="btn btn-ghost" id="fnCopy">Zusammenfassung kopieren</button>
+          </div>
+        </div>
+
+        <p class="fn-msg" id="fnMsg" role="alert"></p>
+        <div class="fn-nav">
+          <button type="button" class="btn btn-ghost" id="fnBack" hidden>Zurück</button>
+          <button type="button" class="btn btn-rec" id="fnNext" style="margin-left:auto">Weiter <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </div>
+      </form>
+
+      <aside class="sum" aria-live="polite" data-r>
+        <h4>Deine Session</h4>
+        <div class="sum-rows" id="sumRows"><div><span>Noch nichts ausgewählt</span></div></div>
+        <div class="sum-tot"><span>Geschätzt</span><b id="sumTot">0 €</b></div>
+        <div class="sum-save" id="sumSave"></div>
+        <small>Unverbindliche Schätzung. Der finale Preis steht in der Bestätigung. Monatspakete zzgl. MwSt.</small>
+      </aside>
     </div>
   </div>
 </section>
@@ -332,7 +462,7 @@
 <section class="sec" id="kontakt">
   <div class="wrap duo">
     <div class="card" data-r>
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><span class="label"><i></i>Instagram</span><a class="btn btn-ghost" style="padding:10px 18px;font-size:.88rem" href="https://www.instagram.com/zinlamorstudios/" target="_blank" rel="noopener noreferrer"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6"/></svg> @zinlamorstudios</a></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><span class="label"><i></i>Instagram</span><a class="btn btn-ghost" style="padding:10px 18px;font-size:.88rem" href="https://www.instagram.com/zinlamor.studios/" target="_blank" rel="noopener noreferrer"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6"/></svg> @zinlamor.studios</a></div>
       <h3>Behind the Scenes</h3>
       <div class="elfsight-app-c4a08074-0a48-4231-ba8f-f4c0406aae2b" data-elfsight-app-lazy></div>
 <script src="https://elfsightcdn.com/platform.js" async></script>
@@ -369,11 +499,12 @@
       <div><a class="logo" href="index.html" aria-label="ZINLAMOR Studios Startseite" style="padding:0;margin-bottom:14px"><img src="logo-zinlamor.webp" alt="ZINLAMOR Studios" width="1600" height="1200" loading="lazy"></a><p>Musikstudio, Podcast- und Content-Studio in München-Giesing.</p><p style="margin-top:10px">Weißenseestraße 101<br>81539 München</p></div>
       <div><h4>Studio</h4><a href="musikstudio-mieten-muenchen.html">Musikstudio mieten</a><a href="musikproduzent-muenchen.html">Musikproduzent</a><a href="full-service-musikproduktion-muenchen.html">Full-Service-Produktion</a><a href="https://zinlamor.de/booking.html">Online buchen</a></div>
       <div><h4>Wissen</h4><a href="blog.html">Magazin</a><a href="faq.html">Häufige Fragen</a><a href="blog-mixing-mastering-muenchen.html">Mix &amp; Mastering</a><a href="blog-musikstudio-mieten.html">Was kostet ein Studio?</a></div>
-      <div><h4>Kontakt</h4><a href="https://wa.me/491785624699" target="_blank" rel="noopener">WhatsApp</a><a href="https://www.instagram.com/zinlamorstudios/" target="_blank" rel="noopener noreferrer">Instagram</a><span style="display:block;padding:4px 0">+49 178 5624699</span><span style="display:block;padding:4px 0">info@zinlamor.de</span></div>
+      <div><h4>Kontakt</h4><a href="https://wa.me/491785624699" target="_blank" rel="noopener">WhatsApp</a><a href="https://www.instagram.com/zinlamor.studios/" target="_blank" rel="noopener noreferrer">Instagram</a><span style="display:block;padding:4px 0">+49 178 5624699</span><span style="display:block;padding:4px 0">info@zinlamor.de</span></div>
     </div>
     <div class="f-bottom"><span>© 2026 ZINLAMOR Studios</span><span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · <a href="agb.html">AGB</a></span><span>Website by <a href="https://lamoragency.de" target="_blank" rel="noopener">Lamor Agency</a></span></div>
   </div>
 </footer>
+<a class="wa" href="https://wa.me/491785624699?text=Hallo%20ZINLAMOR%2C%20ich%20habe%20eine%20Frage%20zum%20Studio%3A%20" target="_blank" rel="noopener" aria-label="Per WhatsApp schreiben"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3.2A12.7 12.7 0 0 0 5.1 22.4L3.3 28.8l6.6-1.7A12.7 12.7 0 1 0 16 3.2Zm0 23.2c-2 0-3.9-.5-5.6-1.5l-.4-.2-3.9 1 1-3.8-.3-.4a10.5 10.5 0 1 1 9.2 4.9Zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.3-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6.3-.5c.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.7 5 .8.4 1.4.6 1.9.7.8.3 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.3Z"/></svg><span>WhatsApp</span></a>
 <script src="assets/site.js?v=20261107" defer></script>
 <script>
 (function(){
@@ -448,6 +579,109 @@
       snd.querySelector('span').textContent=fv.muted?'Ton an':'Ton aus';
       snd.querySelector('svg').innerHTML=fv.muted?'<path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="m22 9-6 6M16 9l6 6"/>':'<path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/>'});
   }
+})();
+</script>
+<script>
+(function(){
+  var $=function(s){return document.querySelector(s)}, $$=function(s){return Array.prototype.slice.call(document.querySelectorAll(s))};
+  var form=$('#fn'); if(!form) return;
+  var H=[3,4,6,8,10], R=[35,33,30,28,25];
+  var PACKS=[{v:'pro',t:'Pro Artist',h:15,p:249,s:'15 Std. / Monat, Mo–Do'},{v:'business',t:'Business',h:25,p:449,s:'25 Std. / Monat, Mo–Fr + 1 Wochenende'},{v:'label',t:'Label / Fulltime',h:40,p:749,s:'40 Std. / Monat, Mo–So 24/7'}];
+  var EXTRAS={
+    musik:[{v:'prod',t:'Produzent Nick Lamor',s:'Beat, Arrangement & Recording',p:'+35 € / Std.'},{v:'mix',t:'Mix',s:'Pro Song',p:'120 €'},{v:'master',t:'Mastering',s:'Pro Song',p:'65 €'}],
+    podcast:[{v:'schnitt',t:'Schnitt & Clips',s:'Fertige Folge und Social-Clips',p:'auf Anfrage'},{v:'video',t:'Videoaufzeichnung',s:'Mehrere Kameras',p:'auf Anfrage'}],
+    content:[{v:'fotograf',t:'Fotograf',s:'Shooting mit Fotograf',p:'auf Anfrage'},{v:'videograf',t:'Videograf',s:'Dreh und Schnitt',p:'auf Anfrage'},{v:'creator',t:'Content Creator',s:'Reels & Social Media',p:'auf Anfrage'}],
+    miete:[{v:'technik',t:'Tonbetreuung',s:'Technik vor Ort',p:'auf Anfrage'}]
+  };
+  var NAMES={musik:'Musik & Recording',podcast:'Podcast & Talk',content:'Foto & Video',miete:'Nur Studio mieten'};
+  var st={purpose:'',hours:-1,pack:'',extras:{},eb:false}, step=1, last=6;
+  var eur=function(n){var d=Math.round(n*100)%100?2:0;return n.toLocaleString('de-DE',{minimumFractionDigits:d,maximumFractionDigits:2})+' €'};
+
+  function opt(k,v,b,s,tag,ico){return '<button type="button" class="opt" data-k="'+k+'" data-v="'+v+'" aria-pressed="false">'+(ico||'')+'<b>'+b+'</b><small>'+s+'</small>'+(tag?'<span class="tag">'+tag+'</span>':'')+'</button>'}
+  $('#fnHours').innerHTML=H.map(function(h,i){var save=h*(35-R[i]);return opt('hours',i,h+' Std.',R[i]+' € / Std. · '+eur(h*R[i]),save?'Du sparst '+eur(save):'')}).join('');
+  $('#fnPacks').innerHTML=PACKS.map(function(p){return opt('pack',p.v,p.t+' · '+p.p+' €',p.s,'')}).join('');
+  function drawExtras(){var list=EXTRAS[st.purpose]||[];st.extras={};
+    $('#fnExtras').innerHTML=list.map(function(e){return opt('extra',e.v,e.t,e.s,e.p)}).join('')+'<button type="button" class="opt" data-k="none" data-v="1" aria-pressed="false"><b>Nichts dazu</b><small>Nur das Studio</small></button>';}
+
+  form.addEventListener('click',function(e){
+    var b=e.target.closest('.opt'); if(!b) return;
+    var k=b.dataset.k, v=b.dataset.v;
+    if(k==='purpose'){st.purpose=v;mark('purpose',v);drawExtras();go(step+1);return}
+    if(k==='hours'){st.hours=+v;st.pack='';mark('hours',v);mark('pack','');go(step+1);return}
+    if(k==='pack'){st.pack=v;st.hours=-1;mark('pack',v);mark('hours','');go(step+1);return}
+    if(k==='extra'){st.extras[v]=!st.extras[v];b.setAttribute('aria-pressed',!!st.extras[v]);var n=form.querySelector('.opt[data-k=none]');if(n)n.setAttribute('aria-pressed','false');calc();return}
+    if(k==='none'){st.extras={};$$('#fnExtras .opt').forEach(function(x){x.setAttribute('aria-pressed',x===b)});calc();return}
+  });
+  function mark(k,v){$$('.opt[data-k='+k+']').forEach(function(x){x.setAttribute('aria-pressed',x.dataset.v===String(v))})}
+  $('#fnEb').addEventListener('change',function(){st.eb=this.checked;calc()});
+
+  function calc(){
+    var rows=[],tot=0,save=0,hrs=0;
+    if(st.purpose) rows.push(['Zweck',NAMES[st.purpose]]);
+    if(st.hours>=0){hrs=H[st.hours];var base=hrs*R[st.hours];save+=hrs*35-base;
+      if(st.eb){save+=base*.1;base*=.9}
+      rows.push(['Studio '+hrs+' Std.'+(st.eb?' (Early Bird)':''),eur(base)]);tot+=base}
+    if(st.pack){var p=PACKS.filter(function(x){return x.v===st.pack})[0];rows.push([p.t+' (Monat)',eur(p.p)]);tot+=p.p}
+    var x=st.extras;
+    if(x.prod){if(hrs){rows.push(['Produzent '+hrs+' Std.',eur(hrs*35)]);tot+=hrs*35}else rows.push(['Produzent','+35 € / Std.'])}
+    if(x.mix&&x.master){rows.push(['Mix & Mastering (Bundle)',eur(166.5)]);tot+=166.5;save+=18.5}
+    else{if(x.mix){rows.push(['Mix',eur(120)]);tot+=120} if(x.master){rows.push(['Mastering',eur(65)]);tot+=65}}
+    Object.keys(x).forEach(function(k){if(x[k]&&['prod','mix','master'].indexOf(k)<0){var e=(EXTRAS[st.purpose]||[]).filter(function(z){return z.v===k})[0];if(e)rows.push([e.t,'auf Anfrage'])}});
+    var d=$('#fnDate').value, t=$('#fnTime').value;
+    if(d||t) rows.push(['Wunschtermin',(d?new Date(d+'T12:00').toLocaleDateString('de-DE',{weekday:'short',day:'2-digit',month:'2-digit'}):'flexibel')+(t?', '+t:'')]);
+    $('#sumRows').innerHTML=rows.length?rows.map(function(r){return '<div><span>'+r[0]+'</span><b>'+r[1]+'</b></div>'}).join(''):'<div><span>Noch nichts ausgewählt</span></div>';
+    $('#sumTot').textContent=eur(Math.round(tot*100)/100);
+    $('#sumSave').textContent=save>0?'Du sparst '+eur(Math.round(save*100)/100)+' gegenüber dem Einzelpreis':'';
+    st.rows=rows;st.tot=tot;return rows;
+  }
+  ['#fnDate','#fnTime'].forEach(function(s){$(s).addEventListener('change',calc)});
+
+  function valid(){
+    var m='';
+    if(step===1&&!st.purpose) m='Bitte wähl aus, wofür du das Studio brauchst.';
+    if(step===2&&st.hours<0&&!st.pack) m='Bitte wähl eine Dauer oder ein Monatspaket.';
+    if(step===5){var n=$('#fnN').value.trim(),p=$('#fnP').value.trim(),e=$('#fnE').value.trim();
+      $('#fName').classList.toggle('err',!n);
+      if(!n) m='Bitte gib deinen Namen an.';
+      else if(!p&&!e) m='Bitte gib Telefon oder E-Mail an.';
+      else if(e&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e)) m='Bitte prüf deine E-Mail-Adresse.';
+      else if(!$('#fnC').checked) m='Bitte bestätige die Datenschutzerklärung.';}
+    $('#fnMsg').textContent=m;return !m;
+  }
+  function text(){
+    calc();var L=['Hallo ZINLAMOR, ich möchte eine Session anfragen:',''];
+    st.rows.forEach(function(r){L.push(r[0]+': '+r[1])});
+    L.push('Geschätzt: '+eur(Math.round(st.tot*100)/100),'');
+    L.push('Name: '+$('#fnN').value.trim());
+    if($('#fnP').value.trim())L.push('Telefon: '+$('#fnP').value.trim());
+    if($('#fnE').value.trim())L.push('E-Mail: '+$('#fnE').value.trim());
+    if($('#fnM').value.trim())L.push('','Nachricht: '+$('#fnM').value.trim());
+    return L.join('\n');
+  }
+  function go(n,init){
+    if(n>step&&!valid())return;
+    step=Math.max(1,Math.min(last,n));
+    $$('.fn-step').forEach(function(s){s.classList.toggle('on',+s.dataset.step===step)});
+    var cur=$('.fn-step.on');
+    $('#fnCount').textContent=step<last?'Schritt '+step+' von '+(last-1):'Fertig';
+    $('#fnName').textContent=cur.dataset.title;
+    $('#fnBar').style.setProperty('--p',(step/last*100)+'%');
+    $('#fnBack').hidden=step===1;
+    $('#fnNext').hidden=step===last;
+    $('#fnNext').firstChild.textContent=step===last-1?'Anfrage fertigstellen ':'Weiter ';
+    $('#fnMsg').textContent='';
+    if(step===last){$('#fnWa').href='https://wa.me/491785624699?text='+encodeURIComponent(text())}
+    calc();
+    var top=form.getBoundingClientRect().top;if(!init&&(top<0||top>innerHeight*.6))form.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  $('#fnNext').addEventListener('click',function(){go(step+1)});
+  $('#fnBack').addEventListener('click',function(){go(step-1)});
+  form.addEventListener('submit',function(e){e.preventDefault()});
+  $('#fnCopy').addEventListener('click',function(){var b=this,t=text();
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){b.textContent='Kopiert';setTimeout(function(){b.textContent='Zusammenfassung kopieren'},1500)},function(){})}});
+  var dIn=$('#fnDate'), today=new Date(); dIn.min=today.toISOString().slice(0,10);
+  dIn.addEventListener('change',function(){var d=new Date(this.value+'T12:00'),days=(d-today)/864e5;if(days>=14&&!st.eb){$('#fnEb').checked=true;st.eb=true;calc()}});
+  go(1,true);
 })();
 </script>
 </body>

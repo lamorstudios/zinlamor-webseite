@@ -186,3 +186,9 @@ footer{background:var(--ink);border-top:1px solid #191717;padding-block:56px 36p
 .js [data-r] .mask+.mask>span{transition-delay:.08s}
 .js [data-r=h]{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.js [data-r],.js [data-r] .mask>span{opacity:1!important;transform:none!important;transition:none!important}.tc i{animation:none}.menu{transition:none}}
+
+/* WhatsApp */
+.wa{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:45;display:inline-flex;align-items:center;gap:10px;height:56px;padding:0 18px 0 16px;border-radius:var(--r-pill);background:#25d366;color:#06200f;font-family:var(--body);font-weight:600;font-size:.95rem;text-decoration:none;box-shadow:0 14px 34px -12px rgba(37,211,102,.7),0 2px 8px rgba(0,0,0,.25);transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+.wa:hover{transform:translateY(-3px);box-shadow:0 20px 40px -14px rgba(37,211,102,.8),0 2px 8px rgba(0,0,0,.25)}
+.wa svg{width:26px;height:26px;flex:0 0 auto}
+@media(max-width:640px){.wa{width:56px;padding:0;justify-content:center}.wa span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}
