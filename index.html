@@ -248,7 +248,8 @@
 .fn-nav .btn[hidden]{display:none}
 #fnNext{margin-left:auto}
 .t-light .btn-ghost{background:#fff}
-.fn-cal{}
+.fn-box.open{animation:fnOpen 1.4s var(--ease)}
+@keyframes fnOpen{0%{box-shadow:0 0 0 0 rgba(224,32,32,.55)}40%{box-shadow:0 0 0 14px rgba(224,32,32,.12)}100%{box-shadow:0 30px 70px -50px rgba(0,0,0,.35)}}
 .mini{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:12px;padding:12px 14px;border-radius:16px;background:#0d0b0b;color:#b9b0af;font-size:.82rem;font-variant-numeric:tabular-nums}
 .mini b{font-family:var(--display);font-size:1.25rem;color:#fff;letter-spacing:-.02em;white-space:nowrap}
 .mini em{font-style:normal;color:#ff6b6b;font-weight:600}
@@ -286,7 +287,7 @@
 
 </style>
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "LocalBusiness", "@id": "https://zinlamor.de/#studio", "name": "ZINLAMOR Studios", "alternateName": "ZINLAMOR Musikstudio München", "description": "Musikstudio in München mieten – Recording, Musikproduktion, Mix & Mastering, Podcast, Foto und Video. Profi-Equipment inklusive, 24/7 buchbar, auf Wunsch mit Produzent.", "url": "https://zinlamor.de/", "image": ["https://zinlamor.de/og-image.jpg", "https://zinlamor.de/studio-overview.webp", "https://zinlamor.de/recording-blue.webp"], "logo": "https://zinlamor.de/logo-zinlamor.webp", "telephone": "+491785624699", "email": "info@zinlamor.de", "address": {"@type": "PostalAddress", "streetAddress": "Weißenseestraße 101", "postalCode": "81539", "addressLocality": "München", "addressRegion": "Bayern", "addressCountry": "DE"}, "hasMap": "https://www.google.com/maps/search/?api=1&query=Wei%C3%9Fenseestra%C3%9Fe+101+81539+M%C3%BCnchen", "areaServed": {"@type": "City", "name": "München"}, "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "opens": "00:00", "closes": "23:59"}], "priceRange": "ab 35 € / Stunde", "currenciesAccepted": "EUR", "parentOrganization": {"@type": "Organization", "name": "Lamor Studios"}, "makesOffer": [{"@type": "Offer", "name": "Musikstudio mieten – 3 Stunden", "price": "105", "priceCurrency": "EUR", "url": "https://zinlamor.de/booking.html"}, {"@type": "Offer", "name": "Musikstudio mieten – Ganztag 10 Stunden", "price": "250", "priceCurrency": "EUR", "url": "https://zinlamor.de/booking.html"}, {"@type": "Offer", "name": "Monatspaket Pro Artist – 15 Stunden", "price": "249", "priceCurrency": "EUR", "url": "https://zinlamor.de/booking.html"}], "sameAs": ["https://www.instagram.com/zinlamor.studios/"], "founder": {"@type": "Person", "name": "Nick Lamor", "jobTitle": "Musikproduzent"}}
+{"@context": "https://schema.org", "@type": "LocalBusiness", "@id": "https://zinlamor.de/#studio", "name": "ZINLAMOR Studios", "alternateName": "ZINLAMOR Musikstudio München", "description": "Musikstudio in München mieten – Recording, Musikproduktion, Mix & Mastering, Podcast, Foto und Video. Profi-Equipment inklusive, 24/7 buchbar, auf Wunsch mit Produzent.", "url": "https://zinlamor.de/", "image": ["https://zinlamor.de/og-image.jpg", "https://zinlamor.de/studio-overview.webp", "https://zinlamor.de/recording-blue.webp"], "logo": "https://zinlamor.de/logo-zinlamor.webp", "telephone": "+491785624699", "email": "info@zinlamor.de", "address": {"@type": "PostalAddress", "streetAddress": "Weißenseestraße 101", "postalCode": "81539", "addressLocality": "München", "addressRegion": "Bayern", "addressCountry": "DE"}, "hasMap": "https://www.google.com/maps/search/?api=1&query=Wei%C3%9Fenseestra%C3%9Fe+101+81539+M%C3%BCnchen", "areaServed": {"@type": "City", "name": "München"}, "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "opens": "00:00", "closes": "23:59"}], "priceRange": "ab 35 € / Stunde", "currenciesAccepted": "EUR", "parentOrganization": {"@type": "Organization", "name": "Lamor Studios"}, "makesOffer": [{"@type": "Offer", "name": "Musikstudio mieten – 3 Stunden", "price": "105", "priceCurrency": "EUR", "url": "https://zinlamor.de/#anfrage"}, {"@type": "Offer", "name": "Musikstudio mieten – Ganztag 10 Stunden", "price": "250", "priceCurrency": "EUR", "url": "https://zinlamor.de/#anfrage"}, {"@type": "Offer", "name": "Monatspaket Pro Artist – 15 Stunden", "price": "249", "priceCurrency": "EUR", "url": "https://zinlamor.de/#anfrage"}], "sameAs": ["https://www.instagram.com/zinlamor.studios/"], "founder": {"@type": "Person", "name": "Nick Lamor", "jobTitle": "Musikproduzent"}}
 </script>
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "WebSite", "name": "ZINLAMOR Studios", "url": "https://zinlamor.de/", "inLanguage": "de-DE"}
@@ -327,109 +328,6 @@
       <div class="spec" data-r><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10.5" width="16" height="11" rx="2.5"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5M12 14.5v3"/></svg></span><div><b>24/7</b><span>Code-Zugang</span></div></div>
       <div class="spec" data-r><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2.5" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3.5M8.5 21.5h7"/></svg></span><div><b>inklusive</b><span>Equipment</span></div></div>
     </div>
-  </div>
-</section>
-
-<section class="gal sec" id="studio" style="padding-top:clamp(40px,6vw,80px)">
-  <div class="gal-sticky">
-    <div class="wrap gal-head">
-      <div class="head" style="margin:0" data-r><span class="label"><i></i>Das Studio</span><h2><span class="mask"><span>Dein Raum.</span></span><span class="mask"><span>Deine Bühne.</span></span></h2></div>
-      <div class="gal-nav"><button type="button" id="gPrev" aria-label="Vorheriges Bild"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button><button type="button" id="gNext" aria-label="Nächstes Bild"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
-    </div>
-    <div class="gal-track" id="gTrack">
-      <figure class="g w"><img src="studio-overview.webp" alt="Podcast- und Talkbereich mit Couch und Akustikpaneelen" loading="lazy" width="1024" height="1536" style="object-position:center 60%"><span class="chip">Podcast &amp; Talk</span></figure>
-      <figure class="g"><img src="headphones.webp" alt="Studio-Kopfhörer und Kondensatormikrofon" loading="lazy" width="1024" height="1535"><span class="chip">Musikstudio</span></figure>
-      <figure class="g"><img src="zinlamor-chair.webp" alt="Foto- und Videoset mit Ringlicht und ZINLAMOR-Backdrop" loading="lazy" width="1023" height="1537"><span class="chip">Video &amp; Content</span></figure>
-      <figure class="g w"><img src="akustik-blue.webp" alt="Akustikpaneele mit blauer LED-Beleuchtung" loading="lazy" width="1535" height="1024"><span class="chip">Akustik</span></figure>
-      <figure class="g"><img src="recording-blue.webp" alt="Gesangskabine mit Mikrofon" loading="lazy" width="1024" height="1536"><span class="chip">Recording Booth</span></figure>
-    </div>
-  </div>
-</section>
-
-<section class="sec t-light" id="leistungen">
-  <div class="wrap">
-    <div class="head" data-r><span class="label"><i></i>Was du bekommst</span><h2><span class="mask"><span>Alles drin.</span></span><span class="mask"><span>Einfach loslegen.</span></span></h2></div>
-    <div class="kit">
-      <div class="k" data-r><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2.5" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3.5M8.5 21.5h7"/></svg></span><div><h3>Gesangskabine</h3><small>Akustisch optimiert</small></div></div>
-      <div class="k" data-r><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 17v-4a8.5 8.5 0 0 1 17 0v4"/><rect x="2.5" y="14" width="5" height="7" rx="2"/><rect x="16.5" y="14" width="5" height="7" rx="2"/></svg></span><div><h3>Profi-Mikrofone</h3><small>Komplettes Setup inklusive</small></div></div>
-      <div class="k" data-r><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21.5h4M12 2.5a6.5 6.5 0 0 0-4 11.6c.6.5 1 1.3 1 2.1V18h6v-1.8c0-.8.4-1.6 1-2.1a6.5 6.5 0 0 0-4-11.6Z"/></svg></span><div><h3>Licht &amp; Hintergründe</h3><small>Für Foto und Video</small></div></div>
-      <div class="k" data-r><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11V8.5A2.5 2.5 0 0 1 6.5 6h11A2.5 2.5 0 0 1 20 8.5V11"/><path d="M2.5 13a2 2 0 0 1 4 0v1.5h11V13a2 2 0 0 1 4 0v4.5h-19ZM5 17.5v2M19 17.5v2"/></svg></span><div><h3>Podcast-Lounge</h3><small>Couch, Talk, Interviews</small></div></div>
-      <div class="k" data-r><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span><div><h3>Produzent</h3><small>Nick Lamor, zubuchbar</small></div></div>
-      <div class="k" data-r><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V14M5 10V3M12 21v-9M12 8V3M19 21v-5M19 12V3M3 14h4M10 8h4M17 16h4"/></svg></span><div><h3>Mix &amp; Mastering</h3><small>Aus einer Hand</small></div></div>
-      <div class="k" data-r><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 4h-5L7.5 6.5H4a1.5 1.5 0 0 0-1.5 1.5v10A1.5 1.5 0 0 0 4 19.5h16a1.5 1.5 0 0 0 1.5-1.5V8A1.5 1.5 0 0 0 20 6.5h-3.5Z"/><circle cx="12" cy="12.5" r="3.5"/></svg></span><div><h3>Content-Team</h3><small>Foto, Video, Schnitt</small></div></div>
-      <div class="k" data-r><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10.5" width="16" height="11" rx="2.5"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5M12 14.5v3"/></svg></span><div><h3>24/7 Zugang</h3><small>App-Code-Schloss</small></div></div>
-    </div>
-    <div class="uses" data-r><span class="label">Perfekt für</span><span class="pill"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h2M7 8v8M11 5v14M15 9v6M19 7v10M21 12h0"/></svg>Musik</span><span class="pill"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2.5" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3.5M8.5 21.5h7"/></svg>Podcast</span><span class="pill"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 4h-5L7.5 6.5H4a1.5 1.5 0 0 0-1.5 1.5v10A1.5 1.5 0 0 0 4 19.5h16a1.5 1.5 0 0 0 1.5-1.5V8A1.5 1.5 0 0 0 20 6.5h-3.5Z"/><circle cx="12" cy="12.5" r="3.5"/></svg>Foto</span><span class="pill"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M11 9.5v5l4-2.5Z"/></svg>Social Media</span><span class="pill"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8a6 6 0 0 1 0 8.4M7.8 16.2a6 6 0 0 1 0-8.4M19 5a10 10 0 0 1 0 14M5 19A10 10 0 0 1 5 5"/></svg>Livestream</span><span class="pill"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.5a8.5 8.5 0 0 1-12.6 7.4L3.5 20.5l1.6-4.3A8.5 8.5 0 1 1 20.5 11.5Z"/></svg>Interviews</span></div>
-  </div>
-</section>
-
-<section class="sec" id="erklaerfilm">
-  <div class="wrap film">
-    <div class="phone" data-r>
-      <video id="film" muted loop playsinline preload="metadata" poster="assets/media/zinlamor-erklaerfilm-poster.webp" aria-label="Erklärfilm: ZINLAMOR Studios in 38 Sekunden">
-        <source src="assets/media/zinlamor-erklaerfilm.mp4" type="video/mp4">
-      </video>
-      <button type="button" class="snd" id="snd" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="m22 9-6 6M16 9l6 6"/></svg><span>Ton an</span></button>
-    </div>
-    <div>
-      <div class="head" style="margin-bottom:0" data-r><span class="label"><i></i>Erklärfilm</span><h2><span class="mask"><span>Das Studio</span></span><span class="mask"><span>in 38 Sekunden.</span></span></h2></div>
-      <div class="film-pts" data-r>
-        <div><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2.5" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3.5M8.5 21.5h7"/></svg></span>Recording, Produktion, Mix &amp; Master</div>
-        <div><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16.5" rx="3"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4M8 14h3M8 17.5h6"/></svg></span>Ab 3 Stunden, 24/7 buchbar</div>
-        <div><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span>Mit oder ohne Produzent</div>
-      </div>
-      <div class="row" data-r><a class="btn btn-rec magnet" href="#anfrage">Studio buchen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn-ghost magnet" href="#preise">Preis berechnen</a></div>
-    </div>
-  </div>
-</section>
-
-<section class="sec t-light" id="ablauf">
-  <div class="wrap">
-    <div class="head" data-r><span class="label"><i></i>So läuft’s</span><h2><span class="mask"><span>Drei Schritte</span></span><span class="mask"><span>ins Studio.</span></span></h2></div>
-    <div class="flow" id="flow">
-      <div class="flow-line" aria-hidden="true"><i></i></div>
-      <div class="st"><div class="node"><svg class="x" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16.5" rx="3"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4M8 14h3M8 17.5h6"/></svg><em>1</em></div><div><h3>Termin wählen</h3><p>Im Kalender, ab 3 Std.</p></div></div>
-      <div class="st"><div class="node"><svg class="x" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.5 11V8a3 3 0 0 0-3-3h-13a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3H12"/><path d="m3.5 7 8.5 6 8.5-6M15 18l2 2 4-4.5"/></svg><em>2</em></div><div><h3>Bestätigung</h3><p>Per Mail oder WhatsApp</p></div></div>
-      <div class="st"><div class="node"><svg class="x" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2.5" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3.5M8.5 21.5h7"/></svg><em>3</em></div><div><h3>Aufnehmen</h3><p>Code rein, alles bereit</p></div></div>
-    </div>
-  </div>
-</section>
-
-<section class="sec t-glow" id="preise">
-  <div class="wrap">
-    <div class="head" data-r><span class="label"><i></i>Preisrechner</span><h2><span class="mask"><span>Je länger,</span></span><span class="mask"><span>desto günstiger.</span></span></h2></div>
-    <div class="price">
-      <div class="console" data-r>
-        <div class="readout">
-          <div class="big" aria-live="polite"><span id="pRate">35</span> €<small>pro Stunde</small></div>
-          <div class="side"><span class="label">Gesamt</span><b id="pTotal">105 €</b><span class="save" id="pSave">Einstiegspreis</span></div>
-        </div>
-        <div class="chart" id="chart" role="group" aria-label="Stundenpreis nach Session-Länge"></div>
-        <div class="fader"><input type="range" id="hours" min="0" max="4" step="1" value="0" aria-label="Session-Länge" aria-valuetext="3 Stunden"></div>
-        <div class="ctrl">
-          <label class="toggle" for="eb"><span><b>Early Bird −10 %</b><small>14 Tage oder früher gebucht</small></span><input type="checkbox" id="eb"><span class="sw" aria-hidden="true"></span></label>
-          <a class="btn btn-rec magnet" href="#anfrage">Jetzt anfragen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
-      </div>
-      <div class="rack">
-        <div class="card" data-r>
-          <span class="label"><i></i>Dazubuchen</span>
-          <div style="margin-top:10px">
-            <div class="rk"><span>Produzent Nick Lamor<br><small>inkl. Recording</small></span><b>+35 € / Std.</b></div>
-            <div class="rk"><span>Mix</span><b>120 €</b></div>
-            <div class="rk"><span>Mastering</span><b>65 €</b></div>
-            <div class="rk"><span>Mix &amp; Master</span><b>166,50 €</b></div>
-          </div>
-        </div>
-        <a class="card" href="musikstudio-mieten-muenchen.html" data-r style="text-decoration:none;display:flex;justify-content:space-between;align-items:center;gap:12px"><span><b style="color:var(--head);display:block">Alle Preise im Detail</b><small>Tabelle, Pakete, Ausstattung</small></span><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
-      </div>
-    </div>
-    <div class="pk-grid">
-      <article class="card pk" data-r><span class="label">Pro Artist</span><div class="pk-n"><b>15</b><span>Std. / Monat</span></div><div class="pk-p">249 € <small>/ Monat</small></div><ul class="ok"><li>Mo–Do frei wählbar</li><li>Prio-Buchung 48 Std. vorher</li></ul></article>
-      <article class="card pk hot" data-r><span class="badge">Beliebt</span><span class="label">Business</span><div class="pk-n"><b>25</b><span>Std. / Monat</span></div><div class="pk-p">449 € <small>/ Monat</small></div><ul class="ok"><li>Mo–Fr frei wählbar</li><li>1× Wochenende inklusive</li></ul></article>
-      <article class="card pk" data-r><span class="label">Label / Fulltime</span><div class="pk-n"><b>40</b><span>Std. / Monat</span></div><div class="pk-p">749 € <small>/ Monat</small></div><ul class="ok"><li>Mo–So, 24/7</li><li>Direktkontakt zum Produzenten</li></ul></article>
-    </div>
-    <p class="note">Monatspakete zzgl. MwSt., monatlich kündbar, mind. 5 Std. pro Session. <a href="blog-studio-monatlich-mieten-muenchen.html" style="color:var(--head)">Lohnt sich ein Paket?</a></p>
   </div>
 </section>
 
@@ -495,7 +393,6 @@
           <button type="button" class="btn btn-rec" id="fnNext">Weiter <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
         </div>
         <div class="mini" id="fnMini"><span>Geschätzt<br><em id="miniSave"></em></span><b id="miniTot">0 €</b></div>
-        <p style="margin-top:10px;text-align:center;font-size:.8rem"><a href="booking.html" style="color:var(--soft)">Lieber selbst im Kalender buchen</a></p>
       </form>
 
       <aside class="sum" aria-live="polite" data-r>
@@ -507,6 +404,109 @@
         <small>Unverbindliche Schätzung. Der finale Preis steht in der Bestätigung. Monatspakete zzgl. MwSt.</small>
       </aside>
     </div>
+  </div>
+</section>
+
+<section class="gal sec" id="studio" style="padding-top:clamp(40px,6vw,80px)">
+  <div class="gal-sticky">
+    <div class="wrap gal-head">
+      <div class="head" style="margin:0" data-r><span class="label"><i></i>Das Studio</span><h2><span class="mask"><span>Dein Raum.</span></span><span class="mask"><span>Deine Bühne.</span></span></h2></div>
+      <div class="gal-nav"><button type="button" id="gPrev" aria-label="Vorheriges Bild"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button><button type="button" id="gNext" aria-label="Nächstes Bild"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+    </div>
+    <div class="gal-track" id="gTrack">
+      <figure class="g w"><img src="studio-overview.webp" alt="Podcast- und Talkbereich mit Couch und Akustikpaneelen" loading="lazy" width="1024" height="1536" style="object-position:center 60%"><span class="chip">Podcast &amp; Talk</span></figure>
+      <figure class="g"><img src="headphones.webp" alt="Studio-Kopfhörer und Kondensatormikrofon" loading="lazy" width="1024" height="1535"><span class="chip">Musikstudio</span></figure>
+      <figure class="g"><img src="zinlamor-chair.webp" alt="Foto- und Videoset mit Ringlicht und ZINLAMOR-Backdrop" loading="lazy" width="1023" height="1537"><span class="chip">Video &amp; Content</span></figure>
+      <figure class="g w"><img src="akustik-blue.webp" alt="Akustikpaneele mit blauer LED-Beleuchtung" loading="lazy" width="1535" height="1024"><span class="chip">Akustik</span></figure>
+      <figure class="g"><img src="recording-blue.webp" alt="Gesangskabine mit Mikrofon" loading="lazy" width="1024" height="1536"><span class="chip">Recording Booth</span></figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec t-light" id="leistungen">
+  <div class="wrap">
+    <div class="head" data-r><span class="label"><i></i>Was du bekommst</span><h2><span class="mask"><span>Alles drin.</span></span><span class="mask"><span>Einfach loslegen.</span></span></h2></div>
+    <div class="kit">
+      <div class="k" data-r><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2.5" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3.5M8.5 21.5h7"/></svg></span><div><h3>Gesangskabine</h3><small>Akustisch optimiert</small></div></div>
+      <div class="k" data-r><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 17v-4a8.5 8.5 0 0 1 17 0v4"/><rect x="2.5" y="14" width="5" height="7" rx="2"/><rect x="16.5" y="14" width="5" height="7" rx="2"/></svg></span><div><h3>Profi-Mikrofone</h3><small>Komplettes Setup inklusive</small></div></div>
+      <div class="k" data-r><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21.5h4M12 2.5a6.5 6.5 0 0 0-4 11.6c.6.5 1 1.3 1 2.1V18h6v-1.8c0-.8.4-1.6 1-2.1a6.5 6.5 0 0 0-4-11.6Z"/></svg></span><div><h3>Licht &amp; Hintergründe</h3><small>Für Foto und Video</small></div></div>
+      <div class="k" data-r><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11V8.5A2.5 2.5 0 0 1 6.5 6h11A2.5 2.5 0 0 1 20 8.5V11"/><path d="M2.5 13a2 2 0 0 1 4 0v1.5h11V13a2 2 0 0 1 4 0v4.5h-19ZM5 17.5v2M19 17.5v2"/></svg></span><div><h3>Podcast-Lounge</h3><small>Couch, Talk, Interviews</small></div></div>
+      <div class="k" data-r><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span><div><h3>Produzent</h3><small>Nick Lamor, zubuchbar</small></div></div>
+      <div class="k" data-r><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V14M5 10V3M12 21v-9M12 8V3M19 21v-5M19 12V3M3 14h4M10 8h4M17 16h4"/></svg></span><div><h3>Mix &amp; Mastering</h3><small>Aus einer Hand</small></div></div>
+      <div class="k" data-r><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 4h-5L7.5 6.5H4a1.5 1.5 0 0 0-1.5 1.5v10A1.5 1.5 0 0 0 4 19.5h16a1.5 1.5 0 0 0 1.5-1.5V8A1.5 1.5 0 0 0 20 6.5h-3.5Z"/><circle cx="12" cy="12.5" r="3.5"/></svg></span><div><h3>Content-Team</h3><small>Foto, Video, Schnitt</small></div></div>
+      <div class="k" data-r><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10.5" width="16" height="11" rx="2.5"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5M12 14.5v3"/></svg></span><div><h3>24/7 Zugang</h3><small>App-Code-Schloss</small></div></div>
+    </div>
+    <div class="uses" data-r><span class="label">Perfekt für</span><span class="pill"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h2M7 8v8M11 5v14M15 9v6M19 7v10M21 12h0"/></svg>Musik</span><span class="pill"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2.5" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3.5M8.5 21.5h7"/></svg>Podcast</span><span class="pill"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 4h-5L7.5 6.5H4a1.5 1.5 0 0 0-1.5 1.5v10A1.5 1.5 0 0 0 4 19.5h16a1.5 1.5 0 0 0 1.5-1.5V8A1.5 1.5 0 0 0 20 6.5h-3.5Z"/><circle cx="12" cy="12.5" r="3.5"/></svg>Foto</span><span class="pill"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M11 9.5v5l4-2.5Z"/></svg>Social Media</span><span class="pill"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8a6 6 0 0 1 0 8.4M7.8 16.2a6 6 0 0 1 0-8.4M19 5a10 10 0 0 1 0 14M5 19A10 10 0 0 1 5 5"/></svg>Livestream</span><span class="pill"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.5a8.5 8.5 0 0 1-12.6 7.4L3.5 20.5l1.6-4.3A8.5 8.5 0 1 1 20.5 11.5Z"/></svg>Interviews</span></div>
+  </div>
+</section>
+
+<section class="sec" id="erklaerfilm">
+  <div class="wrap film">
+    <div class="phone" data-r>
+      <video id="film" muted loop playsinline preload="metadata" poster="assets/media/zinlamor-erklaerfilm-poster.webp" aria-label="Erklärfilm: ZINLAMOR Studios in 38 Sekunden">
+        <source src="assets/media/zinlamor-erklaerfilm.mp4" type="video/mp4">
+      </video>
+      <button type="button" class="snd" id="snd" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="m22 9-6 6M16 9l6 6"/></svg><span>Ton an</span></button>
+    </div>
+    <div>
+      <div class="head" style="margin-bottom:0" data-r><span class="label"><i></i>Erklärfilm</span><h2><span class="mask"><span>Das Studio</span></span><span class="mask"><span>in 38 Sekunden.</span></span></h2></div>
+      <div class="film-pts" data-r>
+        <div><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2.5" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3.5M8.5 21.5h7"/></svg></span>Recording, Produktion, Mix &amp; Master</div>
+        <div><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16.5" rx="3"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4M8 14h3M8 17.5h6"/></svg></span>Ab 3 Stunden, 24/7 buchbar</div>
+        <div><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span>Mit oder ohne Produzent</div>
+      </div>
+      <div class="row" data-r><a class="btn btn-rec magnet" href="#anfrage">Studio buchen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn-ghost magnet" href="#preise">Preis berechnen</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec t-light" id="ablauf">
+  <div class="wrap">
+    <div class="head" data-r><span class="label"><i></i>So läuft’s</span><h2><span class="mask"><span>Drei Schritte</span></span><span class="mask"><span>ins Studio.</span></span></h2></div>
+    <div class="flow" id="flow">
+      <div class="flow-line" aria-hidden="true"><i></i></div>
+      <div class="st"><div class="node"><svg class="x" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16.5" rx="3"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4M8 14h3M8 17.5h6"/></svg><em>1</em></div><div><h3>Anfrage senden</h3><p>In 60 Sekunden, ab 3 Std.</p></div></div>
+      <div class="st"><div class="node"><svg class="x" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.5 11V8a3 3 0 0 0-3-3h-13a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3H12"/><path d="m3.5 7 8.5 6 8.5-6M15 18l2 2 4-4.5"/></svg><em>2</em></div><div><h3>Bestätigung</h3><p>Per Mail oder WhatsApp</p></div></div>
+      <div class="st"><div class="node"><svg class="x" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2.5" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3.5M8.5 21.5h7"/></svg><em>3</em></div><div><h3>Aufnehmen</h3><p>Code rein, alles bereit</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec t-glow" id="preise">
+  <div class="wrap">
+    <div class="head" data-r><span class="label"><i></i>Preisrechner</span><h2><span class="mask"><span>Je länger,</span></span><span class="mask"><span>desto günstiger.</span></span></h2></div>
+    <div class="price">
+      <div class="console" data-r>
+        <div class="readout">
+          <div class="big" aria-live="polite"><span id="pRate">35</span> €<small>pro Stunde</small></div>
+          <div class="side"><span class="label">Gesamt</span><b id="pTotal">105 €</b><span class="save" id="pSave">Einstiegspreis</span></div>
+        </div>
+        <div class="chart" id="chart" role="group" aria-label="Stundenpreis nach Session-Länge"></div>
+        <div class="fader"><input type="range" id="hours" min="0" max="4" step="1" value="0" aria-label="Session-Länge" aria-valuetext="3 Stunden"></div>
+        <div class="ctrl">
+          <label class="toggle" for="eb"><span><b>Early Bird −10 %</b><small>14 Tage oder früher gebucht</small></span><input type="checkbox" id="eb"><span class="sw" aria-hidden="true"></span></label>
+          <a class="btn btn-rec magnet" href="#anfrage">Jetzt anfragen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+      <div class="rack">
+        <div class="card" data-r>
+          <span class="label"><i></i>Dazubuchen</span>
+          <div style="margin-top:10px">
+            <div class="rk"><span>Produzent Nick Lamor<br><small>inkl. Recording</small></span><b>+35 € / Std.</b></div>
+            <div class="rk"><span>Mix</span><b>120 €</b></div>
+            <div class="rk"><span>Mastering</span><b>65 €</b></div>
+            <div class="rk"><span>Mix &amp; Master</span><b>166,50 €</b></div>
+          </div>
+        </div>
+        <a class="card" href="musikstudio-mieten-muenchen.html" data-r style="text-decoration:none;display:flex;justify-content:space-between;align-items:center;gap:12px"><span><b style="color:var(--head);display:block">Alle Preise im Detail</b><small>Tabelle, Pakete, Ausstattung</small></span><span class="ico"><svg class="lic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      </div>
+    </div>
+    <div class="pk-grid">
+      <article class="card pk" data-r><span class="label">Pro Artist</span><div class="pk-n"><b>15</b><span>Std. / Monat</span></div><div class="pk-p">249 € <small>/ Monat</small></div><ul class="ok"><li>Mo–Do frei wählbar</li><li>Prio-Buchung 48 Std. vorher</li></ul></article>
+      <article class="card pk hot" data-r><span class="badge">Beliebt</span><span class="label">Business</span><div class="pk-n"><b>25</b><span>Std. / Monat</span></div><div class="pk-p">449 € <small>/ Monat</small></div><ul class="ok"><li>Mo–Fr frei wählbar</li><li>1× Wochenende inklusive</li></ul></article>
+      <article class="card pk" data-r><span class="label">Label / Fulltime</span><div class="pk-n"><b>40</b><span>Std. / Monat</span></div><div class="pk-p">749 € <small>/ Monat</small></div><ul class="ok"><li>Mo–So, 24/7</li><li>Direktkontakt zum Produzenten</li></ul></article>
+    </div>
+    <p class="note">Monatspakete zzgl. MwSt., monatlich kündbar, mind. 5 Std. pro Session. <a href="blog-studio-monatlich-mieten-muenchen.html" style="color:var(--head)">Lohnt sich ein Paket?</a></p>
   </div>
 </section>
 
@@ -539,7 +539,7 @@
   <div class="wrap" data-r>
     <span class="label" style="justify-content:center"><i></i>Bereit für die nächste Session?</span>
     <h2 style="margin-top:22px"><span class="mask"><span>Let’s</span></span><span class="mask"><span><em>Create.</em></span></span></h2>
-    <p>Freie Termine siehst du direkt im Kalender. Ab 3 Stunden, rund um die Uhr.</p>
+    <p>Deine Anfrage dauert 60 Sekunden. Ab 3 Stunden, rund um die Uhr.</p>
     <div class="row"><a class="btn btn-rec magnet" href="#anfrage">Studio buchen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn-ghost" href="faq.html">Häufige Fragen</a><a class="btn btn-ghost" href="blog.html">Magazin</a></div>
   </div>
 </section>
@@ -548,7 +548,7 @@
   <div class="wrap">
     <div class="f-grid">
       <div><a class="logo" href="index.html" aria-label="ZINLAMOR Studios Startseite" style="padding:0;margin-bottom:14px"><img src="logo-zinlamor.webp" alt="ZINLAMOR Studios" width="1600" height="1200" loading="lazy"></a><p>Musikstudio, Podcast- und Content-Studio in München-Giesing.</p><p style="margin-top:10px">Weißenseestraße 101<br>81539 München</p></div>
-      <div><h4>Studio</h4><a href="musikstudio-mieten-muenchen.html">Musikstudio mieten</a><a href="musikproduzent-muenchen.html">Musikproduzent</a><a href="full-service-musikproduktion-muenchen.html">Full-Service-Produktion</a><a href="#anfrage">Studio buchen</a><a href="booking.html">Kalender</a></div>
+      <div><h4>Studio</h4><a href="musikstudio-mieten-muenchen.html">Musikstudio mieten</a><a href="musikproduzent-muenchen.html">Musikproduzent</a><a href="full-service-musikproduktion-muenchen.html">Full-Service-Produktion</a><a href="#anfrage">Studio buchen</a></div>
       <div><h4>Wissen</h4><a href="blog.html">Magazin</a><a href="faq.html">Häufige Fragen</a><a href="blog-mixing-mastering-muenchen.html">Mix &amp; Mastering</a><a href="blog-musikstudio-mieten.html">Was kostet ein Studio?</a></div>
       <div><h4>Kontakt</h4><a href="https://wa.me/491785624699" target="_blank" rel="noopener">WhatsApp</a><a href="https://www.instagram.com/zinlamor.studios/" target="_blank" rel="noopener noreferrer">Instagram</a><span style="display:block;padding:4px 0">+49 178 5624699</span><span style="display:block;padding:4px 0">info@zinlamor.de</span></div>
     </div>
@@ -728,6 +728,10 @@
   form.addEventListener('submit',function(e){e.preventDefault()});
   var wa=document.querySelector('.wa'), sec=document.getElementById('anfrage');
   if(wa&&sec&&'IntersectionObserver' in window&&matchMedia('(max-width:999px)').matches){new IntersectionObserver(function(es){wa.classList.toggle('away',es[0].isIntersecting)},{threshold:.15}).observe(sec)}
+  document.addEventListener('click',function(e){var a=e.target.closest('a[href="#anfrage"]');if(!a)return;e.preventDefault();
+    var y=form.getBoundingClientRect().top+scrollY-(innerWidth<760?84:100);window.scrollTo({top:y,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+    form.classList.remove('open');setTimeout(function(){form.classList.add('open');var f=form.querySelector('.fn-step.on .opt,.fn-step.on input');if(f)f.focus({preventScroll:true})},650)});
+  if(location.hash==='#anfrage')setTimeout(function(){window.scrollTo({top:form.getBoundingClientRect().top+scrollY-(innerWidth<760?84:100)});form.classList.add('open')},500);
   go(1,true);
 })();
 </script>

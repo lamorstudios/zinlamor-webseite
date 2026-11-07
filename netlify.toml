@@ -205,6 +205,19 @@
   status = 404
   force  = true
 
+# Alter Buchungskalender wurde durch das Anfrage-Formular auf der Startseite ersetzt
+[[redirects]]
+  from   = "/booking.html"
+  to     = "/#anfrage"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from   = "/booking"
+  to     = "/#anfrage"
+  status = 301
+  force  = true
+
 # ──────────────────────────────────────────────────────────────
 # FALLBACK (echte 404) mit Rate Limiting (Pro-Plan, 5 Regeln max.)
 #
